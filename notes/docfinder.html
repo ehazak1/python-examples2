@@ -1,0 +1,209 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module docfinder</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>docfinder</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/raymondhettinger/dropbox/Public/sg2/docfinder.py">/Users/raymondhettinger/dropbox/Public/sg2/docfinder.py</a></font></td></tr></table>
+    <p><tt>Keyword&nbsp;searchable&nbsp;document&nbsp;database<br>
+&nbsp;<br>
+API:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#-create_db">create_db</a>(force=False)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#-add_document">add_document</a>(uri,&nbsp;document)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#-get_document">get_document</a>(uri)&nbsp;--&gt;&nbsp;document<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#-document_search">document_search</a>(keyword0,&nbsp;keyword1,&nbsp;...)&nbsp;--&gt;&nbsp;[uri0,&nbsp;ur1,&nbsp;...]&nbsp;&nbsp;#&nbsp;sorted&nbsp;by&nbsp;relevance<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Exceptions:&nbsp;&nbsp;<a href="#UnknownURI">UnknownURI</a>,&nbsp;<a href="#DuplicateURI">DuplicateURI</a><br>
+&nbsp;<br>
+Database&nbsp;schema:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;characters&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;documents<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-------------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--------------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;index&nbsp;by&nbsp;word&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index&nbsp;by&nbsp;uri<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-------------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--------------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;uri&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uri&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br>
+&nbsp;&nbsp;&nbsp;&nbsp;word&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document&nbsp;&nbsp;blob<br>
+&nbsp;&nbsp;&nbsp;&nbsp;relfreq&nbsp;&nbsp;real</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="bz2.html">bz2</a><br>
+<a href="collections.html">collections</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+<a href="re.html">re</a><br>
+</td><td width="25%" valign=top><a href="sqlite3.html">sqlite3</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="exceptions.html#KeyError">exceptions.KeyError</a>(<a href="exceptions.html#LookupError">exceptions.LookupError</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="docfinder.html#UnknownURI">UnknownURI</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="exceptions.html#ValueError">exceptions.ValueError</a>(<a href="exceptions.html#StandardError">exceptions.StandardError</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="docfinder.html#DuplicateURI">DuplicateURI</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="DuplicateURI">class <strong>DuplicateURI</strong></a>(<a href="exceptions.html#ValueError">exceptions.ValueError</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;URI&nbsp;needs&nbsp;to&nbsp;be&nbsp;unique&nbsp;and&nbsp;we&nbsp;already&nbsp;have&nbsp;one<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="docfinder.html#DuplicateURI">DuplicateURI</a></dd>
+<dd><a href="exceptions.html#ValueError">exceptions.ValueError</a></dd>
+<dd><a href="exceptions.html#StandardError">exceptions.StandardError</a></dd>
+<dd><a href="exceptions.html#Exception">exceptions.Exception</a></dd>
+<dd><a href="exceptions.html#BaseException">exceptions.BaseException</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="exceptions.html#ValueError">exceptions.ValueError</a>:<br>
+<dl><dt><a name="DuplicateURI-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>x.<a href="#DuplicateURI-__init__">__init__</a>(...)&nbsp;initializes&nbsp;x;&nbsp;see&nbsp;help(type(x))&nbsp;for&nbsp;signature</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="exceptions.html#ValueError">exceptions.ValueError</a>:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object&gt;<dd><tt>T.<a href="#DuplicateURI-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+<hr>
+Methods inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><a name="DuplicateURI-__delattr__"><strong>__delattr__</strong></a>(...)</dt><dd><tt>x.<a href="#DuplicateURI-__delattr__">__delattr__</a>('name')&nbsp;&lt;==&gt;&nbsp;del&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="DuplicateURI-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#DuplicateURI-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="DuplicateURI-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#DuplicateURI-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="DuplicateURI-__getslice__"><strong>__getslice__</strong></a>(...)</dt><dd><tt>x.<a href="#DuplicateURI-__getslice__">__getslice__</a>(i,&nbsp;j)&nbsp;&lt;==&gt;&nbsp;x[i:j]<br>
+&nbsp;<br>
+Use&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
+
+<dl><dt><a name="DuplicateURI-__reduce__"><strong>__reduce__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="DuplicateURI-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#DuplicateURI-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
+
+<dl><dt><a name="DuplicateURI-__setattr__"><strong>__setattr__</strong></a>(...)</dt><dd><tt>x.<a href="#DuplicateURI-__setattr__">__setattr__</a>('name',&nbsp;value)&nbsp;&lt;==&gt;&nbsp;x.name&nbsp;=&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="DuplicateURI-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="DuplicateURI-__str__"><strong>__str__</strong></a>(...)</dt><dd><tt>x.<a href="#DuplicateURI-__str__">__str__</a>()&nbsp;&lt;==&gt;&nbsp;str(x)</tt></dd></dl>
+
+<dl><dt><a name="DuplicateURI-__unicode__"><strong>__unicode__</strong></a>(...)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+<dl><dt><strong>message</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="UnknownURI">class <strong>UnknownURI</strong></a>(<a href="exceptions.html#KeyError">exceptions.KeyError</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;URI&nbsp;is&nbsp;not&nbsp;in&nbsp;the&nbsp;database<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="docfinder.html#UnknownURI">UnknownURI</a></dd>
+<dd><a href="exceptions.html#KeyError">exceptions.KeyError</a></dd>
+<dd><a href="exceptions.html#LookupError">exceptions.LookupError</a></dd>
+<dd><a href="exceptions.html#StandardError">exceptions.StandardError</a></dd>
+<dd><a href="exceptions.html#Exception">exceptions.Exception</a></dd>
+<dd><a href="exceptions.html#BaseException">exceptions.BaseException</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="exceptions.html#KeyError">exceptions.KeyError</a>:<br>
+<dl><dt><a name="UnknownURI-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>x.<a href="#UnknownURI-__init__">__init__</a>(...)&nbsp;initializes&nbsp;x;&nbsp;see&nbsp;help(type(x))&nbsp;for&nbsp;signature</tt></dd></dl>
+
+<dl><dt><a name="UnknownURI-__str__"><strong>__str__</strong></a>(...)</dt><dd><tt>x.<a href="#UnknownURI-__str__">__str__</a>()&nbsp;&lt;==&gt;&nbsp;str(x)</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="exceptions.html#KeyError">exceptions.KeyError</a>:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object&gt;<dd><tt>T.<a href="#UnknownURI-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+<hr>
+Methods inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><a name="UnknownURI-__delattr__"><strong>__delattr__</strong></a>(...)</dt><dd><tt>x.<a href="#UnknownURI-__delattr__">__delattr__</a>('name')&nbsp;&lt;==&gt;&nbsp;del&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="UnknownURI-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#UnknownURI-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="UnknownURI-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#UnknownURI-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="UnknownURI-__getslice__"><strong>__getslice__</strong></a>(...)</dt><dd><tt>x.<a href="#UnknownURI-__getslice__">__getslice__</a>(i,&nbsp;j)&nbsp;&lt;==&gt;&nbsp;x[i:j]<br>
+&nbsp;<br>
+Use&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
+
+<dl><dt><a name="UnknownURI-__reduce__"><strong>__reduce__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="UnknownURI-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#UnknownURI-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
+
+<dl><dt><a name="UnknownURI-__setattr__"><strong>__setattr__</strong></a>(...)</dt><dd><tt>x.<a href="#UnknownURI-__setattr__">__setattr__</a>('name',&nbsp;value)&nbsp;&lt;==&gt;&nbsp;x.name&nbsp;=&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="UnknownURI-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="UnknownURI-__unicode__"><strong>__unicode__</strong></a>(...)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+<dl><dt><strong>message</strong></dt>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-add_document"><strong>add_document</strong></a>(uri, text)</dt><dd><tt>Add&nbsp;a&nbsp;document&nbsp;with&nbsp;a&nbsp;given&nbsp;identifier&nbsp;to&nbsp;the&nbsp;search&nbsp;database</tt></dd></dl>
+ <dl><dt><a name="-create_db"><strong>create_db</strong></a>(force<font color="#909090">=False</font>)</dt><dd><tt>Set-up&nbsp;a&nbsp;new&nbsp;characterized&nbsp;document&nbsp;database,&nbsp;eliminating&nbsp;an&nbsp;old&nbsp;one&nbsp;if&nbsp;it&nbsp;exists</tt></dd></dl>
+ <dl><dt><a name="-document_search"><strong>document_search</strong></a>(*keywords)</dt><dd><tt>Find&nbsp;ranked&nbsp;list&nbsp;of&nbsp;best&nbsp;matched&nbsp;URIs&nbsp;for&nbsp;a&nbsp;given&nbsp;keyword</tt></dd></dl>
+ <dl><dt><a name="-get_document"><strong>get_document</strong></a>(uri)</dt><dd><tt>Retrieve&nbsp;a&nbsp;document&nbsp;with&nbsp;a&nbsp;given&nbsp;URI.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['create_db', 'add_document', 'get_document', 'document_search', 'UnknownURI', 'DuplicateURI']</td></tr></table>
+</body></html>

@@ -1,0 +1,32 @@
+GIT
+---
+This is the most important
+This was designed by Linus for HIST OWN NEEDS
+The design is excellent and correct
+API really, really bites
+Culture around GIT is really weird
+  Rebasing
+
+
+Hg
+--
+This is less used
+It is written in Python, so writing extensions is easy
+Beautiful API
+MUCH easier to learn
+The design is okay but has some fundamental flaws (two heads)
+
+^  Distributed Version Control
+================================================================
+   Centralized Version Control
+
+SVN
+---
+Older
+Directory based
+
+
+CVS
+---
+File
+

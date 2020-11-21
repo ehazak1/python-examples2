@@ -1,0 +1,483 @@
+Intermediate Python
+Cisco -- Denver
+October 28, 2013
+======================
+
+Taught by:  Raymond Hettinger
+            python@rcn.com
+            @raymondh
+
+
+Course notes:
+http://dl.dropbox.com/u/3967849/shared/IntermediatePython.pdf
+
+This file:
+
+http://dl.dropbox.com/u/3967849/sg2/links.txt
+
+Download tool:
+http://dl.dropbox.com/u/3967849/sg2/download.py
+
+HTML view:
+    https://dl.dropbox.com/u/3967849/sg2/pub/index.html
+    http://tinyurl.com/python-sg2
+
+
+Downloading Python2.7
+=====================
+
+    Windows:  http://www.python.org/ftp/python/2.7.3/python-2.7.3.msi
+              http://www.lfd.uci.edu/~gohlke/pythonlibs/
+
+    Mac:      http://www.python.org/ftp/python/2.7.3/python-2.7.3-macosx10.6.dmg
+              http://www.activestate.com/activetcl/downloads
+
+
+Background Knowledge (Prerequisites)
+====================================
+Proficient at creating and running Python modules
+Generators and the Iterator Protocol:
+    map, filter, reduce, sorted, enumerate
+    zip, sum, range, xrange, min, max
+Intro to Unittest and Doctest
+Conversions between str/list/tuple/int/float/dict
+Most of the builtin functions
+Understand how to make classes and use special methods
+Deep understanding of dictionaries and dict methods
+List comprehensions and generator expressions
+Regular Expressions
+
+
+Goals for the Class
+===================
+
+* Class development tools:
+    class local references, slots, classmethods,
+    static methods, class variable, mixin classes
+* Decorators
+* Iterator Protocol
+* Content Managers
+* Argparse
+* Sqlite
+* Cmd module -- Command Shell
+* Itty library -- http front end
+* Xmlrpc front-end
+* Threading
+* Process of building applications
+* Develop a deep understanding of how Python works
+
+
+What to Review:
+==============
+
+The most important files to review after class are:
+
+    class_demo.py
+                Shows Python's entire class building toolset:
+                class variables, class methods, static methods,
+                slots, class local references, new-style classes,
+                and properties.
+
+    decorator_school.py
+                Shows how decorators work from the simplest case
+                of decorator for registering functions (just like
+                itty does) to a triply-nested decorator for checking
+                pre-conditions.  Has working code for an unbounded cache.
+
+    docfinder.py
+                Demonstrates how a small but complete application is built.
+                Makes effective use of SQLite3, collections.Counter,
+                list comprehensions, and subprocess.check_output.
+                Uses a module level docstring to document the API and the
+                data architecture.
+
+    dictionaries.py
+                Creates a dictionary-like object based on a list of tuples.
+                Employees the MutableMapping abstract base class to build-up
+                a full dictionary API with minimum effort.  Demonstrates
+                an effective optimization using a self-organizing table.
+
+
+
+
+Presentations and Slides
+========================
+http://dl.dropbox.com/u/3967849/shared/PythonTips.pdf
+http://dl.dropbox.com/u/3967849/shared/PythonAwesome.pdf
+
+
+Recommended Reading
+===================
+ http://docs.python.org/library/collections.html#collections-abstract-base-classes
+ http://en.wikipedia.org/wiki/Self-organizing_list
+ http://xkcd.com/327/
+ http://dl.dropbox.com/u/3967849/shared/downey08semaphores.pdf
+ http://golubenco.org/2009/09/19/understanding-the-code-inside-tornado-the-asynchronous-web-server-powering-friendfeed/
+ http://docs.python.org/py3k/howto/argparse.html
+ http://preshing.com/20110920/the-python-with-statement-by-example
+ http://docs.python.org/py3k/howto/argparse.html
+ http://xmlrpc.scripting.com/spec.html
+ https://en.wikipedia.org/wiki/Open/closed_principle
+ http://www-sst.informatik.tu-cottbus.de/~db/doc/People/Broy/Software-Pioneers/Parnas_hist.pdf
+ http://www.amazon.com/The-Mythical-Man-Month-Engineering-Anniversary/dp/0201835959
+ http://www.cs.umd.edu/class/spring2003/cmsc838p/Design/criteria.pdf
+ http://docs.python.org/2.7/howto/argparse.html
+ http://docs.python.org/2.7/howto/logging.html
+
+
+Resources:
+==========
+ http://www.cisco.com/en/US/docs/routers/csr1000/software/restapi/RESTAPIntp.html
+ http://pyvideo.org/video/1779/pythons-class-development-toolkit    Video on the Class Development toolkit
+ http://www.doughellmann.com/PyMOTW/py-modindex.html
+ http://www.w3schools.com/sql/           Notes on SQL
+ http://www.pypy.org/                    Optimized version of Python
+ http://pypi.python.org/pypi/requests    Make HTTP requests with full control over headers
+ http://txt2re.com/                      Generate regexes from examples
+ http://sphinx.pocoo.org/
+ http://inventwithpython.com/makinggames.pdf
+
+
+PExpect
+=======
+    Advice on learning Pexpect
+    1) import pexpect
+    2) help(pexpect)         <-- The docstrings are great, with good examples!
+    3) go to the webpage and look at the example descriptions:
+         http://www.noah.org/wiki/pexpect                      # Webpage
+    4) look at the source for each example
+         https://dl.dropbox.com/u/3967849/pexpect/index.html   # Examples
+
+http://dl.dropbox.com/u/3967849/shared/pexpect.py      # source code
+
+Editors
+=======
+vi users          -- use vi plus ipython  or python-mode
+emacs users       -- use python-mode
+eclipse           -- use pydev
+python specific   -- pycharm or wing-ide (has a nice debugger) or komodo
+curses tool       -- bpython (curses interface)
+
+
+Day One Topics
+==============
+sorting with key-functions              sorted(s, key=str.lower)
+
+slicing and invariants                  s[:i] + s[i:] == s[:]
+
+lambda                                  f = lambda x: 3*x+1
+                                        f = lambda : 3**10
+                                        s = [(lambda a: x + a) for x in range(5)]
+                                        s = [(lambda a, x=x: x + a) for x in range(5)]
+                                        
+operator module                         itemgetter(1,0)     same as  lambda r: (r[1], r[0])
+                                        attrgetter('name')  same as  lambda r: r.name
+
+partial function evaluation             f = partial(pow, 2) same as   lambda x: pow(2,x)
+
+two argument form of iter()             for block in iter(partial(f.read, 20), ''): ...
+                                        # purpose is to transform functions into iterators
+else clauses on for and while:
+
+
+    def find(target, sequence):
+        'Hard-way using state flags'
+        found = False
+        for i, x in enumerate(sequence):
+            if x == target:
+                found = True
+                break
+        if not found:
+            return -1
+        return i
+
+
+    def find(target, sequence):
+        'Better-way using an else-clause'
+        for i, x in enumerate(sequence):
+            if x == target:
+                break
+        else:
+            return -1
+        return i
+    
+ http://dl.dropbox.com/u/3967849/sg2/callback_demo.py
+ http://dl.dropbox.com/u/3967849/sg2/else_demo.py
+ http://dl.dropbox.com/u/3967849/sg2/callables.py
+http://dl.dropbox.com/u/3967849/sg2/getmountain.py
+ http://dl.dropbox.com/u/3967849/sg2/try_demo.py
+http://dl.dropbox.com/u/3967849/sg2/class_demo.py
+http://dl.dropbox.com/u/3967849/sg2/client_code.py
+ http://dl.dropbox.com/u/3967849/sg2/dictionary_logic.py
+http://dl.dropbox.com/u/3967849/sg2/list_demo.py
+ http://dl.dropbox.com/u/3967849/sg2/looping_idioms.py
+http://dl.dropbox.com/u/3967849/sg2/property_demo.py
+
+    def sort_with_keyfunc(seq, keyfunc):
+        deco = [(keyfunc(x), x) for x in seq]
+        deco.sort()
+        return [v for k, v in deco]
+
+
+How to make tuples and lists and dicts and sets:
+
+        Length 0:
+            []
+            ()
+            {}
+            set()
+
+        Length 1:
+            [10]  [10,]
+            10,   (10,)
+            {'raymond': 'red'}
+            {10}
+
+Multiple roles:
+    dot       3.14          s.upper()
+    parens    ()            (3+4)*5         f(5)
+    comma     pow(2,5)      2, 5
+    braces    {2,3,4}       {2:4, 5:6}
+    
+
+
+How to make a case insensitive dictionary
+by extending a built-in type.
+
+    class CIDict(dict):
+            def __setitem__(self, key, value):
+                    key = key.lower()
+                    dict.__setitem__(self, key, value)
+            def __getitem__(self, key):
+                    key = key.lower()
+                    return dict.__getitem__(self, key)
+
+Day Two Topics and Files
+========================
+
+For something to be usable as a dictionary key
+or a value in a set, it has to define __hash__
+and __eq__ in a way that respects the homomorphism:
+
+       a == b   implies   hash(a) == hash(b)
+
+How to use collections.Counter
+
+    from collections import Counter
+    play = open('notes/hamlet.txt').read()
+    Counter(words).most_common(100)
+
+http://dl.dropbox.com/u/3967849/sg2/showargs.py
+ http://dl.dropbox.com/u/3967849/sg2/generator_demo.py
+ http://dl.dropbox.com/u/3967849/sg2/popular_words.py
+http://dl.dropbox.com/u/3967849/sg2/abc_demo.py
+ http://dl.dropbox.com/u/3967849/sg2/threading_demo.py
+ http://dl.dropbox.com/u/3967849/sg2/multiprocessing_demo.py
+http://dl.dropbox.com/u/3967849/sg2/dict_demo.py
+http://dl.dropbox.com/u/3967849/sg2/dictionary.py
+
+
+Truthiness:
+
+    All things in Python are true by default
+    Any number equal to zero is false
+    Any container that is empty is false
+    None is false
+
+Day Three
+---------
+
+How to generate HTML documentation automatically:
+
+    $ python -m pydoc -w class_demo
+
+Syntax for a list comprehension:
+
+    [<expr> for <var> in <iterable> if <cond>]
+
+EAFP -- Easier to ask forgiveness than permission
+
+    def worker():
+        while True:
+            try:
+                item = d.popitem()
+            except KeyError:
+                break
+            do_some_work(item)
+
+LBYL -- Look before you leap
+
+    while d:
+        item = d.popitem()
+        do_some_work(item)
+
+How to query databases from the interactive prompt:
+
+    >>> c = sqlite3.connect('pepsearch.db')
+    >>> pprint.pprint(list(c.execute('select count(*) from documents;')))
+
+Ways to build a list of tuples from a cursor:
+    
+    # One way to do build a list of tuples
+    result = c.execute(search_query).fetchall()
+
+    # A second way to build a list of tuples
+    result = []
+    for row in c.execute(search_query):
+       result.append(row)
+
+    # The third (popular) way to build a list of tuples
+    result = list(c.execute(search_query))
+
+ http://dl.dropbox.com/u/3967849/sg2/two_arg_iter.py
+http://dl.dropbox.com/u/3967849/sg2/with_demo.py
+http://dl.dropbox.com/u/3967849/sg2/case_statement.py
+ http://dl.dropbox.com/u/3967849/sg2/truthiness.py
+ http://dl.dropbox.com/u/3967849/sg2/showfile.py
+ http://dl.dropbox.com/u/3967849/sg2/iterator_school.py
+http://dl.dropbox.com/u/3967849/sg2/docfinder.py
+http://dl.dropbox.com/u/3967849/sg2/docfinder.html
+ http://dl.dropbox.com/u/3967849/sg2/search.py
+ http://dl.dropbox.com/u/3967849/sg2/docsearch.py
+http://dl.dropbox.com/u/3967849/sg2/exceptions.py
+ http://dl.dropbox.com/u/3967849/sg2/sqldesk.py
+
+Day Four
+--------
+http://dl.dropbox.com/u/3967849/shared/BeautifulSoup.py
+http://dl.dropbox.com/u/3967849/sg2/udp_client.py
+http://dl.dropbox.com/u/3967849/sg2/udp_time_server.py
+http://dl.dropbox.com/u/3967849/sg2/udp_universal_receiver.py
+ http://dl.dropbox.com/u/3967849/sg2/mercurial.log
+ http://dl.dropbox.com/u/3967849/sg2/decorator_school.py
+ http://dl.dropbox.com/u/3967849/sg2/decorator_school.html
+ http://dl.dropbox.com/u/3967849/sg2/fibo.py
+ http://dl.dropbox.com/u/3967849/sg2/fibo.cover
+http://dl.dropbox.com/u/3967849/sg2/print_redirect.py
+http://dl.dropbox.com/u/3967849/sg2/context.py
+ http://dl.dropbox.com/u/3967849/sg2/docsearch.py
+
+http://dl.dropbox.com/u/3967849/sg2/getmountain.py
+http://dl.dropbox.com/u/3967849/sg2/cisco_rest_demo.py
+http://dl.dropbox.com/u/3967849/sg2/rest_webservice.py
+ http://dl.dropbox.com/u/3967849/sg2/improved_http_finder.py
+
+ http://dl.dropbox.com/u/3967849/sg2/finder_shell.py
+ http://dl.dropbox.com/u/3967849/sg2/xmlrpc_example.py
+ http://dl.dropbox.com/u/3967849/sg2/rpc_demo.py
+ http://dl.dropbox.com/u/3967849/sg2/docsearch.py
+ http://dl.dropbox.com/u/3967849/sg2/target.py
+ http://dl.dropbox.com/u/3967849/sg2/sumsquares.py
+ http://dl.dropbox.com/u/3967849/sg2/argparse_demo.py
+ http://dl.dropbox.com/u/3967849/sg2/tweet_bug.py
+ http://dl.dropbox.com/u/3967849/sg2/twoway_generators.py
+ http://dl.dropbox.com/u/3967849/sg2/turtle_shell.py
+ http://dl.dropbox.com/u/3967849/sg2/head.py
+ http://dl.dropbox.com/u/3967849/sg2/dbf.py
+ http://dl.dropbox.com/u/3967849/sg2/command_line.py
+ http://dl.dropbox.com/u/3967849/sg2/udp_telnet_client.py
+ http://dl.dropbox.com/u/3967849/sg2/udp_piglatin_server.py
+ http://dl.dropbox.com/u/3967849/sg2/how_itty_dispatch_works.py
+
+How to run the debugger:
+
+    $ python -m pdb tweet_bug.py
+
+How to run the code tracer:
+
+    $ python -m trace --count fibo.py
+
+How to make HTML documentation
+
+    $ python -m pydoc -w iterator_school
+
+
+Code Readings
+=============
+http://dl.dropbox.com/u/3967849/shared/big.txt
+http://dl.dropbox.com/u/3967849/shared/spelling.py
+http://dl.dropbox.com/u/3967849/shared/mpl_demo.py
+http://dl.dropbox.com/u/3967849/shared/itty.py
+http://dl.dropbox.com/u/3967849/shared/lru_cache.py
+http://dl.dropbox.com/u/3967849/shared/highlight.py
+http://dl.dropbox.com/u/3967849/shared/publish.py
+http://dl.dropbox.com/u/3967849/sg2/transform.py
+
+
+Session Logs
+============
+http://dl.dropbox.com/u/3967849/sg2/dayone.log
+http://dl.dropbox.com/u/3967849/sg2/daytwo.log
+http://dl.dropbox.com/u/3967849/sg2/daythree.log
+http://dl.dropbox.com/u/3967849/sg2/dayfour.log
+
+
+Notes
+=====
+http://dl.dropbox.com/u/3967849/sg2/text/what_objects_are_all_about.txt
+http://dl.dropbox.com/u/3967849/sg2/text/method_types.txt
+http://dl.dropbox.com/u/3967849/sg2/text/glossary.txt
+http://dl.dropbox.com/u/3967849/sg2/text/path.txt
+http://dl.dropbox.com/u/3967849/sg2/text/sql.txt
+http://dl.dropbox.com/u/3967849/sg2/text/design_principles.txt
+http://dl.dropbox.com/u/3967849/sg2/text/advice.txt
+http://dl.dropbox.com/u/3967849/sg2/text/version_control.txt
+http://dl.dropbox.com/u/3967849/sg2/text/closures.txt
+
+
+Sample Data
+===========
+http://dl.dropbox.com/u/3967849/shared/__init__.py   
+http://dl.dropbox.com/u/3967849/shared/hamlet.txt
+http://dl.dropbox.com/u/3967849/sg2/ntp_servers_active.json
+http://dl.dropbox.com/u/3967849/shared/peps.zip
+
+
+Mercurial Version Control
+=========================
+ http://mercurial.selenic.com/
+ http://tortoisehg.bitbucket.org/download/index.html
+ http://hginit.com/
+
+Command-line Interface for docsearch.py
+=======================================
+    
+    $ python docsearch.py --help
+    usage: docsearch.py [-h] [-g GET] [-a ADD] [-f FILENAME]
+                        [SEARCH_TERM [SEARCH_TERM ...]]
+
+    Document search utility
+
+    positional arguments:
+      SEARCH_TERM           keyswords to search for
+
+    optional arguments:
+      -h, --help            show this help message and exit
+      -g GET, --get GET     URI of the document to be fetched
+      -a ADD, --add ADD     Specify a new URI to be added
+      -f FILENAME, --filename FILENAME
+                            location of a document to be added
+
+
+Writing Assignments
+===================
+
+Email to python@rcn.com
+
+(5 minutes)
+Write a paragraph for a colleague.
+Describe the difference between a regular method, class method,
+static method, bound method, and unbound method.
+Tell what they are good for, not just what they do.
+
+(5 minutes)
+Write a paragraph for a colleague.
+Tell them what the with-statement does,
+why it is useful, and what it can be used with.
+Make an analogy to some construct in some other language.
+
+Write a paragraph for a colleague.
+Tell them what the stars do in Python,
+when to use them, and how they compare
+to similar features in any other language you know.
+

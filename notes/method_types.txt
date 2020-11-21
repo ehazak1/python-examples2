@@ -1,0 +1,16 @@
+Regular method (prepends the instance if available, otherwise you have to do it).
+
+a.m(x, y)         --> m(a, x, y)   BoundMethod
+A.m(a, x, y)      --> m(a, x, y)   UnboundMethod
+
+
+Class method (prepends the class)
+
+a.m(x, y)          -->  m(a.__class__, x, y)
+A.m(x, y)          -->  m(A, x, y)
+
+
+Static method (doesn't prepend anything)
+
+a.m(x, y)          -->  m(x, y)
+A.m(x, y)          -->  m(x, y)

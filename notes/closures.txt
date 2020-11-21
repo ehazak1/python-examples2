@@ -1,0 +1,36 @@
+def f(x):
+    def g(y):
+        'This function closes (memorizes the x)'
+        return x + y
+    return g
+
+
+h = f(5)     # function g that memorized 5
+j = f(6)     # function g that memorized 6
+
+
+############################################
+
+''' Monkey patching is simply storing a
+    variable in some else's namespace,
+    so it will be visible to other code
+    that uses that namespace.
+
+    The typical use is add diagnostic
+    behavior or improved behaviors to
+    existing code that you don't control.
+'''
+
+#######################################\
+
+@f
+def g(x):
+    pass
+
+g = f(g)
+
+#######################################
+
+Functions have metadata:
+    func.__name__  <== name at birth
+    func.__doc__

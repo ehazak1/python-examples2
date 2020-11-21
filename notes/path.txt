@@ -1,0 +1,40 @@
+sys.path           # list:  sort append pop insert
+--------
+curr_directory     # just change directories with os.chdir()
+PYTHONPATH         # export the environment variable
+Lib                # "install" means, put this is the library
+
+Using IDLE, there is a Path Browser under the File menu.
+
+
+
+packages
+________
+
+any subdirectory of something on the path can be made importable
+by adding a file called __init__.py
+
+.
+   tmp.py
+   tmp2.py
+   altcomp
+       lex.py
+       yacc.py
+   ply
+       lex.py
+       yacc.py
+   raymond
+       __init__.py
+       tmp3.py
+       tmpa.py
+       tmpb.py    cross-import
+   rachel
+       tmp4.py
+
+
+import tmp, tmp2
+import raymond.tmp3, raymond.tmpa
+import raymond
+
+import altcomp.lex
+import ply.lex

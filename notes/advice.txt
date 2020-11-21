@@ -1,0 +1,53 @@
+Fredrick Brooks -- The Mythical Man Month
+ communication = n**2
+ work = linear
+ net = f(n) - c(n**2)
+
+Dr. Parnas --> Information Hiding  --> TMI
+   share api   inputs and outputs.
+
+KWIC --> Concordance
+
+Worst  I.    Dataflow Diagram first, but you don't have to turn it in.
+Better II.   No additional instructions
+Best  III.  BTW, next week we're going change the program and add features.
+
+Isolated parts that were likely change
+* how the data is formatted on disk
+* the source and destination
+* the definition of a word, size of the surrounding text
+
+Problem solving skills
+----------------------
+Use the interactive prompt
+Always be touching your data
+Solve one before you solve many
+Jigsaw puzzle; work from the outside in.
+Explore alternatives and evaluate alternatives.
+Place value on approximate solutions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

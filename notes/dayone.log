@@ -1,0 +1,2988 @@
+Python 2.7.5 (v2.7.5:ab05e7dd2788, May 13 2013, 13:18:45) 
+[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> 
+
+>>> 
+>>> 
+\
+>>> # bit.ly/python-sg2
+>>> 
+>>> # python -m idlelib.idle
+>>> 
+>>> s = [10, 20, 30, 40, 50]
+>>> s[0]
+10
+>>> s[4]
+50
+>>> len(s)
+5
+>>> s[len(s) - 1]
+50
+>>> s[-1]
+50
+>>> # negatives indices effectively get len(s) added in for you
+>>> s[0:3]
+[10, 20, 30]
+>>> s[0]
+10
+>>> s[1]
+20
+>>> s[2]
+30
+>>> s[:3]
+[10, 20, 30]
+>>> 
+>>> s[1:4]         # 4 - 1 ==> 3   len() is easy to compute
+[20, 30, 40]
+>>> [20, 30, 40]
+[20, 30, 40]
+>>> [20, 30, 40]
+[20, 30, 40]
+>>> 
+>>> 
+>>> s[4: len(s)]
+[50]
+>>> s[4:]
+[50]
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> s
+[10, 20, 30, 40, 50]
+>>> 
+>>> 
+>>> s = [10, 20, 30, 40, 50]
+>>> 
+>>> t = s
+>>> 
+>>> id(s)
+4297590976
+>>> id(t)
+4297590976
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> s = [10, 20, 30, 40, 50]
+>>> t = s
+>>> 
+>>> s.append(60)
+>>> t
+[10, 20, 30, 40, 50, 60]
+>>> 
+>>> u = s[2:4]
+>>> 
+>>> id(s)
+4329258520
+>>> id(u)
+4329247808
+>>> 
+>>> s
+[10, 20, 30, 40, 50, 60]
+>>> u
+[30, 40]
+>>> 
+>>> 
+>>> 
+>>> s = [10, 20, 30, 40, 50]
+>>> u = s[2:4]
+>>> s
+[10, 20, 30, 40, 50]
+>>> u
+[30, 40]
+>>> id(s)
+4329256720
+>>> id(u)
+4329255208
+>>> u.append(55)
+>>> u
+[30, 40, 55]
+>>> s
+[10, 20, 30, 40, 50]
+>>> 
+>>> t = s[:]
+>>> s
+[10, 20, 30, 40, 50]
+>>> t
+[10, 20, 30, 40, 50]
+>>> id(s)
+4329256720
+>>> id(t)
+4329251544
+>>> s.append(60)
+>>> s
+[10, 20, 30, 40, 50, 60]
+>>> t
+[10, 20, 30, 40, 50]
+>>> 
+>>> # How to copy a list:   t = s[:]
+>>> # How to share a list:  t = s
+>>> 
+>>> 
+>>> 
+>>> # s[i:j]  The i is included and the j is excluded   s[i] ... s[j-1]
+>>> print 'Hello'
+Hello
+
+>>> 
+>>> s
+[10, 20, 30, 40, 50, 60]
+>>> s[1] = 200
+>>> s
+[10, 200, 30, 40, 50, 60]
+>>> 
+>>> s[1:3] = [2000, 300]
+>>> s
+[10, 2000, 300, 40, 50, 60]
+>>> s[1:3] = [1,2,3,4]
+>>> s
+[10, 1, 2, 3, 4, 40, 50, 60]
+>>> 
+>>> s[1:3] = []
+>>> s
+[10, 3, 4, 40, 50, 60]
+>>> [10, 3, 4, 40, 50, 60]
+[10, 3, 4, 40, 50, 60]
+>>> 
+>>> 
+>>> 
+>>> s[:]
+[10, 3, 4, 40, 50, 60]
+>>> s[:] = []
+>>> s
+[]
+>>> # How to delete a list:   s[:] = []
+>>> 
+>>> 
+>>> s = [10, 20, 30, 40, 50]
+>>> 
+>>> del s[1]
+>>> s
+[10, 30, 40, 50]
+>>> del s[1:3]
+>>> s
+[10, 50]
+>>> del s[:]
+>>> # How to delete a list:   del s[:]
+>>> 
+>>> s = [10, 20, 30, 40, 50]
+>>> s[:] = []
+>>> 
+>>> s
+[]
+>>> s = [10, 20, 30, 40, 50]
+>>> s = []
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> nico = [10, 20, 30, 40, 50]
+>>> raymond = nico
+>>> 
+>>> 
+>>> nico
+[10, 20, 30, 40, 50]
+>>> raymond
+[10, 20, 30, 40, 50]
+>>> nico = []
+>>> nico
+[]
+>>> raymond
+[10, 20, 30, 40, 50]
+>>> 
+>>> 
+>>> 
+>>> nico = [10, 20, 30, 40, 50]
+>>> raymond = nico
+>>> del nico[:]
+>>> nico
+[]
+>>> raymond
+[]
+>>> # "del" is a keyword like "print"
+>>> print 30 + 40
+70
+>>> 70
+70
+
+>>> 
+>>> import keywords
+
+Traceback (most recent call last):
+  File "<pyshell#151>", line 1, in <module>
+    import keywords
+ImportError: No module named keywords
+>>> import keyword
+>>> keyword.kwlist
+['and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'exec', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'not', 'or', 'pass', 'print', 'raise', 'return', 'try', 'while', 'with', 'yield']
+>>> dir(keyword)
+['__all__', '__builtins__', '__doc__', '__file__', '__name__', '__package__', 'iskeyword', 'kwlist', 'main']
+>>> 
+>>> 
+>>> 
+>>> 
+>>> s = [10, 20, 30, 40, 50]
+>>> 
+>>> 
+>>> s[2]                   #  s.__getitem__(2)
+30
+>>> s[2] = 200             #  s.__setitem__(2, 200)
+>>> del s[2]               #  s.__delitem__(2)
+>>> 
+>>> 
+>>> print 'Hello World'
+Hello World
+>>> 
+>>> 
+>>> 
+>>> from __future__ import print_function
+>>> print 'hello world'
+SyntaxError: invalid syntax
+>>> print('hello world')
+hello world
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 32 / 6
+5
+>>> # (int / int) --> int
+>>> 
+>>> 
+>>> 
+>>> from __future__ import division
+>>> 32 / 6
+5.333333333333333
+>>> 
+>>> 
+>>> ================================ RESTART ================================
+>>> 32 / 6
+5
+>>> 
+>>> 
+>>> 
+>>> 
+>>> s = list('abcdefg')
+>>> 
+>>> 
+>>> 
+>>> s[-2:]
+['f', 'g']
+>>> s[len(s) - 2 : len(s)]
+['f', 'g']
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> s = 'abc'
+>>> 
+>>> i=2 ; print i*i
+4
+>>> s[len(s) - 2 : len(s)]
+'bc'
+>>> 
+>>> 
+>>> 
+>>> 
+>>> s = 'abc'
+>>> i = 0;  print s[:-i]
+
+>>> i = 1;  print s[:-i]
+ab
+>>> 
+>>> 
+>>> for i in range(3):
+	print i, s[:-i]
+
+	
+0 
+1 ab
+2 a
+>>> for i in range(4):
+	print i, s[:-i]
+
+	
+0 
+1 ab
+2 a
+3 
+>>> s[:-0]
+''
+>>> s[:-3]
+''
+>>> s[:len(s)-3]
+''
+>>> s[:3-3]
+''
+>>> 
+>>> 
+>>> # 0000 -> 0
+>>> # 0001 -> 1
+>>> # 0010 -> 2
+>>> 
+>>> # 1111 -> -1
+>>> 
+>>> s[:len(s)-3]
+''
+>>> # -8 to +7
+>>> 
+>>> # 1000
+>>> 
+>>> 
+>>> -0.0
+-0.0
+>>> 0.0
+0.0
+>>> 0.0 == -0.0
+True
+>>> 
+>>> 
+>>> # 1000
+>>> 
+>>> 
+>>> 
+>>> t = 10+1, 20+2, 30+3
+>>> type(t)
+<type 'tuple'>
+>>> # tuples are immutable
+>>> # useful as a dictionary key
+>>> True
+True
+>>> 
+>>> 
+>>> d = {'raymond': 'red', ('rachel', 'hettinger'): 'blue'}
+>>> d
+{('rachel', 'hettinger'): 'blue', 'raymond': 'red'}
+>>> d['rachel
+  
+SyntaxError: EOL while scanning string literal
+'
+>>> d['rachel', 'hettinger']
+'blue'
+>>> 
+>>> 
+>>> d[['rachel', 'hettinger']]
+
+Traceback (most recent call last):
+  File "<pyshell#262>", line 1, in <module>
+    d[['rachel', 'hettinger']]
+TypeError: unhashable type: 'list'
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> # dict keys are unique
+>>> # to be findable later, they must be immutable
+>>> 
+>>> # dict values don't have to be unique
+>>> # there are no constraints on values
+>>> 
+>>> 
+>>> 
+>>> 
+>>> # Language warts in almost every beautiful language
+>>> # are caused by not enough keys on the keyboard
+>>> 
+>>> # commas are overloaded
+>>> # parens are overloaded
+>>> # dots are overloaded
+>>> 
+>>> 'abc'.upper()
+'ABC'
+>>> import math
+>>> math.cos(3.0)
+-0.9899924966004454
+>>> 
+>>> 
+>>> 3.14
+3.14
+>>> 
+>>> 3.__add__(4)
+SyntaxError: invalid syntax
+>>> (3).__add__(4)
+7
+>>> 3. __add__(4)
+SyntaxError: invalid syntax
+>>> 'abc'.upper()
+'ABC'
+>>> 
+>>> 
+>>> pow(3, 5)       # function calls    __call__
+243
+>>> 2 + 3 * 4
+14
+>>> (2 + 3) * 4     # parens determine order of operations
+20
+>>> 
+>>> # making tuples
+>>> (10, 20, 30)
+(10, 20, 30)
+>>> 
+>>> # The commas make the tuple, not the parens usually
+>>> 
+>>> 
+>>> 10, 20, 30
+(10, 20, 30)
+>>> len(_)
+3
+>>> 10, 20, 30
+(10, 20, 30)
+>>> type(_)
+<type 'tuple'>
+>>> 
+>>> 
+>>> 
+>>> 10, 20, 30,            # trailing commas are optional
+(10, 20, 30)
+>>> (2 + 3) * 4
+20
+>>> (2 + 3)
+5
+>>> (4)
+4
+>>> 
+>>> 
+>>> 
+>>> # way to make a tuple of length three
+>>> 10, 20, 30
+(10, 20, 30)
+>>> (10, 20, 30)
+(10, 20, 30)
+>>> 10, 20, 30,
+(10, 20, 30)
+>>> (10, 20, 30,)
+(10, 20, 30)
+>>> 
+>>> 
+>>> 10, 20
+(10, 20)
+>>> 10, 20,
+(10, 20)
+>>> (10, 20)
+(10, 20)
+>>> (10, 20,)
+(10, 20)
+
+>>> 10
+10
+>>> type(_)
+<type 'int'>
+>>> 10,
+(10,)
+>>> type(_)
+<type 'tuple'>
+>>> (10,)
+(10,)
+>>> 
+>>> # to make a tuple of length one is the ONLY time a trailing comma is required
+>>> 
+>>> 10
+10
+>>> 10,
+(10,)
+
+>>> ()           # to make a tuple of length zero is the only case where the parens are required.
+()
+>>> 
+>>> 
+>>> 
+>>> 
+>>> ()      # tuple of length zero     ONLY WAY
+()
+>>> 
+>>> 10,
+(10,)
+>>> (10,)     # two ways to make a tuple of length two
+(10,)
+
+>>> 
+>>> {'raymond': 'red'}
+{'raymond': 'red'}
+>>> {'raymond': 'red', 'rachel': 'blue'}
+{'rachel': 'blue', 'raymond': 'red'}
+>>> {}
+{}
+>>> type()
+
+Traceback (most recent call last):
+  File "<pyshell#355>", line 1, in <module>
+    type()
+TypeError: type() takes 1 or 3 arguments
+>>> type({})
+<type 'dict'>
+>>> 
+>>> 
+>>> {10, 20, 10, 20, 30}    # make a set
+set([10, 20, 30])
+>>> {10}
+set([10])
+>>> set()
+set([])
+>>> 
+>>> 
+>>> 
+>>> # braces are used for sets and dictionaries
+>>> # dictionary have key:value pairs that include a colon
+>>> # sets have values separated by a comma
+>>> # We have to disambiguate exactly one case {}
+>>> # {} is an empty dictionary
+>>> # set() is an empty set
+>>> 
+>>> 
+>>> t = 10+1, 20+2, 30+3            # the comma packs the values into a tuple
+>>> t = (10+1, 20+2, 30+3)
+>>> # PACKS
+>>> 
+>>> t
+(11, 22, 33)
+>>> t[0]
+11
+>>> t[1]
+22
+>>> t[2]
+33
+>>> 
+>>> a, b, c = t                   # the comma unpacks on the left side of the equal sign
+>>> 
+>>> a
+11
+>>> b
+22
+>>> c
+33
+>>> 
+>>> 
+>>> p = 'raymond', 'hettinger', 0x31, 'python@rcn.com'
+>>> type(p)
+<type 'tuple'>
+>>> fname, lname, age, email = p
+>>> fname
+'raymond'
+>>> lname
+'hettinger'
+>>> age
+49
+>>> email
+'python@rcn.com'
+>>> 
+>>> 
+>>> 
+>>> a, b = 10, 20
+>>> 
+>>> a
+10
+>>> b
+20
+>>> 
+>>> 
+>>> x = 10
+>>> y = 20
+>>> 
+>>> x, y = y, x
+>>> 
+>>> x
+20
+>>> y
+10
+>>> 
+>>> 
+>>> t = x
+>>> x = y
+>>> y = t
+>>> 
+>>> 
+>>> x = y = 10
+>>> x
+10
+>>> y
+10
+>>> 
+>>> 
+>>> a, b = t = 10, 20
+>>> a
+10
+>>> b
+20
+>>> t
+(10, 20)
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> # chained assignment  x = y = 10
+>>> # tuple packing and unpacking   x, y = y, x
+>>> # is it real simultaneous
+>>> # unpacking syntax and packing syntax for tuples of length one
+>>> # pure function and repeated variable use
+>>> 
+>>> # tuples that contain mutable values
+>>> 
+>>> 10, 20
+(10, 20)
+>>> 
+>>> 
+>>> 10,
+(10,)
+>>> x = 10,
+>>> type(x)
+<type 'tuple'>
+>>> a, = x         # weird looking -- unpacking a tuple of length one
+>>> 
+>>> type(a)
+<type 'int'>
+>>> 
+>>> 
+>>> a = x
+>>> type(x)
+<type 'tuple'>
+>>> tuple(x)
+(10,)
+>>> 
+>>> 
+>>> t = 10,
+>>> a, = t
+>>> 
+>>> 
+>>> [x**2 for x in range(10)]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+>>> 
+>>> 
+>>> 
+>>> s = [(10,), (20,), (30,)]
+>>> # list of three tuples, each of length one
+>>> 
+>>> s[0]
+(10,)
+>>> (10,)
+(10,)
+
+>>> a, = s[0]
+>>> a
+10
+>>> 
+>>> 
+>>> [x for x, in s]
+[10, 20, 30]
+>>> [x for (x,) in s]
+[10, 20, 30]
+>>> [x for x in s]
+[(10,), (20,), (30,)]
+>>> 
+>>> 
+>>> x, = s[0]
+>>> x
+10
+>>> x, = s[1]
+>>> 
+>>> 
+>>> 
+>>> 
+>>> set()
+set([])
+>>> {}
+{}
+>>> (3).__add__(4)
+7
+>>> 
+>>> 
+>>> [x for x, in s]
+[10, 20, 30]
+>>> 
+>>> 
+>>> x, y = 10, 20
+>>> # evaluate the right side of the equal sign -- packing happens before unpacking
+>>> x, y = 10+1, 20+1
+>>> # the expressions are evaluated left-to-right
+>>> 
+>>> # the assignments happend left-to-right
+>>> 
+>>> # Typical use is for simultaneous assignment
+>>> x, y = y, x
+>>> 
+>>> 
+>>> 
+>>> x = 10
+>>> def f(y):
+	return x + y
+
+>>> f(3)
+13
+>>> x = 20
+>>> f(3)
+23
+>>> 
+>>> def f(y):
+	x += 1
+	return x + y
+
+>>> x = 10
+>>> f(3)
+
+Traceback (most recent call last):
+  File "<pyshell#519>", line 1, in <module>
+    f(3)
+  File "<pyshell#517>", line 2, in f
+    x += 1
+UnboundLocalError: local variable 'x' referenced before assignment
+>>> def f(y):
+	global x
+	x += 1
+	return x + y
+
+>>> x = 10
+>>> f(3)
+14
+>>> x
+11
+>>> f(3)
+15
+>>> f(3)
+16
+>>> 
+>>> 
+>>> # pure functions give the same answer every time
+>>> f(3)
+17
+>>> f(4)
+19
+>>> from random import random
+>>> random()
+0.11724026709528768
+>>> random()
+0.971980000558491
+>>> from time import time
+>>> time()
+1382978173.754011
+>>> time()
+1382978177.121327
+>>> 
+>>> pow(2, 5)
+32
+>>> pow(2, 5)
+32
+>>> 
+>>> # because people expect simulatenous assignment
+>>> # and because it isn't really simulatenous (it is left to right)
+>>> # never use impure functions on the right hand side
+>>> def f(y):
+	global x
+	x += 1
+	return x + y
+
+>>> x = 10
+>>> 
+>>> a, b = f(3), f(7)
+>>> 
+>>> a
+14
+>>> b
+19
+>>> 
+>>> x = 10
+>>> b, a = f(7), f(3)
+>>> a
+15
+>>> b
+18
+>>> 18
+18
+
+>>> 
+>>> 
+>>> a, a = 10, 20
+>>> a
+20
+>>> 
+>>> 
+>>> s = [10, 20, 30]
+>>> i = 0
+>>> 
+>>> i, s[i] = 1, 100
+>>> s
+[10, 100, 30]
+>>> 
+>>> 
+>>> s = [10, 20, 30]
+>>> i = 0
+>>> 
+>>> s[i], i = 100, 1
+>>> s
+[100, 20, 30]
+>>> i
+1
+>>> 1
+1
+
+>>> s = [10, 20, 30]
+>>> i = 0
+>>> 
+>>> i = 1
+>>> s[i] = 100
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> afasdf
+
+Traceback (most recent call last):
+  File "<pyshell#591>", line 1, in <module>
+    afasdf
+NameError: name 'afasdf' is not defined
+>>> asdfasdf
+
+Traceback (most recent call last):
+  File "<pyshell#592>", line 1, in <module>
+    asdfasdf
+NameError: name 'asdfasdf' is not defined
+
+>>> 
+
+>>> 
+
+>>> 
+>>> 
+>>> # keys need to be immutable --> so they can be found later
+>>> # keys need to be hashable --> this tends to only make for immutable objects
+>>> 
+>>> # what is immutability really?
+>>> 
+>>> 
+>>> # the absence of mutating methods
+>>> # comes from a hash method
+>>> 
+>>> # containers don't actually contain anything -- instead, they have reference
+>>> 
+>>> s = [10, 20]
+>>> t = [30, 40]
+>>> u = s, t
+>>> 
+>>> type(u)
+<type 'tuple'>
+>>> u
+([10, 20], [30, 40])
+>>> u[0] = 100
+
+Traceback (most recent call last):
+  File "<pyshell#614>", line 1, in <module>
+    u[0] = 100
+TypeError: 'tuple' object does not support item assignment
+>>> u[0]
+[10, 20]
+>>> u[0]
+[10, 20]
+>>> u[0].append(25)
+>>> u
+([10, 20, 25], [30, 40])
+>>> hash(u)
+
+Traceback (most recent call last):
+  File "<pyshell#619>", line 1, in <module>
+    hash(u)
+TypeError: unhashable type: 'list'
+>>> u = 10, 20
+>>> hash(u)
+3713074054217192181
+>>> 
+>>> 
+>>> class A:
+	def __init__(self, x):
+		self.x = x
+	def __hash__(self):
+		return 42
+	def __eq__(self, other):
+		return self.x == other.x
+
+	
+>>> a = A(15)
+>>> b = A(20)
+>>> c = A(15)
+>>> 
+>>> a.x
+15
+>>> c.x
+15
+>>> b.x
+20
+>>> 
+>>> hash(a)
+42
+>>> hash(b)
+42
+>>> hash(c)
+42
+>>> a == b
+False
+>>> a == c
+True
+>>> 
+>>> s = {a, b, c}
+>>> s
+set([<__main__.A instance at 0x1021ab3b0>, <__main__.A instance at 0x1021ac050>])
+>>> 
+>>> 
+>>> # How does something become hashable?
+>>> #  It has a __hash__ method
+>>> 
+>>> 3713074054217192181
+3713074054217192181
+
+>>> class A:
+	def __init__(self, x):
+		self.x = x
+	def __hash__(self):
+		return self.x % 2
+	def __eq__(self, other):
+		return self.x == other.x
+
+	
+>>> a = A(10)
+>>> a.x
+10
+>>> hash(x)
+12
+>>> hash(a)
+0
+>>> 
+>>> 
+>>> 
+>>> h = [[], []]
+>>> 
+>>> a = A(10)
+>>> hash(a)
+0
+>>> h[0].append(a)
+>>> h
+[[<__main__.A instance at 0x1021acd40>], []]
+>>> b = A(11)
+>>> hash(b)
+1
+>>> h[1].append(b)
+>>> 
+>>> c = A(8)
+>>> hash(c)
+0
+>>> h[0].append(c)
+>>> h
+[[<__main__.A instance at 0x1021acd40>, <__main__.A instance at 0x1021aa5a8>], [<__main__.A instance at 0x1021ab248>]]
+>>> 
+>>> 
+>>> d = A(11)
+>>> hash(d)
+1
+>>> h[1]
+[<__main__.A instance at 0x1021ab248>]
+>>> h[1]
+[<__main__.A instance at 0x1021ab248>]
+>>> h[1][0] == d
+True
+>>> 
+>>> 
+>>> 
+>>> 
+>>> # Lists
+>>> 
+>>> a = []
+>>> a.append(None)
+>>> a
+[None]
+>>> a.append(25)
+>>> a
+[None, 25]
+>>> 
+>>> def square(x):
+	return x*x
+
+>>> a.append(square)
+>>> a
+[None, 25, <function square at 0x102231668>]
+>>> a[1] + 5
+30
+>>> a[2](5)
+25
+>>> d = {}
+>>> d['roger']
+
+Traceback (most recent call last):
+  File "<pyshell#704>", line 1, in <module>
+    d['roger']
+KeyError: 'roger'
+>>> a.append(KeyError)
+>>> a
+[None, 25, <function square at 0x102231668>, <type 'exceptions.KeyError'>]
+>>> a[3]
+<type 'exceptions.KeyError'>
+>>> 
+>>> try:
+	d['roger']
+except a[3]:
+	print 'Oops, I did it again!'
+
+	
+Oops, I did it again!
+>>> 
+>>> 
+>>> 
+>>> d
+{}
+>>> d['roger']
+
+Traceback (most recent call last):
+  File "<pyshell#718>", line 1, in <module>
+    d['roger']
+KeyError: 'roger'
+>>> try:
+	d['roger']
+except KeyError:
+	print 'Oops, I did it again!'
+
+	
+Oops, I did it again!
+>>> try:
+	d['roger']
+except a[3]:
+	print 'Oops, I did it again!'
+
+	
+Oops, I did it again!
+>>> 
+>>> 
+>>> 
+>>> 
+>>> def f(d, x, e):
+	try:
+		print d[x]
+	except e:
+		print 'Caught exception', e
+
+		
+>>> d = {}
+>>> f(d, 'roger', KeyError)
+Caught exception <type 'exceptions.KeyError'>
+>>> f(d, 'roger', ValueError)
+
+Traceback (most recent call last):
+  File "<pyshell#735>", line 1, in <module>
+    f(d, 'roger', ValueError)
+  File "<pyshell#732>", line 3, in f
+    print d[x]
+KeyError: 'roger'
+>>> 
+>>> s = []
+>>> f(s, 3, IndexError)
+Caught exception <type 'exceptions.IndexError'>
+>>> 
+>>> 
+>>> a
+[None, 25, <function square at 0x102231668>, <type 'exceptions.KeyError'>]
+>>> s = [100, 200, 300]
+>>> a.append(s)
+>>> a
+[None, 25, <function square at 0x102231668>, <type 'exceptions.KeyError'>, [100, 200, 300]]
+>>> a[4]
+[100, 200, 300]
+>>> a[4][0]
+100
+>>> a.append(a)
+>>> a
+[None, 25, <function square at 0x102231668>, <type 'exceptions.KeyError'>, [100, 200, 300], [...]]
+>>> a[5]
+[None, 25, <function square at 0x102231668>, <type 'exceptions.KeyError'>, [100, 200, 300], [...]]
+>>> a[5][5]
+[None, 25, <function square at 0x102231668>, <type 'exceptions.KeyError'>, [100, 200, 300], [...]]
+>>> a[5][5][5][5][5][1]
+25
+>>> a.append(s)
+>>> 
+>>> # Learning point 1:  You can put anything in a list
+>>> # Learning point 2:  You can have a list refer to itself to make a circular list
+>>> ================================ RESTART ================================
+>>> 
+>>> s
+['Raymond', None]
+>>> t
+['Rachel', ['Raymond', None]]
+>>> u
+['Matthew', ['Rachel', ['Raymond', None]]]
+>>> 
+>>> u[0]
+'Matthew'
+>>> u[1][0]
+'Rachel'
+>>> ================================ RESTART ================================
+>>> 
+>>> u[NAME]
+
+Traceback (most recent call last):
+  File "<pyshell#762>", line 1, in <module>
+    u[NAME]
+NameError: name 'NAME' is not defined
+>>> u[VALUE]
+'Matthew'
+>>> u[NEXT][NEXT][VALUE]
+'Raymond'
+>>> ================================ RESTART ================================
+>>> 
+Matthew
+Raymond
+>>> ================================ RESTART ================================
+>>> 
+Matthew
+Raymond
+Matthew
+Rachel
+Raymond
+>>> 
+>>> 
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+Matthew
+Rachel
+Raymond
+>>> 
+>>> 
+>>> x = 10; print x
+10
+>>> ================================ RESTART ================================
+>>> 
+Matthew
+Rachel
+Raymond
+>>> s
+['raymond', None, ['rachel', [...], None]]
+>>> ================================ RESTART ================================
+>>> 
+Matthew
+Rachel
+Raymond
+>>> s
+['raymond', None, ['rachel', [...], ['matthew', [...], None]]]
+>>> 
+>>> 
+>>> 
+>>> s[VALUE]
+'raymond'
+>>> s[NEXT][VALUE]
+'rachel'
+>>> s[NEXT][NEXT][VALUE]
+'matthew'
+>>> 
+>>> u[VALUE]
+'matthew'
+>>> u[PREV][VALUE]
+'rachel'
+>>> u[PREV][PREV][VALUE]
+'raymond'
+>>> ================================ RESTART ================================
+>>> 
+Matthew
+Rachel
+Raymond
+>>> sharon
+['Sharon', None, None]
+>>> dennis
+['Dennis', None, None]
+>>> ================================ RESTART ================================
+>>> 
+Matthew
+Rachel
+Raymond
+>>> rachel
+['Rachel', ['Sharon', None, None], ['Dennis', None, None]]
+>>> ================================ RESTART ================================
+>>> 
+Matthew
+Rachel
+Raymond
+>>> 
+>>> 
+>>> 
+>>> raymond
+['Raymond', ['Gayle', None, None], ['Ramon', None, None]]
+>>> matthew
+['Matthew', ['Rachel', ['Sharon', None, None], ['Dennis', None, None]], ['Raymond', ['Gayle', None, None], ['Ramon', None, None]]]
+>>> ================================ RESTART ================================
+>>> 
+Matthew
+Rachel
+Raymond
+>>> Raymond
+
+Traceback (most recent call last):
+  File "<pyshell#791>", line 1, in <module>
+    Raymond
+NameError: name 'Raymond' is not defined
+
+>>> 
+>>> 
+>>> pprint(dennis)
+['Dennis', None, None]
+>>> pprint(rachel)
+['Rachel', ['Sharon', None, None], ['Dennis', None, None]]
+>>> pprint(matthew)
+['Matthew',
+ ['Rachel', ['Sharon', None, None], ['Dennis', None, None]],
+ ['Raymond', ['Gayle', None, None], ['Ramon', None, None]]]
+>>> pprint(matthew, width=30)
+['Matthew',
+ ['Rachel',
+  ['Sharon', None, None],
+  ['Dennis', None, None]],
+ ['Raymond',
+  ['Gayle', None, None],
+  ['Ramon', None, None]]]
+>>> 
+>>> 
+>>> 
+>>> matthew[NAME]
+'Matthew'
+>>> matthew[MOM][MOM][NAME]
+'Sharon'
+>>> matthew[POP][POP][NAME]
+'Ramon'
+>>> ================================ RESTART ================================
+>>> 
+Matthew
+Rachel
+Raymond
+['Dennis', 'Ramon']
+>>> ================================ RESTART ================================
+>>> 
+Matthew
+Rachel
+Raymond
+[ 'Matthew',
+  [ 'Rachel',
+    ['Sharon', None, None],
+    ['Dennis', None, None]],
+  [ 'Raymond',
+    ['Gayle', None, None],
+    ['Ramon', None, None]]]
+['Dennis', 'Ramon']
+>>> ================================ RESTART ================================
+>>> 
+Matthew
+Rachel
+Raymond
+[ 'Matthew',
+  [ 'Rachel',
+    ['Sharon', None, None],
+    ['Dennis', None, None]],
+  [ 'Raymond',
+    ['Gayle', None, None],
+    ['Ramon', None, None]]]
+['Dennis', 'Ramon']
+>>> inorder(sharon)
+
+Traceback (most recent call last):
+  File "<pyshell#804>", line 1, in <module>
+    inorder(sharon)
+  File "/Users/raymondhettinger/dropbox/Public/sg2/list_demo.py", line 74, in inorder
+    return inorder(p[MOM]) + [self[NAME]] + inorder(p[POP])
+NameError: global name 'self' is not defined
+>>> ================================ RESTART ================================
+>>> 
+Matthew
+Rachel
+Raymond
+[ 'Matthew',
+  [ 'Rachel',
+    ['Sharon', None, None],
+    ['Dennis', None, None]],
+  [ 'Raymond',
+    ['Gayle', None, None],
+    ['Ramon', None, None]]]
+['Dennis', 'Ramon']
+>>> inorder(sharon)
+['Sharon']
+>>> inorder(dennis)
+['Dennis']
+>>> inorder(rachel)
+['Sharon', 'Rachel', 'Dennis']
+>>> 
+>>> ['Sharon'] + ['Rachel'] + ['Dennis']
+['Sharon', 'Rachel', 'Dennis']
+>>> 
+>>> inorder(matthew)
+['Sharon', 'Rachel', 'Dennis', 'Matthew', 'Gayle', 'Raymond', 'Ramon']
+>>> 
+>>> 
+>>> 
+>>> inorder(rachel)
+['Sharon', 'Rachel', 'Dennis']
+>>> ['Matthew']
+['Matthew']
+>>> inorder(raymond)
+['Gayle', 'Raymond', 'Ramon']
+>>> ================================ RESTART ================================
+>>> 
+Matthew
+Rachel
+Raymond
+[ 'Matthew',
+  [ 'Rachel',
+    ['Sharon', None, None],
+    ['Dennis', None, None]],
+  [ 'Raymond',
+    ['Gayle', None, None],
+    ['Ramon', None, None]]]
+['Dennis', 'Ramon']
+>>> preorder(rachel)
+
+Traceback (most recent call last):
+  File "<pyshell#818>", line 1, in <module>
+    preorder(rachel)
+  File "/Users/raymondhettinger/dropbox/Public/sg2/list_demo.py", line 77, in preorder
+    if p in None:
+TypeError: argument of type 'NoneType' is not iterable
+>>> ================================ RESTART ================================
+>>> 
+Matthew
+Rachel
+Raymond
+[ 'Matthew',
+  [ 'Rachel',
+    ['Sharon', None, None],
+    ['Dennis', None, None]],
+  [ 'Raymond',
+    ['Gayle', None, None],
+    ['Ramon', None, None]]]
+['Dennis', 'Ramon']
+>>> preorder(rachel)
+['Rachel', 'Sharon', 'Dennis']
+>>> preorder(matthew)
+['Matthew', 'Rachel', 'Sharon', 'Dennis', 'Raymond', 'Gayle', 'Ramon']
+>>> ================================ RESTART ================================
+>>> 
+Matthew
+Rachel
+Raymond
+[ 'Matthew',
+  [ 'Rachel',
+    ['Sharon', None, None],
+    ['Dennis', None, None]],
+  [ 'Raymond',
+    ['Gayle', None, None],
+    ['Ramon', None, None]]]
+['Dennis', 'Ramon']
+>>> postorder(rachel)
+['Sharon', 'Dennis', 'Rachel']
+>>> postorder(matthew)
+['Sharon', 'Dennis', 'Rachel', 'Gayle', 'Ramon', 'Raymond', 'Matthew']
+>>> ['Sharon', 'Dennis', 'Rachel']
+['Sharon', 'Dennis', 'Rachel']
+
+>>> 
+>>> 
+Python 2.7.5 (default, Aug 25 2013, 00:04:04) 
+[GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> 
+>>> print 'Hello'
+Hello
+>>> print 'Hello'
+
+Hello
+>>> 
+
+>>> ================================ RESTART ================================
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+>>> c
+<class_demo.Circle object at 0x10c17b310>
+>>> c.radius
+10
+>>> 4 ** 2
+16
+>>> 4 ** 2.0
+16.0
+>>> 4.0 ** 2.0
+16.0
+>>> 4.0 ** 2.0 * 3.14
+50.24
+>>> ================================ RESTART ================================
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sg2/client_code.py", line 3, in <module>
+    c = Circle(10)
+TypeError: __init__() should return None, not 'Circle'
+>>> ================================ RESTART ================================
+>>> 
+A circle with a radius of 10
+has an area of 314.159265359
+>>> ================================ RESTART ================================
+>>> 
+A circle with a radius of 10
+has an area of 314.159265359
+>>> 
+>>> # object:  data + list of functions
+>>> #         dict      class
+>>> 
+>>> c.__dict__
+{'radius': 10}
+>>> c.__class__
+<class 'class_demo.Circle'>
+>>> c.__class__.__dict__['area']
+<function area at 0x10773c398>
+>>> c.__class__.__dict__['area'](c)
+314.1592653589793
+>>> c.__doc__
+'An Advanced Circle Analytic Toolkit'
+>>> 
+>>> 
+>>> c.__dict__
+{'radius': 10}
+>>> Circle.__dict__
+dict_proxy({'__module__': 'class_demo', 'area': <function area at 0x10773c398>, '__dict__': <attribute '__dict__' of 'Circle' objects>, '__weakref__': <attribute '__weakref__' of 'Circle' objects>, '__doc__': 'An Advanced Circle Analytic Toolkit', '__init__': <function __init__ at 0x10773c2a8>})
+>>> 
+>>> d = Circle(12)
+>>> 
+>>> d.__dict__
+{'radius': 12}
+>>> c.__dict__
+{'radius': 10}
+>>> 
+>>> c.__doc__
+'An Advanced Circle Analytic Toolkit'
+>>> d.__doc__
+'An Advanced Circle Analytic Toolkit'
+>>> 
+>>> Circle.__dict__
+dict_proxy({'__module__': 'class_demo', 'area': <function area at 0x10773c398>, '__dict__': <attribute '__dict__' of 'Circle' objects>, '__weakref__': <attribute '__weakref__' of 'Circle' objects>, '__doc__': 'An Advanced Circle Analytic Toolkit', '__init__': <function __init__ at 0x10773c2a8>})
+>>> ================================ RESTART ================================
+>>> 
+>>> c.version
+
+Traceback (most recent call last):
+  File "<pyshell#33>", line 1, in <module>
+    c.version
+NameError: name 'c' is not defined
+>>> ================================ RESTART ================================
+>>> 
+A circle with a radius of 10
+has an area of 314.159265359
+>>> c.version
+0.1
+>>> Circle.version
+0.1
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious version 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+>>> 
+>>> 
+>>> 
+>>> 11 + 22 == 33
+True
+>>> 1.1 + 2.2 == 3.3
+False
+>>> 1.1 + 2.2
+3.3000000000000003
+>>> s = 1.1 + 2.2
+>>> t = 3.3
+>>> 
+>>> s == t
+False
+>>> abs(s - t) < 0.0000001
+True
+>>> 
+>>> 
+>>> ver = 0, 1
+>>> 
+>>> ver == (0, 1)
+True
+>>> 
+>>> import sys
+>>> sys.version
+'2.7.5 (default, Aug 25 2013, 00:04:04) \n[GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)]'
+>>> tuple(sys.version_info)
+(2, 7, 5, 'final', 0)
+>>> sys.version_info
+sys.version_info(major=2, minor=7, micro=5, releaselevel='final', serial=0)
+>>> sys.version_info.major == 2
+True
+>>> sys.version_info.minor >= 6
+True
+>>> ================================ RESTART ================================
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious version Version(major=0, minor=1)
+A circle with a radius of 10
+has an area of 314.159265359
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=1)
+A circle with a radius of 10
+has an area of 314.159265359
+>>> Circle.version.minor
+1
+>>> Circle.version
+Version(major=0, minor=1)
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=1)
+A circle with a radius of 10
+has an area of 314.159265359
+Proposal to study the average area of circles
+using Circuitous(tm) Version(major=0, minor=1)
+>>> Circle.version
+Version(major=0, minor=1)
+
+>>> 
+>>> 
+>>> 
+>>> from random import *
+>>> random()
+0.8391921631760544
+>>> random()
+0.6401768992019233
+>>> random()
+0.33866943156903506
+>>> 
+>>> random() * 10
+7.251623715026633
+>>> int(random() * 10)        # integer between zero and nine inclusive
+5
+>>> int(random() * 10)        # integer between zero and nine inclusive
+0
+>>> int(random() * 10)        # integer between zero and nine inclusive
+6
+>>> 
+>>> range(10)
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> randrange(10)
+6
+>>> randrange(10)
+9
+>>> randrange(10)
+6
+>>> range(2, 10)
+[2, 3, 4, 5, 6, 7, 8, 9]
+>>> randrange(2, 10)
+7
+>>> randrange(2, 10)
+2
+>>> 
+>>> s = ['win', 'lose', 'draw']
+>>> 
+>>> len(s)
+3
+>>> len(s) * random()
+0.8221661710912957
+>>> int(len(s) * random())
+2
+>>> s[int(len(s) * random())]
+'win'
+>>> s[int(len(s) * random())]
+'draw'
+>>> s[int(len(s) * random())]
+'win'
+>>> s[int(len(s) * random())]
+'win'
+>>> s[int(len(s) * random())]
+'draw'
+>>> choice(['win', 'lose', 'draw'])
+'lose'
+>>> choice(['win', 'lose', 'draw'])
+'draw'
+>>> 
+>>> 
+>>> #  [ <expr> for  <var> in <iterable> if <cond> ]
+>>> 
+>>> [ x**2 for x in range(10) ]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+>>> 
+>>> chr(65)
+'A'
+>>> chr(32)
+' '
+>>> chr(97)
+'a'
+>>> ord('A')
+65
+>>> ord(' ')
+32
+>>> [ord(c) for c in 'Raymond']
+[82, 97, 121, 109, 111, 110, 100]
+>>> 
+>>> 
+>>> [choice(['win', 'lose', 'draw']) for i in range(10)]
+['lose', 'draw', 'draw', 'win', 'win', 'draw', 'lose', 'lose', 'win', 'draw']
+>>> # sampling with replacement
+>>> [choice(['win', 'lose', 'lose', 'draw']) for i in range(10)]
+['lose', 'lose', 'lose', 'lose', 'win', 'draw', 'win', 'draw', 'win', 'draw']
+>>> [choice(['win', 'lose', 'lose', 'draw']) for _ in range(10)]
+['win', 'lose', 'draw', 'draw', 'draw', 'draw', 'lose', 'lose', 'lose', 'lose']
+>>> 
+>>> sample(['win', 'lose', 'draw'], 2)
+['draw', 'win']
+>>> sample(['win', 'lose', 'draw'], 2)
+['draw', 'lose']
+>>> sample(['win', 'lose', 'draw'], 2)
+['lose', 'draw']
+>>> sample(['win', 'lose', 'draw'], 2)
+['win', 'draw']
+>>> sample(['win', 'lose', 'draw'], 2)
+['draw', 'win']
+>>> # sampling without replacement
+>>> sample(['win', 'lose', 'draw'], 3)
+['lose', 'draw', 'win']
+>>> sample(['win', 'lose', 'draw'], 3)
+['draw', 'win', 'lose']
+>>> sample(['win', 'lose', 'draw'], 4)
+
+Traceback (most recent call last):
+  File "<pyshell#122>", line 1, in <module>
+    sample(['win', 'lose', 'draw'], 4)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/random.py", line 320, in sample
+    raise ValueError("sample larger than population")
+ValueError: sample larger than population
+>>> 
+>>> s = ['Manny', 'Mo', 'Jack']
+>>> [name.title() for name in names]
+
+Traceback (most recent call last):
+  File "<pyshell#125>", line 1, in <module>
+    [name.title() for name in names]
+NameError: name 'names' is not defined
+>>> [name.title() for name in s]
+['Manny', 'Mo', 'Jack']
+>>> [name.title() for name in s if name.startswith('m')]
+[]
+>>> [name.lower() for name in s if name.startswith('M')]
+['manny', 'mo']
+>>> 
+>>> 
+>>> 
+>>> 
+>>> random()
+0.7027766506652406
+>>> random()
+0.22740027544350738
+>>> 
+>>> 
+>>> seed(8675309)
+>>> random()
+0.40224696110279223
+>>> random()
+0.5102471779215914
+>>> 
+>>> 
+>>> seed(8675309)
+>>> random()
+0.40224696110279223
+>>> random()
+0.5102471779215914
+>>> 
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=1)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=1)
+Seeded using Jenny's number: 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sg2/client_code.py", line 14, in <module>
+    seed(8675309)
+NameError: name 'seed' is not defined
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=1)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=1)
+Seeded using Jenny's number: 
+>>> len(circles)
+10
+>>> circle
+
+Traceback (most recent call last):
+  File "<pyshell#148>", line 1, in <module>
+    circle
+NameError: name 'circle' is not defined
+>>> circles
+[<class_demo.Circle object at 0x10a5c1650>, <class_demo.Circle object at 0x10a5c16d0>, <class_demo.Circle object at 0x10a5c1d10>, <class_demo.Circle object at 0x10a5c1cd0>, <class_demo.Circle object at 0x10a5c1d50>, <class_demo.Circle object at 0x10a5c1d90>, <class_demo.Circle object at 0x10a5c1dd0>, <class_demo.Circle object at 0x10a5c1e50>, <class_demo.Circle object at 0x10a5c1e10>, <class_demo.Circle object at 0x10a5c1ed0>]
+>>> ================================ RESTART ================================
+>>> 
+>>> Circle(10)
+Circle(10)
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=1)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=1)
+Seeded using Jenny's number: 
+>>> circles
+[Circle(0.402246961103), Circle(0.510247177922), Circle(0.663743112267), Circle(0.86071669234), Circle(0.280942699771), Circle(0.641394122075), Circle(0.647213553465), Circle(0.227155697663), Circle(0.7116969999), Circle(0.091154269838)]
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=1)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=1)
+Seeded using Jenny's number: 
+Make
+>>> circles
+[Circle(0.402246961103), Circle(0.510247177922), Circle(0.663743112267), Circle(0.86071669234), Circle(0.280942699771), Circle(0.641394122075), Circle(0.647213553465), Circle(0.227155697663), Circle(0.7116969999), Circle(0.091154269838)]
+>>> c.area()
+314.1592653589793
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=1)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=1)
+Seeded using Jenny's number: 
+Make 10 random circles
+>>> circles
+[Circle(0.402246961103), Circle(0.510247177922), Circle(0.663743112267), Circle(0.86071669234), Circle(0.280942699771), Circle(0.641394122075), Circle(0.647213553465), Circle(0.227155697663), Circle(0.7116969999), Circle(0.091154269838)]
+>>> areas
+[0.5083179151495382, 0.8179205041298087, 1.384044097288627, 2.327396215536275, 0.24796213997951547, 1.2924085543325607, 1.3159672444054562, 0.16210527294445717, 1.591256324893598, 0.02610381037583005]
+>>> zip(circles, areas)
+[(Circle(0.402246961103), 0.5083179151495382), (Circle(0.510247177922), 0.8179205041298087), (Circle(0.663743112267), 1.384044097288627), (Circle(0.86071669234), 2.327396215536275), (Circle(0.280942699771), 0.24796213997951547), (Circle(0.641394122075), 1.2924085543325607), (Circle(0.647213553465), 1.3159672444054562), (Circle(0.227155697663), 0.16210527294445717), (Circle(0.7116969999), 1.591256324893598), (Circle(0.091154269838), 0.02610381037583005)]
+>>> areas
+[0.5083179151495382, 0.8179205041298087, 1.384044097288627, 2.327396215536275, 0.24796213997951547, 1.2924085543325607, 1.3159672444054562, 0.16210527294445717, 1.591256324893598, 0.02610381037583005]
+>>> sum(areas)
+9.673482079035665
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=1)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=1)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 0.967348207904
+>>> 32 / 6
+5
+>>> sum(10, 20, 60]) / 3
+SyntaxError: invalid syntax
+>>> sum([10, 20, 60]) / 3
+30
+>>> sum([10, 20, 61]) / 3
+30
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=1)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=1)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 0.967348207904
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=1)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=1)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=1)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=1)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=1)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=1)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+>>> circles
+[Circle(0.1), Circle(0.2), Circle(0.7)]
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=1)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=1)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=1)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=1)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=1)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=1)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=1)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=1)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=3)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=3)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=3)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=3)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+>>> t
+Circle(22)
+>>> t.__dict__
+{'radius': 22}
+>>> t.__class__
+<class '__main__.Tire'>
+>>> t.__class__.__name__
+'Tire'
+>>> ================================ RESTART ================================
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=3)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=3)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+>>> c
+Circle(0.77)
+>>> t
+Tire(22)
+>>> Tire.__name__
+'Tire'
+>>> Tire.__bases__
+(<class 'class_demo.Circle'>,)
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=3)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=3)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire of radius 22
+has an inner area of 1520.53084434
+and a corrected perimeter of 172.787595947
+
+>>> t.__class__
+<class '__main__.Tire'>
+>>> t.__dict__
+{'radius': 22}
+>>> 
+>>> t.__class__.__bases__[0].perimeter(t)
+138.23007675795088
+>>> 
+>>> 
+>>> t.__dict__
+{'radius': 22}
+>>> t.__dict__.keys()
+['radius']
+>>> t.__class__.__dict__keys()
+
+Traceback (most recent call last):
+  File "<pyshell#180>", line 1, in <module>
+    t.__class__.__dict__keys()
+AttributeError: type object 'Tire' has no attribute '__dict__keys'
+>>> t.__class__.__dict__.keys()
+['perimeter', '__module__', '__doc__']
+>>> t.__class__.__bases__[0].__dict__.keys()
+['perimeter', '__module__', 'version', '__repr__', 'area', '__dict__', '__weakref__', '__doc__', '__init__']
+>>> ================================ RESTART ================================
+>>> 
+>>> angle_to_grade(5)
+
+Traceback (most recent call last):
+  File "<pyshell#183>", line 1, in <module>
+    angle_to_grade(5)
+  File "/Users/raymondhettinger/dropbox/Public/sg2/class_demo.py", line 29, in angle_to_grade
+    return tan(radians(angles)) * 100.0
+NameError: global name 'angles' is not defined
+>>> ================================ RESTART ================================
+>>> 
+>>> angle_to_grade(5)
+8.7488663525924
+>>> dir(Circle)
+['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'area', 'perimeter', 'version']
+>>> help(Circle)
+Help on class Circle in module __main__:
+
+class Circle(__builtin__.object)
+ |  An Advanced Circle Analytic Toolkit
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, radius)
+ |  
+ |  __repr__(self)
+ |  
+ |  area(self)
+ |      Perform quadrature of planar shape of uniform revolution
+ |  
+ |  perimeter(self)
+ |      Compute the closed line integeral for the locus of points equidistant from a given point
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |  
+ |  version = Version(major=0, minor=5)
+
+>>> 
+>>> 
+>>> angle_to_grade(6)
+10.510423526567648
+>>> ================================ RESTART ================================
+>>> 
+>>> dir(Circle)
+['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'angle_to_grade', 'area', 'perimeter', 'version']
+>>> 
+>>> 
+>>> Circle(1)
+Circle(1)
+>>> Circle(1).angle_to_grade(5)
+8.7488663525924
+>>> ================================ RESTART ================================
+>>> 
+>>> Circle.angle_to_grade(5)
+8.7488663525924
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=5)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=5)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire of radius 22
+has an inner area of 1520.53084434
+and a corrected perimeter of 172.787595947
+
+A inclinometer reading of 5 degrees
+is a 8.75 grade
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=5)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=5)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire of radius 22
+has an inner area of 1520.53084434
+and a corrected perimeter of 172.787595947
+
+A inclinometer reading of 5 degrees
+is a 8.75% grade
+>>> 
+
+>>> 
+>>> 
+>>> from datetime import *
+>>> date(2012, 2, 14)
+datetime.date(2012, 2, 14)
+>>> datetime(2012, 2, 14)
+datetime.datetime(2012, 2, 14, 0, 0)
+>>> 
+>>> 
+>>> import time
+>>> time.time()
+1382997733.537093
+>>> time.time()
+1382997738.88851
+>>> t = time.time()
+>>> 
+>>> datetime.fromtimestamp(t)
+datetime.datetime(2013, 10, 28, 16, 2, 52, 840708)
+>>> 
+>>> 
+>>> 
+>>> datetime.fromordinal(700000)
+datetime.datetime(1917, 7, 15, 0, 0)
+>>> datetime.fromordinal(710000)
+datetime.datetime(1944, 11, 30, 0, 0)
+>>> 
+>>> 
+>>> datetime.fromtimestamp(time.time())
+datetime.datetime(2013, 10, 28, 16, 4, 23, 785989)
+>>> 
+>>> # AB   C  Giving an API a facelift
+>>> 
+>>> datetime.now()
+datetime.datetime(2013, 10, 28, 16, 5, 15, 871952)
+>>> 
+>>> # Alternate constructor names typically start with the preposition "from"
+>>> 
+>>> 
+>>> # Datetime was designed by GvR and Tim Peters
+>>> import this
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+>>> 
+>>> 
+>>> d = dict()
+>>> d
+{}
+>>> d = {}
+>>> 
+>>> 
+>>> {'raymond': 'red', 'rachel': 'blue'}
+{'rachel': 'blue', 'raymond': 'red'}
+>>> dict(raymond='red', rachel='blue')
+{'rachel': 'blue', 'raymond': 'red'}
+>>> 
+>>> 
+>>> lot = [('raymond', 'red'), ('rachel', 'blue')]
+>>> dict(lot)
+{'rachel': 'blue', 'raymond': 'red'}
+>>> d = dict(lot)
+>>> dict(d)
+{'rachel': 'blue', 'raymond': 'red'}
+>>> 
+>>> # dict(keyword=value)
+>>> # dict(lot)
+>>> # dict(d)
+>>> # dict()
+>>> 
+>>> 
+>>> names = 'raymond rachel matthew'.split()
+>>> names
+['raymond', 'rachel', 'matthew']
+>>> 
+>>> d = {}
+>>> for name in names:
+	d[name] = 0
+
+	
+>>> d
+{'matthew': 0, 'rachel': 0, 'raymond': 0}
+>>> 
+>>> 
+>>> [10, 20] * 5
+[10, 20, 10, 20, 10, 20, 10, 20, 10, 20]
+>>> [0] * 3
+[0, 0, 0]
+>>> 
+>>> zip(names, [0]*len(names))
+[('raymond', 0), ('rachel', 0), ('matthew', 0)]
+>>> dict(zip(names, [0]*len(names)))
+{'matthew': 0, 'rachel': 0, 'raymond': 0}
+>>> 
+>>> 
+>>> dict.fromkeys(names, 0)
+{'matthew': 0, 'rachel': 0, 'raymond': 0}
+>>> dict.fromkeys(names, '')
+{'matthew': '', 'rachel': '', 'raymond': ''}
+>>> dict.fromkeys(names, None)
+{'matthew': None, 'rachel': None, 'raymond': None}
+>>> dict.fromkeys(names, 'hettinger')
+{'matthew': 'hettinger', 'rachel': 'hettinger', 'raymond': 'hettinger'}
+>>> ================================ RESTART ================================
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=6)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=6)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire of radius 22
+has an inner area of 1520.53084434
+and a corrected perimeter of 172.787595947
+
+A inclinometer reading of 5 degrees
+is a 8.75% grade
+
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sg2/client_code.py", line 59, in <module>
+    c = Circle.from_bbd(30)
+  File "/Users/raymondhettinger/dropbox/Public/sg2/class_demo.py", line 34, in from_bbd
+    r = d / 2 / sqrt(2)
+NameError: global name 'd' is not defined
+>>> ================================ RESTART ================================
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=6)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=6)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire of radius 22
+has an inner area of 1520.53084434
+and a corrected perimeter of 172.787595947
+
+A inclinometer reading of 5 degrees
+is a 8.75% grade
+
+A circle with a BBD of 30
+has a radius of 10.6066017178
+>>> ================================ RESTART ================================
+>>> 
+>>> Tire.from_bbd(30)
+
+Traceback (most recent call last):
+  File "<pyshell#272>", line 1, in <module>
+    Tire.from_bbd(30)
+NameError: name 'Tire' is not defined
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=6)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=6)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire of radius 22
+has an inner area of 1520.53084434
+and a corrected perimeter of 172.787595947
+
+A inclinometer reading of 5 degrees
+is a 8.75% grade
+
+A circle with a BBD of 30
+has a radius of 10.6066017178
+>>> Tire.from_bbd(30)
+Circle(10.6066017178)
+>>> ================================ RESTART ================================
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+>>> Circle.from_bbd(30)
+Circle(10.6066017178)
+>>> Tire.from_bbd(30)
+
+Traceback (most recent call last):
+  File "<pyshell#275>", line 1, in <module>
+    Tire.from_bbd(30)
+NameError: name 'Tire' is not defined
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=6)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=6)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire of radius 22
+has an inner area of 1520.53084434
+and a corrected perimeter of 172.787595947
+
+A inclinometer reading of 5 degrees
+is a 8.75% grade
+
+A circle with a BBD of 30
+has a radius of 10.6066017178
+>>> Circle.from_bbd(30)
+Circle(10.6066017178)
+>>> Tire.from_bbd(30)
+Tire(10.6066017178)
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=6)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=6)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire of radius 22
+has an inner area of 1520.53084434
+and a corrected perimeter of 172.787595947
+
+A inclinometer reading of 5 degrees
+is a 8.75% grade
+
+A circle with a BBD of 30
+has a radius of 10.6066017178
+>>> has a radius of 10.6066017178
+SyntaxError: invalid syntax
+>>> 
+>>> 
+>>> 
+>>> 
+>>> Tire.from_bbd(30)
+Tire(10.6066017178)
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=6)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=6)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire of radius 22
+has an inner area of 1520.53084434
+and a corrected perimeter of 172.787595947
+
+A inclinometer reading of 5 degrees
+is a 8.75% grade
+
+A circle with a BBD of 30
+has a radius of 10.6066017178
+>>> c
+Tire(10.6066017178)
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=6)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=6)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire of radius 22
+has an inner area of 1520.53084434
+and a corrected perimeter of 172.787595947
+
+A inclinometer reading of 5 degrees
+is a 8.75% grade
+
+A circle with a BBD of 30
+has a radius of 10.6066017178
+
+>>> # ISO 10666:  cannot area() directly the radius
+>>> # it MUST BE computed indirectly from the perimeter
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=7)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=7)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire of radius 22
+has an inner area of 2375.82944428
+and a corrected perimeter of 172.787595947
+
+A inclinometer reading of 5 degrees
+is a 8.75% grade
+
+A circle with a BBD of 30
+has a radius of 10.6066017178
+
+>>> x = 10
+>>> 
+>>> print x**2
+100
+>>> 
+>>> 
+>>> x = 10
+>>> 
+>>> x = 12
+>>> print x**2
+144
+>>> 
+>>> 
+>>> 
+>>> x = 10
+>>> _x = x
+>>> 
+>>> 
+>>> x = 12
+>>> 
+>>> 
+>>> print _x ** 2
+100
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=7)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=7)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire of radius 22
+has an inner area of 1520.53084434
+and a corrected perimeter of 172.787595947
+
+A inclinometer reading of 5 degrees
+is a 8.75% grade
+
+A circle with a BBD of 30
+has a radius of 10.6066017178
+
+>>> 
+>>> dir(t)
+['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_perimeter', 'angle_to_grade', 'area', 'from_bbd', 'perimeter', 'radius', 'version']
+>>> A circle with a BBD of 30
+SyntaxError: invalid syntax
+>>> 
+>>> 
+>>> 
+>>> 
+>>> x = 10
+>>> _x = x
+>>> 
+>>> 
+>>> x = 12
+>>> 
+>>> print _x ** 2
+100
+>>> 
+>>> 
+>>> 
+>>> def square(x):
+	return x*x
+
+>>> type(square)
+<type 'function'>
+>>> square(5)
+25
+>>> 
+>>> f = square
+>>> f(5)
+25
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=7)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=7)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire of radius 22
+has an inner area of 2375.82944428
+and a corrected perimeter of 172.787595947
+
+A inclinometer reading of 5 degrees
+is a 8.75% grade
+
+A circle with a BBD of 30
+has a radius of 10.6066017178
+
+>>> x = 10
+>>> _x = x
+>>> 
+>>> x = 12
+>>> _x = x
+>>> 
+>>> 
+>>> print x**2
+144
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=7)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=7)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire of radius 22
+has an inner area of 1520.53084434
+and a corrected perimeter of 172.787595947
+
+A inclinometer reading of 5 degrees
+is a 8.75% grade
+
+A circle with a BBD of 30
+has a radius of 10.6066017178
+
+>>> dir(t)
+['_Tire_perimeter', '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_perimeter', 'angle_to_grade', 'area', 'from_bbd', 'perimeter', 'radius', 'version']
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=7)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=7)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire of radius 22
+has an inner area of 1520.53084434
+and a corrected perimeter of 172.787595947
+
+A inclinometer reading of 5 degrees
+is a 8.75% grade
+
+A circle with a BBD of 30
+has a radius of 10.6066017178
+
+>>> dir(t)
+['_Circle_perimeter', '_Tire_perimeter', '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'angle_to_grade', 'area', 'from_bbd', 'perimeter', 'radius', 'version']
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=7)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=7)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire of radius 22
+has an inner area of 1520.53084434
+and a corrected perimeter of 172.787595947
+
+A inclinometer reading of 5 degrees
+is a 8.75% grade
+
+A circle with a BBD of 30
+has a radius of 10.6066017178
+
+>>> dir(t)
+['_Circle_perimeter', '_Tire__perimeter', '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'angle_to_grade', 'area', 'from_bbd', 'perimeter', 'radius', 'version']
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=7)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=7)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire of radius 22
+has an inner area of 1520.53084434
+and a corrected perimeter of 172.787595947
+
+A inclinometer reading of 5 degrees
+is a 8.75% grade
+
+A circle with a BBD of 30
+has a radius of 10.6066017178
+
+>>> dir(t)
+['_Circle__perimeter', '_Tire__perimeter', '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'angle_to_grade', 'area', 'from_bbd', 'perimeter', 'radius', 'version']
+>>> 
+>>> 
+>>> t.__class__
+<class '__main__.Tire'>
+>>> t.__dict__
+{'radius': 22}
+>>> 
+>>> 
+>>> # ISO 10667:  thou shalt only store the diameter, never the radius
+>>> 

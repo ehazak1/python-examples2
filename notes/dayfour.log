@@ -1,0 +1,919 @@
+Python 2.7.5 (default, Aug 25 2013, 00:04:04) 
+[GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> from collections import *
+>>> c = Counter()
+>>> c['red']
+0
+>>> c['red'] += 1
+>>> c
+Counter({'red': 1})
+>>> c['red'] += 1
+>>> c
+Counter({'red': 2})
+>>> 
+>>> colors = 'red green blue green red red'.split()
+>>> 
+>>> c = Counter()
+>>> for color in colors:
+	c[color] += 1
+
+	
+>>> c
+Counter({'red': 3, 'green': 2, 'blue': 1})
+>>> 
+>>> Counter(colors)
+Counter({'red': 3, 'green': 2, 'blue': 1})
+>>> 
+>>> 
+>>> Counter('abracadabra')
+Counter({'a': 5, 'r': 2, 'b': 2, 'c': 1, 'd': 1})
+>>> c = Counter('abracadabra')
+>>> c.keys()
+['a', 'r', 'b', 'c', 'd']
+>>> c.values()
+[5, 2, 2, 1, 1]
+>>> c.items()
+[('a', 5), ('r', 2), ('b', 2), ('c', 1), ('d', 1)]
+>>> with open('notes/hamlet.txt') as f:
+	play = f.read()
+
+	
+>>> type(play)
+<type 'str'>
+>>> len(play)
+202238
+>>> print play[:200]
+The Tragedy of Hamlet, Prince of Denmark
+Shakespeare homepage | Hamlet | Entire play
+ACT I
+SCENE I. Elsinore. A platform before the castle.
+
+    FRANCISCO at his post. Enter to him BERNARDO 
+
+B
+>>> 
+>>> 
+>>> import re
+>>> words = re.findall(r"\w+", play.lower())
+>>> 
+>>> type(words)
+<type 'list'>
+>>> len(words)
+32859
+>>> words[:20]
+['the', 'tragedy', 'of', 'hamlet', 'prince', 'of', 'denmark', 'shakespeare', 'homepage', 'hamlet', 'entire', 'play', 'act', 'i', 'scene', 'i', 'elsinore', 'a', 'platform', 'before']
+>>> 
+>>> words = re.findall(r"[a-z\-']+", play.lower())
+>>> words[:20]
+['the', 'tragedy', 'of', 'hamlet', 'prince', 'of', 'denmark', 'shakespeare', 'homepage', 'hamlet', 'entire', 'play', 'act', 'i', 'scene', 'i', 'elsinore', 'a', 'platform', 'before']
+>>> 
+>>> 
+>>> 
+>>> 
+>>> import re
+>>> import collections
+>>> with open('notes/hamlet.txt') as f:
+	play = f.read()
+
+	
+>>> words = re.findall(r"[a-z\-']+", play.lower())
+>>> c = Counter(words)
+>>> c.most_common(50)
+[('the', 1137), ('and', 963), ('to', 736), ('of', 669), ('you', 547), ('i', 540), ('a', 527), ('my', 513), ('hamlet', 461), ('in', 435), ('it', 415), ('that', 388), ('is', 339), ('not', 312), ('lord', 308), ('his', 296), ('this', 294), ('but', 268), ('with', 267), ('for', 247), ('your', 242), ('me', 232), ('be', 226), ('as', 220), ('he', 215), ('what', 204), ('so', 196), ('him', 196), ('king', 194), ('have', 179), ('will', 169), ('horatio', 157), ('do', 151), ('no', 141), ('we', 139), ('are', 131), ('on', 126), ('all', 120), ('claudius', 120), ('our', 118), ('by', 117), ('queen', 116), ('polonius', 116), ('shall', 114), ('if', 112), ('or', 112), ('o', 110), ('good', 107), ('come', 106), ('they', 103)]
+>>> from pprint import *
+>>> pprint(c.most_common(50))
+[('the', 1137),
+ ('and', 963),
+ ('to', 736),
+ ('of', 669),
+ ('you', 547),
+ ('i', 540),
+ ('a', 527),
+ ('my', 513),
+ ('hamlet', 461),
+ ('in', 435),
+ ('it', 415),
+ ('that', 388),
+ ('is', 339),
+ ('not', 312),
+ ('lord', 308),
+ ('his', 296),
+ ('this', 294),
+ ('but', 268),
+ ('with', 267),
+ ('for', 247),
+ ('your', 242),
+ ('me', 232),
+ ('be', 226),
+ ('as', 220),
+ ('he', 215),
+ ('what', 204),
+ ('so', 196),
+ ('him', 196),
+ ('king', 194),
+ ('have', 179),
+ ('will', 169),
+ ('horatio', 157),
+ ('do', 151),
+ ('no', 141),
+ ('we', 139),
+ ('are', 131),
+ ('on', 126),
+ ('all', 120),
+ ('claudius', 120),
+ ('our', 118),
+ ('by', 117),
+ ('queen', 116),
+ ('polonius', 116),
+ ('shall', 114),
+ ('if', 112),
+ ('or', 112),
+ ('o', 110),
+ ('good', 107),
+ ('come', 106),
+ ('they', 103)]
+>>> pprint(c.most_common(10))
+[('the', 1137),
+ ('and', 963),
+ ('to', 736),
+ ('of', 669),
+ ('you', 547),
+ ('i', 540),
+ ('a', 527),
+ ('my', 513),
+ ('hamlet', 461),
+ ('in', 435)]
+>>> 
+>>> 
+>>> 
+>>> import collections
+>>> import re
+>>> with open('notes/hamlet.txt') as f:
+	play = f.read()
+
+	
+>>> words = re.findall(r"[a-z\-']+", play.lower())
+>>> c = Counter(words)
+>>> pprint(c.most_common(10))
+[('the', 1137),
+ ('and', 963),
+ ('to', 736),
+ ('of', 669),
+ ('you', 547),
+ ('i', 540),
+ ('a', 527),
+ ('my', 513),
+ ('hamlet', 461),
+ ('in', 435)]
+>>> c = Counter(colors)
+>>> c
+Counter({'red': 3, 'green': 2, 'blue': 1})
+>>> for k, v in c.items():
+	print k, v
+
+	
+blue 1
+green 2
+red 3
+>>> 
+>>> 
+>>> for k in c.elements():
+	print k
+
+	
+blue
+green
+green
+red
+red
+red
+>>> 
+>>> 
+>>> template = 'Hello, my is {title} {fname} {lname} and I am {age} years old.'
+>>> 
+>>> print template.format(age=49, title='Mr.', fname='Raymond', lname='Hettinger')
+Hello, my is Mr. Raymond Hettinger and I am 49 years old.
+>>> print template.format(age=49+1, title='Mr.', fname='Raymond', lname='Hettinger')
+Hello, my is Mr. Raymond Hettinger and I am 50 years old.
+>>> template = 'Hello, my is {title} {fname} {lname:20s} and I am {age} years old.'
+>>> print template.format(age=49+1, title='Mr.', fname='Raymond', lname='Hettinger')
+Hello, my is Mr. Raymond Hettinger            and I am 50 years old.
+>>> 
+>>> 
+>>> 
+>>> template = 'Hello, my is {title} {fname} {lname:>20s} and I am {age} years old.'
+>>> print template.format(age=49+1, title='Mr.', fname='Raymond', lname='Hettinger')
+Hello, my is Mr. Raymond            Hettinger and I am 50 years old.
+>>> 
+>>> template = 'Hello, my is {title} {fname} {lname:^20s} and I am {age} years old.'
+>>> print template.format(age=49+1, title='Mr.', fname='Raymond', lname='Hettinger')
+Hello, my is Mr. Raymond      Hettinger       and I am 50 years old.
+>>> 
+>>> template = 'Hello, my is {title} {fname} {lname:<20s} and I am {age} years old.'
+>>> print template.format(age=49+1, title='Mr.', fname='Raymond', lname='Hettinger')
+Hello, my is Mr. Raymond Hettinger            and I am 50 years old.
+>>> 
+>>> 
+>>> 
+>>> print 'The answer is {ans} today'.format(123456789)
+
+Traceback (most recent call last):
+  File "<pyshell#97>", line 1, in <module>
+    print 'The answer is {ans} today'.format(123456789)
+KeyError: 'ans'
+>>> print 'The answer is {ans} today'.format(ans=123456789)
+The answer is 123456789 today
+>>> 
+>>> 
+
+>>> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>> print 'The answer is {ans} today'.format(ans=123456789)
+The answer is 123456789 today
+>>> print 'The answer is {ans:12,d} today'.format(ans=123456789)
+The answer is  123,456,789 today
+>>> print 'The answer is {ans:12,.2f} today'.format(ans=123456789.12)
+The answer is 123,456,789.12 today
+>>> print 'The answer is {ans:20,.2f} today'.format(ans=123456789.12)
+The answer is       123,456,789.12 today
+>>> print 'The answer is {ans:20,.1f} today'.format(ans=123456789.12)
+The answer is        123,456,789.1 today
+>>> 
+>>> print 'The answer is {ans:,.1f} today'.format(ans=123456789.12)
+The answer is 123,456,789.1 today
+>>> print 'The answer is {ans:,f} today'.format(ans=123456789.12)
+The answer is 123,456,789.120000 today
+>>> print 'The answer is {ans:,} today'.format(ans=123456789.12)
+The answer is 123,456,789.12 today
+>>> 
+>>> 
+>>> 
+>>> 
+>>> s = ['Charlie', 'Brown']
+>>> s[0]
+'Charlie'
+>>> s[1]
+'Brown'
+>>> 
+>>> 
+>>> print 'Mr. {name[1]} goes by {name[0]}'.format(name=s)
+Mr. Brown goes by Charlie
+>>> 
+>>> 
+>>> from collections import namedtuple
+>>> Person = namedtuple('Person', ['fname', 'lname', 'age', 'email'])
+>>> 
+>>> 
+>>> rdh = Person('Raymond', 'Hettinger', 49, 'python@rcn.com')
+>>> reh = Person('Rachel', 'Hettinger', 43, 'rachel@example.com')
+>>> rmh = Person('Matthew', 'Hettinger', 1, 'matthew@example.com')
+>>> 
+>>> 
+>>> rdh.lname
+'Hettinger'
+>>> rmh.age
+1
+>>> reh.email
+'rachel@example.com'
+>>> 
+>>> 
+>>> print '{person.fname} is {person.age} years old'.format(person=reh)
+Rachel is 43 years old
+>>> print '{person.fname} is {person.age} years old'.format(person=rmh)
+Matthew is 1 years old
+>>> print '{person.fname} is {person.age} years old'.format(person=rdh)
+Raymond is 49 years old
+>>> print '{person.fname} is {{person.age}} years old'.format(person=rdh)
+Raymond is {person.age} years old
+>>> print '{person.fname} is {{ years old'.format(person=rdh)
+Raymond is { years old
+>>> print '{person.fname} is }} years old'.format(person=rdh)
+Raymond is } years old
+>>> print '{person.fname} is {{person.age}} years old'.format(person=rdh)
+Raymond is {person.age} years old
+>>> 
+>>> 
+>>> 
+>>> s = 'she sells sea shells by the sea shore which witch has which witches wristwatch'
+>>> len(s)
+78
+>>> 
+>>> import zlib
+>>> c = zlib.compress(s)
+>>> len(c)
+61
+>>> print zlib.decompress(c)
+she sells sea shells by the sea shore which witch has which witches wristwatch
+>>> 
+>>> 
+>>> 
+>>> import bz2
+>>> c = bz2.compress(s)
+>>> print bz2.decompress(c)
+she sells sea shells by the sea shore which witch has which witches wristwatch
+>>> 
+>>> 
+>>> len(c)
+85
+>>> # zlib --> is pretty good all the time even for short strings
+>>> # bz2 --> is beyond pretty good, in fact excellent, but only for long strings
+>>> 
+>>> # zlib --> fast
+>>> # bz2 --> dog slow
+>>> 
+>>> 
+>>> 
+>>> 
+>>> # pickling -- serialization -- taking live objects and freezing them into string
+>>> 
+>>> hansolo = {'trade': 'smuggler', 'appearance': 'scruffy', friends=['luke', 'leia', 'chewy']}
+SyntaxError: invalid syntax
+>>> hansolo = {'trade': 'smuggler', 'appearance': 'scruffy', friends:['luke', 'leia', 'chewy']}
+
+Traceback (most recent call last):
+  File "<pyshell#175>", line 1, in <module>
+    hansolo = {'trade': 'smuggler', 'appearance': 'scruffy', friends:['luke', 'leia', 'chewy']}
+NameError: name 'friends' is not defined
+>>> hansolo = {'trade': 'smuggler', 'appearance': 'scruffy', 'friends':['luke', 'leia', 'chewy']}
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> pprint(hansolo)
+{'appearance': 'scruffy',
+ 'friends': ['luke', 'leia', 'chewy'],
+ 'trade': 'smuggler'}
+>>> 
+>>> 
+>>> len(hansolo)
+3
+>>> hansol['trade']
+
+Traceback (most recent call last):
+  File "<pyshell#186>", line 1, in <module>
+    hansol['trade']
+NameError: name 'hansol' is not defined
+>>> hansolo['trade']
+'smuggler'
+>>> 
+>>> for f in hansolo['friends']:
+	print f.title()
+
+	
+Luke
+Leia
+Chewy
+>>> 
+>>> 
+>>> import pickle
+>>> 
+>>> 
+>>> 
+>>> hansolo = {'trade': 'smuggler', 'appearance': 'scruffy', 'friends':['luke', 'leia', 'chewy']}
+>>> import pickle
+>>> 
+>>> c = pickle.dumps(s)
+>>> type(c)
+<type 'str'>
+>>> len(c)
+86
+>>> del hansolo
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+
+>>> 
+
+>>> import pickle
+>>> hansolo = {'trade': 'smuggler', 'appearance': 'scruffy', 'friends':['luke', 'leia', 'chewy']}
+>>> c = pickle.dumps(s)
+>>> del hansolo
+>>> 
+>>> 
+>>> 
+>>> 
+
+>>> 
+
+
+
+
+
+
+
+>>> import pickle
+>>> hansolo = {'trade': 'smuggler', 'appearance': 'scruffy', 'friends':['luke', 'leia', 'chewy']}
+>>> c = pickle.dumps(hansolo)
+>>> del hansolo
+>>> 
+>>> 
+>>> hansolo = pickle.loads(c)
+>>> hansolo
+{'appearance': 'scruffy', 'friends': ['luke', 'leia', 'chewy'], 'trade': 'smuggler'}
+>>> 
+>>> 
+>>> 
+
+>>> # zlib and bz2:    compress and decompress
+>>> # pickle:          dumps    loads
+>>> 
+>>> # pickle:          dump     load
+>>> 
+>>> 
+>>> import json
+>>> c = json.dumps(hansolo)
+>>> type(c)
+<type 'str'>
+>>> print c
+{"appearance": "scruffy", "friends": ["luke", "leia", "chewy"], "trade": "smuggler"}
+>>> 
+>>> # true  True    null None    trailing commas    'leia'    "leia"
+>>> # 0: 'zero'
+>>> 
+>>> 
+>>> 
+>>> hansolo = json.loads(c)
+>>> hansolo
+{u'friends': [u'luke', u'leia', u'chewy'], u'appearance': u'scruffy', u'trade': u'smuggler'}
+>>> 
+>>> 
+>>> json.loads(json.dumps([10, 12.3, 'hello']))
+[10, 12.3, u'hello']
+>>> json.loads(json.dumps((10, 12.3, 'hello')))
+[10, 12.3, u'hello']
+>>> 
+>>> # json is standardized and widely used, so it is great for cross-language transport
+>>> #      the most human readable of the transport formats
+>>> 
+>>> # pickle is standard ONLY to python, it support many types including your own classes
+>>> 
+>>> # json is limited to only two container types:  dict and the list   (object and list)
+>>> # pickle is vulnerable to injection attacks
+>>> 
+>>> 
+>>> 
+>>> 
+>>> import json
+>>> from pprint import *
+>>> 
+>>> with open('notes/ntp_servers_active.json') as f:
+	r = json.load(f)
+
+	
+>>> pprint(r)
+{u'items': [{u'address': u'172.31.32.2',
+             u'delay': u'4.2',
+             u'dispersion': u'1.6',
+             u'kind': u'object#ntp-server-active',
+             u'offset': u'-8.59',
+             u'peer-info': u'peer is statically configured',
+             u'poll': 1024,
+             u'reach': 377,
+             u'ref-clock': u'172.31.32.1',
+             u'st': 5,
+             u'when': 29},
+            {u'address': u'192.168.13.57',
+             u'delay': u'7.9',
+             u'dispersion': u'3.6',
+             u'kind': u'object#ntp-server-active',
+             u'offset': u'11.18',
+             u'peer-info': u'peer is statically configured. Peer selected for possible synchronization',
+             u'poll': 128,
+             u'reach': 377,
+             u'ref-clock': u'192.168.1.111',
+             u'st': 3,
+             u'when': 32}],
+ u'kind': u'collection#ntp-server-active'}
+>>> 
+>>> for server in r['items']:
+	print server['address'], server['peer-info']
+
+	
+172.31.32.2 peer is statically configured
+192.168.13.57 peer is statically configured. Peer selected for possible synchronization
+>>> u'st': 3,
+SyntaxError: invalid syntax
+
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> x = 100
+>>> y = 50 + 50
+>>> 
+>>> x == y
+True
+>>> x is y
+True
+>>> 
+>>> x = 1000
+>>> y = 500 + 500
+>>> 
+>>> x == y
+True
+>>> x is y
+False
+>>> id(x)
+140551778740160
+>>> id(y)
+140551778740256
+>>> import requests
+
+Traceback (most recent call last):
+  File "<pyshell#295>", line 1, in <module>
+    import requests
+ImportError: No module named requests
+>>> 
+id(y)
+140551778740256
+
+>>> 
+>>> 
+>>> 
+>>> 
+>>> # LIFO Stack -- append() pop()
+>>> s = []
+>>> s.append(10)
+>>> s.append(20)
+>>> s.append(30)
+>>> s
+[10, 20, 30]
+>>> s.pop()
+30
+>>> s.append(40)
+>>> s.pop()
+40
+>>> s.pop()
+20
+>>> s
+[10]
+>>> 
+>>> s = [10, 20, 30, 40, 50]
+>>> s.pop(0)
+10
+>>> s
+[20, 30, 40, 50]
+>>> 
+>>> 
+>>> # FIFO Queue
+>>> s = []
+>>> s.append(10)
+>>> s.append(20)
+>>> s.append(30)
+>>> s
+[10, 20, 30]
+>>> s.pop(0)
+10
+>>> s.append(40)
+>>> s.pop(0)
+20
+>>> s
+[30, 40]
+>>> # pop(0) on a list is VERY slow
+>>> # all the rightmost data elements have to move left by one
+>>> 
+>>> 
+>>> from collections import deque
+>>> 
+>>> d = deque()
+>>> d.append(10)
+>>> d.append(20)
+>>> d.append(30)
+>>> d
+deque([10, 20, 30])
+>>> d.pop()
+30
+>>> d
+deque([10, 20])
+>>> d.popleft()
+10
+>>> a.appendleft(0)
+
+Traceback (most recent call last):
+  File "<pyshell#342>", line 1, in <module>
+    a.appendleft(0)
+NameError: name 'a' is not defined
+>>> d.appendleft(0)
+>>> 
+>>> 
+>>> 
+>>> # A deque works like a list with append() and pop()
+>>> # it add two methods appendleft() and popleft()
+>>> # It does all four of these methods efficiently
+>>> s = list('abc' * 2000)
+>>> s[:20]
+['a', 'b', 'c', 'a', 'b', 'c', 'a', 'b', 'c', 'a', 'b', 'c', 'a', 'b', 'c', 'a', 'b', 'c', 'a', 'b']
+
+>>> s[700]
+'b'
+>>> 
+>>> 
+>>> # Lists do fast random access
+>>> # Deques are only fast at the end-points
+>>> 
+>>> 
+>>> 
+>>> s[700]
+'b'
+
+>>> f = 'someproj/tools/fun.py'
+>>> 
+>>> import os
+>>> os.path.join('/', 'demos', f)
+'/demos/someproj/tools/fun.py'
+>>> os.path.join('/production', 'demos', f)
+'/production/demos/someproj/tools/fun.py'
+>>> 
+>>> 
+>>> c = os.path.join('/production', 'demos', f)
+>>> os.path.split(c)
+('/production/demos/someproj/tools', 'fun.py')
+>>> os.path.splitext(c)
+('/production/demos/someproj/tools/fun', '.py')
+>>> os.path.split(c)[1]
+'fun.py'
+>>> os.splitext(os.path.split(c)[1])[0]
+
+Traceback (most recent call last):
+  File "<pyshell#373>", line 1, in <module>
+    os.splitext(os.path.split(c)[1])[0]
+AttributeError: 'module' object has no attribute 'splitext'
+>>> os.path.splitext(os.path.split(c)[1])[0]
+'fun'
+>>> os.path.basename(f)
+'fun.py'
+>>> os.path.dirname(f)
+'someproj/tools'
+>>> 
+>>> f
+'someproj/tools/fun.py'
+>>> f.split('/')
+['someproj', 'tools', 'fun.py']
+>>> f.split('/')[-1].split('.')
+['fun', 'py']
+>>> 
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+>>> import tmp
+>>> help(tmp)
+Help on module tmp:
+
+NAME
+    tmp
+
+FILE
+    /Users/raymondhettinger/dropbox/Public/sg2/tmp.py
+
+FUNCTIONS
+    g()
+    
+    h()
+
+DATA
+    __all__ = ['g', 'h']
+    __author__ = 'robinator'
+    __license__ = 'mit'
+    __version__ = (0, 1)
+
+VERSION
+    (0, 1)
+
+AUTHOR
+    robinator
+
+
+>>> ================================ RESTART ================================
+>>> from math import *
+>>> ================================ RESTART ================================
+>>> from tmp import *
+>>> dir()
+['__builtins__', '__doc__', '__name__', '__package__', 'g', 'h']
+>>> 
+>>> f()
+
+Traceback (most recent call last):
+  File "<pyshell#389>", line 1, in <module>
+    f()
+NameError: name 'f' is not defined
+>>> 
+>>> 
+>>> import tmp
+>>> tmp.f
+<function f at 0x105d47320>
+>>> tmp.f()
+>>> from tmp import f
+>>> f()
+>>> ================================ RESTART ================================
+>>> from tmp import f
+>>> f()
+>>> 
+>>> 
+>>> 
+>>> 
+>>> # Do one thing before you do many
+>>> # Working at the interactive prompt is dramatically faster than working the text editor
+>>> # Consider alternate approaches and evaluate the best
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+Words: ['Hettinger', 'enumerates']
+None
+>>> ================================ RESTART ================================
+>>> 
+Words: ['Hettinger', 'enumerates']
+['hettinger', 'enumerate']
+>>> # Always be touching your data
+>>> # Get one thing working at a time.
+>>> 
+>>> 
+>>> # 'Hettinger' --> 'hettinger'
+>>> 
+>>> word = 'Hettinger'
+>>> type(word)
+<type 'str'>
+>>> dir(word)
+['__add__', '__class__', '__contains__', '__delattr__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__getslice__', '__gt__', '__hash__', '__init__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '_formatter_field_name_split', '_formatter_parser', 'capitalize', 'center', 'count', 'decode', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'index', 'isalnum', 'isalpha', 'isdigit', 'islower', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
+>>> help(str.lower)
+Help on method_descriptor:
+
+lower(...)
+    S.lower() -> string
+    
+    Return a copy of the string S converted to lowercase.
+
+>>> word.lower()
+'hettinger'
+>>> 
+>>> # top-down programming :  assume the existence of functions you need and then write thm
+>>> 
+>>> ord('A')
+65
+>>> ord('a)
+    
+SyntaxError: EOL while scanning string literal
+>>> ord('a')
+97
+>>> 97 - 65
+32
+>>> 
+>>> 
+>>> def lower(s):
+	result = []
+	for c in s:
+		o = ord(c)
+		if ord('A') <= o <= ord('Z'):
+			c = chr(o - 32)
+		result.append(c)
+	return ''.join(result)
+
+>>> lower('Hello')
+'(ello'
+>>> 
+>>> 
+>>> ord('H')
+72
+>>> ord('H') - 32
+40
+>>> chr(ord('H') - 32)
+'('
+>>> chr(ord('H') + 32)
+'h'
+>>> def lower(s):
+	result = []
+	for c in s:
+		o = ord(c)
+		if ord('A') <= o <= ord('Z'):
+			c = chr(o + 32)
+		result.append(c)
+	return ''.join(result)
+
+>>> lower('Hello')
+'hello'
+>>> help(str.translate)
+Help on method_descriptor:
+
+translate(...)
+    S.translate(table [,deletechars]) -> string
+    
+    Return a copy of the string S, where all characters occurring
+    in the optional argument deletechars are removed, and the
+    remaining characters have been mapped through the given
+    translation table, which must be a string of length 256 or None.
+    If the table argument is None, no translation is applied and
+    the operation simply removes the characters in deletechars.
+
+>>> 
+>>> # str.lower()
+>>> # custom function
+>>> # str.translate()
+>>> 
+>>> 
+>>> 'Hello'.swapcase()
+'hELLO'
+>>> word = 'enumerates'
+>>> # goal = 'enumerate'
+>>> 
+>>> word.strip('s')
+'enumerate'
+>>> 
+>>> 'sessions'.strip('s')
+'ession'
+>>> 'sessions'.rstrip('s')
+'session'
+>>> 'guess'.rstrip('s')
+'gue'
+>>> 'this'.rstrip('s')
+'thi'
+>>> # nltk
+>>> 
+>>> # approximate solutions rock!  they robust and fast.
+>>> 
+>>> # naive bayes
+>>> 
+>>> 
+>>> 
+>>> 'guess'.rstrip('s')
+'gue'
+>>> 'is'.rstrip('s')
+'i'
+>>> 
+>>> word
+'enumerates'
+>>> word[-1] == 's'
+True
+>>> word[:-1]
+'enumerate'
+>>> # es|s
+>>> 'is'.rstrip('s')
+'i'
+>>> word[-1] == 's'
+True
+>>> 
+>>> 'Hettingers'.lower().rstrip('s')
+'hettinger'
+>>> 'HettingerS'.lower().rstrip('s')
+'hettinger'
+>>> 'HettingerS'.lower().rstrip('sS')
+'hettinger'
+>>> ================================ RESTART ================================
+>>> 
+Words: ['Hettinger', 'enumerates']
+['hettinger', 'enumerate']
+>>> words = ['Hettinger', 'enumerates']
+>>> [word.lower().rstrip('s') for word in words]
+['hettinger', 'enumerate']
+>>> ================================ RESTART ================================
+>>> 
+Words: ['Hettinger', 'enumerates']
+['hettinger', 'enumerate']
+>>> 

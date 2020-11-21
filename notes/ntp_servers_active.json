@@ -1,0 +1,31 @@
+{
+    "kind": "collection#ntp-server-active",
+    "items": [
+        {
+            "dispersion": "1.6", 
+            "kind": "object#ntp-server-active", 
+            "poll": 1024, 
+            "reach": 377, 
+            "offset": "-8.59", 
+            "when": 29, 
+            "st": 5, 
+            "delay": "4.2", 
+            "address": "172.31.32.2", 
+            "ref-clock": "172.31.32.1", 
+            "peer-info": "peer is statically configured"
+        }, 
+        {
+            "dispersion": "3.6", 
+            "kind": "object#ntp-server-active", 
+            "poll": 128, 
+            "reach": 377, 
+            "offset": "11.18", 
+            "when": 32, 
+            "st": 3, 
+            "delay": "7.9", 
+            "address": "192.168.13.57", 
+            "ref-clock": "192.168.1.111", 
+            "peer-info": "peer is statically configured. Peer selected for possible synchronization"
+        }
+    ]
+}

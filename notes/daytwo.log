@@ -1,0 +1,2285 @@
+Python 2.7.5 (default, Aug 25 2013, 00:04:04) 
+[GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> 
+
+>>> d = {'raymond': 'red', 'rachel': 'blue'}
+>>> d['raymond']
+'red'
+>>> d.__getitem__('raymond')
+'red'
+>>> d['raymond'] = 'crimson'
+>>> d.__setitem__('raymond', 'crimson')
+>>> 
+>>> d['RAYMOND']
+
+Traceback (most recent call last):
+  File "<pyshell#7>", line 1, in <module>
+    d['RAYMOND']
+KeyError: 'RAYMOND'
+>>> 
+>>> class CIDict(dict):
+	def __setitem__(self, key, value):
+		key = key.lower()
+		dict.__setitem__(self, key, value)
+	def __getitem__(self, key):
+		key = key.lower()
+		return dict.__getitem__(key)
+
+	
+>>> class CIDict(dict):
+	def __setitem__(self, key, value):
+		key = key.lower()
+		dict.__setitem__(self, key, value)
+	def __getitem__(self, key):
+		key = key.lower()
+		return dict.__getitem__(self, key)
+
+	
+>>> 
+>>> 
+>>> 
+
+>>> 
+
+
+
+
+
+
+
+
+
+
+
+>>> 
+
+>>> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>> 
+
+
+
+>>> class CIDict(dict):
+	def __setitem__(self, key, value):
+		key = key.lower()
+		dict.__setitem__(self, key, value)
+	def __getitem__(self, key):
+		key = key.lower()
+		return dict.__getitem__(self, key)
+
+	
+>>> d = CIDict()
+>>> d['Raymond'] = 'red'
+>>> d
+{'raymond': 'red'}
+>>> d['Rachel'] = 'blue'
+>>> d
+{'rachel': 'blue', 'raymond': 'red'}
+>>> d['RACHEL']
+'blue'
+>>> 
+>>> 
+>>> 
+>>> hex(49)
+'0x31'
+>>> oct(49)
+'061'
+>>> bin(49)
+'0b110001'
+>>> str(49)
+'49'
+>>> 0b110001
+49
+>>> import math as m
+>>> m.cos(3.0)
+-0.9899924966004454
+>>> ================================ RESTART ================================
+>>> 
+>>> # bound and unbound methods
+>>> 
+>>> 
+>>> def f(x, y):
+	return x + y
+
+>>> 
+>>> f(10, 5)
+15
+>>> f(17, 8)
+25
+>>> def f(y):
+	return x + y
+
+>>> f(17, 8)
+
+Traceback (most recent call last):
+  File "<pyshell#54>", line 1, in <module>
+    f(17, 8)
+TypeError: f() takes exactly 1 argument (2 given)
+>>> def f(x, y, z):
+	return x + y
+
+>>> f(10, 5)
+
+Traceback (most recent call last):
+  File "<pyshell#57>", line 1, in <module>
+    f(10, 5)
+TypeError: f() takes exactly 3 arguments (2 given)
+>>> 
+>>> # The signature of a function or method MUST
+>>> # match the way it is called.
+>>> 
+>>> 
+>>> c = Circle(10)
+>>> c.area()
+314.1592653589793
+>>> c.__class__.area(c)
+314.1592653589793
+>>> 
+>>> 
+>>> 
+>>> 
+>>> Circle.__dict__['area']
+<function area at 0x10cbe1668>
+>>> Circle.__dict__['area'](c)
+314.1592653589793
+>>> 
+>>> 
+>>> Circle.area
+<unbound method Circle.area>
+>>> um = Circle.area
+>>> um(c)
+314.1592653589793
+>>> 
+>>> bm = c.area
+>>> bm
+<bound method Circle.area of Circle(10)>
+>>> bm()
+314.1592653589793
+>>> 
+>>> 
+>>> # The area function needs the instance to work
+>>> # Circle.area makes an unbound method
+>>> #     that still needs the instance (which has the data)
+>>> # c.area makes a bound method
+>>> #     that already has the instance (it knows the data)
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=7)
+A circle with a radius of 10
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=7)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire of radius 22
+has an inner area of 1520.53084434
+and a corrected perimeter of 172.787595947
+
+A inclinometer reading of 5 degrees
+is a 8.75% grade
+
+A circle with a BBD of 30
+has a radius of 10.6066017178
+
+>>> c.__dict__
+{'radius': 10.606601717798211}
+>>> # You must store the diameter, not the radius.
+>>> 
+>>> 
+>>> c.radius
+10.606601717798211
+>>> c.radius = 15
+>>> c.radius
+15
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=7)
+A circle with a radius of 10.0
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=7)
+Seeded using Jenny's number: 
+Make 10 random circles
+The average area is: 1.0
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire of radius 22.0
+has an inner area of 1520.53084434
+and a corrected perimeter of 172.787595947
+
+A inclinometer reading of 5 degrees
+is a 8.75% grade
+
+A circle with a BBD of 30
+has a radius of 10.6066017178
+
+>>> c.__dict__
+{'diameter': 21.213203435596423}
+>>> 
+>>> c.radius
+10.606601717798211
+>>> c.get_radius()
+10.606601717798211
+>>> 
+>>> 
+>>> c.radius = 10
+>>> c.__dict__
+{'diameter': 20.0}
+>>> 
+>>> c.radius = 10
+>>> c.set_radius(10)
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=7)
+A circle with a radius of 10.0
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=7)
+Seeded using Jenny's number: 
+Make 1000 random circles
+The average area is: 0.9853
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire of radius 22.0
+has an inner area of 1520.53084434
+and a corrected perimeter of 172.787595947
+
+A inclinometer reading of 5 degrees
+is a 8.75% grade
+
+A circle with a BBD of 30
+has a radius of 10.6066017178
+
+>>> 
+>>> # diameter = .654          # double 8 bytes 64 bits
+>>> 
+>>> c.__class__
+<class 'class_demo.Circle'>
+>>> c.__dict__
+{'diameter': 21.213203435596423}
+>>> 
+>>> import sys
+>>> sys.getsizeof({})
+280
+>>> 
+>>> # Advantages
+>>> c.__dict__
+{'diameter': 21.213203435596423}
+>>> c.color = 'red'
+>>> c.__dict__
+{'color': 'red', 'diameter': 21.213203435596423}
+>>> # 1 inspectable
+>>> # 2 add new attributes after the fact
+>>> sys.getsizeof((.21,))
+64
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=7)
+A circle with a radius of 10.0
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=7)
+Seeded using Jenny's number: 
+Make 1000 random circles
+The average area is: 0.9853
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire of radius 22.0
+has an inner area of 1520.53084434
+and a corrected perimeter of 172.787595947
+
+A inclinometer reading of 5 degrees
+is a 8.75% grade
+
+A circle with a BBD of 30
+has a radius of 10.6066017178
+
+>>> c.diameter
+21.213203435596423
+>>> c.radius
+10.606601717798211
+>>> dir(c)
+['_Circle__perimeter', '__class__', '__delattr__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__slots__', '__str__', '__subclasshook__', 'angle_to_grade', 'area', 'diameter', 'from_bbd', 'get_radius', 'perimeter', 'radius', 'set_radius', 'version']
+>>> 
+>>> 
+>>> c.__dict__
+
+Traceback (most recent call last):
+  File "<pyshell#128>", line 1, in <module>
+    c.__dict__
+AttributeError: 'Circle' object has no attribute '__dict__'
+>>> c.color = 'red'
+
+Traceback (most recent call last):
+  File "<pyshell#129>", line 1, in <module>
+    c.color = 'red'
+AttributeError: 'Circle' object has no attribute 'color'
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=7)
+A circle with a radius of 10.0
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=7)
+Seeded using Jenny's number: 
+Make 1000000 random circles
+The average area is: 1.047474
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire of radius 22.0
+has an inner area of 1520.53084434
+and a corrected perimeter of 172.787595947
+
+A inclinometer reading of 5 degrees
+is a 8.75% grade
+
+A circle with a BBD of 30
+has a radius of 10.6066017178
+
+>>> ================================ RESTART ================================
+>>> 
+Demo of Circuitious Version(major=0, minor=7)
+A circle with a radius of 10.0
+has an area of 314.159265359
+
+Proposal to study the average area of random circles
+using Circuitous(tm) Version(major=0, minor=7)
+Seeded using Jenny's number: 
+Make 1000000 random circles
+The average area is: 1.047474
+
+A circle of radius 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+A circle of radius 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+A circle of radius 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire of radius 22.0
+has an inner area of 1520.53084434
+and a corrected perimeter of 172.787595947
+
+A inclinometer reading of 5 degrees
+is a 8.75% grade
+
+A circle with a BBD of 30
+has a radius of 10.6066017178
+
+>>> 
+>>> 
+>>> 
+>>> help(Circle)
+Help on class Circle in module class_demo:
+
+class Circle(__builtin__.object)
+ |  An Advanced Circle Analytic Toolkit
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, radius)
+ |  
+ |  __repr__(self)
+ |  
+ |  area(self)
+ |      Perform quadrature of planar shape of uniform revolution
+ |  
+ |  get_radius(self)
+ |  
+ |  perimeter(self)
+ |      Compute the closed line integeral for the locus of points equidistant from a given point
+ |  
+ |  set_radius(self, radius)
+ |  
+ |  ----------------------------------------------------------------------
+ |  Class methods defined here:
+ |  
+ |  from_bbd(cls, bbd) from __builtin__.type
+ |      Alternate constructor using a bounding box diagonal
+ |  
+ |  ----------------------------------------------------------------------
+ |  Static methods defined here:
+ |  
+ |  angle_to_grade(angle)
+ |      Convert an angle in degrees to a percent grade
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  diameter
+ |  
+ |  radius
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |  
+ |  version = Version(major=0, minor=7)
+
+>>> ================================ RESTART ================================
+>>> 
+>>> f
+<open file 'notes/hamlet.txt', mode 'r' at 0x10affe930>
+>>> ================================ RESTART ================================
+>>> 
+202238
+>>> type(play)
+<type 'str'>
+>>> type(f)
+<type 'file'>
+>>> ================================ RESTART ================================
+>>> 
+202238
+>>> ================================ RESTART ================================
+>>> 
+202238
+>>> ================================ RESTART ================================
+>>> 
+Body of try
+202238
+Finalizing
+Done
+>>> ================================ RESTART ================================
+>>> 
+Body of try
+Finalizing
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sg2/with_demo.py", line 4, in <module>
+    raise RuntimeError('Oops, I did it again')
+RuntimeError: Oops, I did it again
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sg2/with_demo.py", line 1, in <module>
+    raise RuntimeError('I made you believe')
+RuntimeError: I made you believe
+>>> ================================ RESTART ================================
+>>> 
+So it begins ....
+Must have been an exception
+I will deal with it
+Keep on running
+Body of try
+Finalizing
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sg2/with_demo.py", line 17, in <module>
+    raise RuntimeError('Oops, I did it again')
+RuntimeError: Oops, I did it again
+>>> ================================ RESTART ================================
+>>> 
+So it begins ....
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sg2/with_demo.py", line 3, in <module>
+    raise IndexError('I made you believe')
+IndexError: I made you believe
+>>> ================================ RESTART ================================
+>>> 
+So it begins ....
+Howdy
+Keep on running
+Body of try
+Finalizing
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sg2/with_demo.py", line 17, in <module>
+    raise RuntimeError('Oops, I did it again')
+RuntimeError: Oops, I did it again
+>>> ================================ RESTART ================================
+>>> 
+So it begins
+Body of try
+Finalizing
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sg2/with_demo.py", line 7, in <module>
+    raise RuntimeError('Oops, I did it again')
+RuntimeError: Oops, I did it again
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sg2/with_demo.py", line 3, in <module>
+    f = open('notes/xhamlet.txt')
+IOError: [Errno 2] No such file or directory: 'notes/xhamlet.txt'
+>>> 
+>>> 
+>>> 
+>>> raise SystemExit
+>>> # resume at 12:35
+>>> raise SystemExit
+>>> ================================ RESTART ================================
+>>> 
+202238
+202238
+<type 'type'>
+>>> ================================ RESTART ================================
+>>> 
+202238
+202238
+<type 'str'>
+>>> 
+>>> 
+>>> 
+>>> zip('abcde', range(10))
+[('a', 0), ('b', 1), ('c', 2), ('d', 3), ('e', 4)]
+>>> zip('abcde', range(10), ('raymond', 'rachel'))
+[('a', 0, 'raymond'), ('b', 1, 'rachel')]
+>>> ================================ RESTART ================================
+>>> 
+202238
+202238
+hello
+>>> ================================ RESTART ================================
+>>> 
+202238
+202238
+Hello
+I love you
+Won't you tell me your name
+>>> ================================ RESTART ================================
+>>> 
+202238
+202238
+Hello
+I love you
+Won't you tell me your name
+Hello
+I love you
+Won't you tell me your name
+>>> ================================ RESTART ================================
+>>> 
+202238
+202238
+Hello
+I love you
+Won't you tell me your name
+Hello
+I love you
+Won't you tell me your name
+>>> 
+>>> 
+>>> # s is ITERABLE   -- __iter__
+>>> # FOR LOOP works with __iter__
+>>> # PRINT works with    __str__
+>>> # WITH statement works with __enter__ and __exit__
+>>> 
+>>> 
+>>> dir(f)
+['__class__', '__delattr__', '__doc__', '__enter__', '__exit__', '__format__', '__getattribute__', '__hash__', '__init__', '__iter__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'close', 'closed', 'encoding', 'errors', 'fileno', 'flush', 'isatty', 'mode', 'name', 'newlines', 'next', 'read', 'readinto', 'readline', 'readlines', 'seek', 'softspace', 'tell', 'truncate', 'write', 'writelines', 'xreadlines']
+>>> dir(lock)
+
+Traceback (most recent call last):
+  File "<pyshell#157>", line 1, in <module>
+    dir(lock)
+NameError: name 'lock' is not defined
+>>> dir(print_lock
+)
+['__class__', '__delattr__', '__doc__', '__enter__', '__exit__', '__format__', '__getattribute__', '__hash__', '__init__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'acquire', 'acquire_lock', 'locked', 'locked_lock', 'release', 'release_lock']
+>>> 
+>>> 
+>>> 
+>>> # __iter__  ITERABLE
+>>> 
+>>> # withable
+>>> # context manager
+>>> 
+>>> 
+>>> print_lock.__enter__()
+True
+>>> print 'Hello'
+Hello
+>>> print_lock.__exit__()
+>>> 
+>>> 
+>>> with print_lock:
+	print 'Hello'
+
+	
+Hello
+>>> dir(int)
+['__abs__', '__add__', '__and__', '__class__', '__cmp__', '__coerce__', '__delattr__', '__div__', '__divmod__', '__doc__', '__float__', '__floordiv__', '__format__', '__getattribute__', '__getnewargs__', '__hash__', '__hex__', '__index__', '__init__', '__int__', '__invert__', '__long__', '__lshift__', '__mod__', '__mul__', '__neg__', '__new__', '__nonzero__', '__oct__', '__or__', '__pos__', '__pow__', '__radd__', '__rand__', '__rdiv__', '__rdivmod__', '__reduce__', '__reduce_ex__', '__repr__', '__rfloordiv__', '__rlshift__', '__rmod__', '__rmul__', '__ror__', '__rpow__', '__rrshift__', '__rshift__', '__rsub__', '__rtruediv__', '__rxor__', '__setattr__', '__sizeof__', '__str__', '__sub__', '__subclasshook__', '__truediv__', '__trunc__', '__xor__', 'bit_length', 'conjugate', 'denominator', 'imag', 'numerator', 'real']
+>>> dir(list)
+['__add__', '__class__', '__contains__', '__delattr__', '__delitem__', '__delslice__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getslice__', '__gt__', '__hash__', '__iadd__', '__imul__', '__init__', '__iter__', '__le__', '__len__', '__lt__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__reversed__', '__rmul__', '__setattr__', '__setitem__', '__setslice__', '__sizeof__', '__str__', '__subclasshook__', 'append', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 'sort']
+>>> 
+>>> 
+>>> issubclass(KeyError, Exception)
+True
+>>> k = KeyError('roger')
+>>> k
+KeyError('roger',)
+>>> isinstance(k, KeyError)
+True
+>>> 
+>>> k.args
+('roger',)
+>>> k = KeyError('roger', 'young')
+>>> k.args
+('roger', 'young')
+>>> 
+>>> 
+>>> try:
+	raise KeyError('davin')
+except KeyError as e:
+	print 'Caught a KeyError'
+	print 'the metadata is', e.args
+
+	
+Caught a KeyError
+the metadata is ('davin',)
+>>> 
+>>> 
+>>> try:
+	raise KeyError('davin')
+except Exception as e:
+	print 'Caught a KeyError'
+	print 'the metadata is', e.args
+
+	
+Caught a KeyError
+the metadata is ('davin',)
+>>> ================================ RESTART ================================
+>>> 
+>>> e = MyException('roger', 'young')
+
+Traceback (most recent call last):
+  File "<pyshell#201>", line 1, in <module>
+    e = MyException('roger', 'young')
+  File "/Users/raymondhettinger/dropbox/Public/sg2/exceptions.py", line 3, in __init__
+    self.args
+AttributeError: MyException instance has no attribute 'args'
+>>> ================================ RESTART ================================
+>>> 
+>>> e = MyException('roger', 'young')
+>>> e
+
+Traceback (most recent call last):
+  File "<pyshell#203>", line 1, in <module>
+    e
+  File "/Users/raymondhettinger/dropbox/Public/sg2/exceptions.py", line 6, in __repr__
+    return '%s%r' % (self.__class__.__name__, args)
+NameError: global name 'args' is not defined
+>>> ================================ RESTART ================================
+>>> 
+>>> e = MyException('roger', 'young')
+>>> e
+MyException('roger', 'young')
+>>> e.args
+('roger', 'young')
+>>> ================================ RESTART ================================
+>>> 
+>>> e = MyKeyError('davin')
+>>> e
+MyKeyError('davin',)
+>>> issubclass(MyKeyError, MyException)
+True
+>>> isinstance(e, MyException)
+True
+>>> isinstance(e, MyKeyException)
+
+Traceback (most recent call last):
+  File "<pyshell#211>", line 1, in <module>
+    isinstance(e, MyKeyException)
+NameError: name 'MyKeyException' is not defined
+>>> isinstance(e, MyKeyError)
+True
+>>> 
+>>> pow(2, 5)
+32
+>>> pow('hello', 'world')
+
+Traceback (most recent call last):
+  File "<pyshell#215>", line 1, in <module>
+    pow('hello', 'world')
+TypeError: unsupported operand type(s) for ** or pow(): 'str' and 'str'
+>>> import math
+>>> math.sqrt(5)
+2.23606797749979
+>>> math.sqrt(-5)
+
+Traceback (most recent call last):
+  File "<pyshell#218>", line 1, in <module>
+    math.sqrt(-5)
+ValueError: math domain error
+>>> 
+>>> d = {}
+>>> d['roger']
+
+Traceback (most recent call last):
+  File "<pyshell#221>", line 1, in <module>
+    d['roger']
+KeyError: 'roger'
+>>> s = [10, 20, 30]
+>>> s[2]
+30
+>>> s[5]
+
+Traceback (most recent call last):
+  File "<pyshell#224>", line 1, in <module>
+    s[5]
+IndexError: list index out of range
+>>> 
+>>> 
+>>> x[y]         # x.__getitem__(y)
+
+Traceback (most recent call last):
+  File "<pyshell#227>", line 1, in <module>
+
+    x[y]         # x.__getitem__(y)
+NameError: name 'x' is not defined
+
+>>> 
+>>> 
+>>> s[5]
+
+Traceback (most recent call last):
+  File "<pyshell#230>", line 1, in <module>
+    s[5]
+IndexError: list index out of range
+>>> d[5]
+
+Traceback (most recent call last):
+  File "<pyshell#231>", line 1, in <module>
+    d[5]
+KeyError: 5
+>>> 
+>>> 
+>>> try:
+	s[5]
+except LookupError:
+	print "Don't let the sound of your own wheels make you crazy"
+
+	
+Don't let the sound of your own wheels make you crazy
+>>> try:
+	s[5]
+except IndexError:
+	print "Don't let the sound of your own wheels make you crazy"
+
+	
+Don't let the sound of your own wheels make you crazy
+>>> try:
+	s[5]
+except Exception:
+	print "Don't let the sound of your own wheels make you crazy"
+
+	
+Don't let the sound of your own wheels make you crazy
+>>> try:
+	s[5]
+except ValueError:
+	print "Don't let the sound of your own wheels make you crazy"
+
+	
+
+Traceback (most recent call last):
+  File "<pyshell#244>", line 2, in <module>
+    s[5]
+IndexError: list index out of range
+>>> 
+>>> 
+>>> 
+>>> 
+>>> d = {}
+>>> d['roger']
+
+Traceback (most recent call last):
+  File "<pyshell#250>", line 1, in <module>
+    d['roger']
+KeyError: 'roger'
+>>> 
+>>> globals()['d']
+{}
+>>> globals()['s']
+[10, 20, 30]
+>>> 
+>>> x = 10
+>>> globals()['x']
+10
+>>> globals()['x'] = 20
+>>> x
+20
+>>> globals()['xyzpdq']
+
+Traceback (most recent call last):
+  File "<pyshell#259>", line 1, in <module>
+    globals()['xyzpdq']
+KeyError: 'xyzpdq'
+>>> 
+>>> print xyzpdq
+
+Traceback (most recent call last):
+  File "<pyshell#261>", line 1, in <module>
+    print xyzpdq
+NameError: name 'xyzpdq' is not defined
+>>> 
+NameError: name 'xyzpdq' is not defined
+SyntaxError: invalid syntax
+>>> 
+>>> 
+>>> # philosophy
+>>> # the nature of truth
+>>> # all things start out as being true
+>>> # number equal to zero
+>>> # contianer that is empty
+>>> # None
+>>> 
+>>> 
+>>> bool(45)
+True
+>>> bool(0)
+False
+>>> bool(0.0)
+False
+>>> 0.0 == 0
+True
+>>> bool(0 + 0j)
+False
+>>> type(0 + 0j)
+<type 'complex'>
+>>> 
+>>> 
+>>> # E = IR
+>>> 
+>>> # 3 + 4j
+>>> abs(3 + 4j)
+5.0
+>>> abs(0 + 0j)
+0.0
+>>> 0 + 0j == 0.0
+True
+>>> bool(0 + 0.0j)
+False
+>>> 
+>>> 
+>>> from fractions import *
+>>> bool(Fraction(2, 3))
+True
+>>> bool(Fraction(0, 3))
+False
+>>> 
+>>> from decimal import *
+>>> bool(Decimal('3.14'))
+True
+>>> bool(Decimal('0.0000000000'))
+False
+>>> bool(Decimal('-0.0000000000'))
+False
+>>> 
+>>> 
+>>> bool([10, 20, 30])
+True
+>>> len([10, 20, 30])
+3
+>>> 
+>>> bool([False, 0])
+True
+>>> bool('False')
+True
+>>> len('False')
+5
+>>> bool('')
+False
+>>> bool(None)
+False
+>>> ================================ RESTART ================================
+>>> 
+202238
+202238
+Hello
+I love you
+Won't you tell me your name
+Hello
+I love you
+Won't you tell me your name
+Starting up the example
+Initializing
+Entering
+In the body with 42
+In the middle
+At the end
+Exiting
+The exctype is: None
+Wrapping-up the example
+>>> issubclass(KeyError, KeyError)
+True
+>>> ================================ RESTART ================================
+>>> 
+202238
+202238
+Hello
+I love you
+Won't you tell me your name
+Hello
+I love you
+Won't you tell me your name
+Starting up the example
+Initializing
+Entering
+In the body with 42
+In the middle
+At the end
+Exiting
+The exctype is: None
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sg2/with_demo.py", line 71, in <module>
+    print 'At the end'
+  File "/Users/raymondhettinger/dropbox/Public/sg2/with_demo.py", line 57, in __exit__
+    if issubclass(exc_type, KeyError):
+TypeError: issubclass() arg 1 must be a class
+>>> ================================ RESTART ================================
+>>> 
+202238
+202238
+Hello
+I love you
+Won't you tell me your name
+Hello
+I love you
+Won't you tell me your name
+Starting up the example
+Initializing
+Entering
+In the body with 42
+In the middle
+At the end
+Exiting
+The exctype is: None
+Wrapping-up the example
+-----------------------
+Starting up the example
+Initializing
+Entering
+In the body with 42
+In the middle
+Exiting
+The exctype is: <type 'exceptions.KeyError'>
+Caught a KeyError
+The arguments are ('raymond',)
+Marking as handled
+Wrapping-up the example
+>>> ================================ RESTART ================================
+>>> 
+202238
+202238
+Hello
+I love you
+Won't you tell me your name
+Hello
+I love you
+Won't you tell me your name
+Starting up the example
+Initializing
+Entering
+In the body with 42
+In the middle
+At the end
+Exiting
+The exctype is: None
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sg2/with_demo.py", line 72, in <module>
+    print 'At the end'
+  File "/Users/raymondhettinger/dropbox/Public/sg2/with_demo.py", line 59, in __exit__
+    elif issubclass(exc_type, KeyError):
+TypeError: issubclass() arg 1 must be a class
+>>> ================================ RESTART ================================
+>>> 
+202238
+202238
+Hello
+I love you
+Won't you tell me your name
+Hello
+I love you
+Won't you tell me your name
+Starting up the example
+Initializing
+Entering
+In the body with 42
+In the middle
+At the end
+Exiting
+The exctype is: None
+Wrapping-up the example
+-----------------------
+Starting up the example
+Initializing
+Entering
+In the body with 42
+In the middle
+Exiting
+The exctype is: <type 'exceptions.KeyError'>
+Marking as unhandled
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sg2/with_demo.py", line 82, in <module>
+    raise KeyError('raymond')
+KeyError: 'raymond'
+>>> ================================ RESTART ================================
+>>> 
+202238
+202238
+Hello
+I love you
+Won't you tell me your name
+Hello
+I love you
+Won't you tell me your name
+Starting up the example
+Initializing
+Entering
+In the body with 42
+In the middle
+At the end
+Exiting
+The exctype is: None
+Wrapping-up the example
+-----------------------
+Starting up the example
+Initializing
+Entering
+In the body with 42
+In the middle
+Exiting
+The exctype is: <type 'exceptions.KeyError'>
+Caught a KeyError
+The arguments are ('raymond',)
+Marking as handled
+Wrapping-up the example
+>>> ================================ RESTART ================================
+>>> 
+202238
+202238
+Hello
+I love you
+Won't you tell me your name
+Hello
+I love you
+Won't you tell me your name
+Starting up the example
+Initializing
+Entering
+In the body with 42
+In the middle
+At the end
+Exiting
+The exctype is: None
+Not handling exceptions
+Wrapping-up the example
+-----------------------
+Starting up the example
+Initializing
+Entering
+In the body with 42
+In the middle
+Exiting
+The exctype is: <type 'exceptions.KeyError'>
+Caught a KeyError
+The arguments are ('raymond',)
+Marking as handled
+Wrapping-up the example
+-----------------------
+Starting up the example
+Initializing
+Entering
+In the body with 42
+In the middle
+Exiting
+The exctype is: <type 'exceptions.IndexError'>
+Not handling exceptions
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sg2/with_demo.py", line 92, in <module>
+    raise IndexError(5)
+IndexError: 5
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> def handle_keyerror(e):
+	print 'Handling keyerror'
+
+	
+>>> def handle_indexerror(e):
+	print 'Handling indexerror'
+
+	
+>>> def handle_valueerror(e):
+	print 'Handling valueerror'
+
+	
+>>> dispatch = {
+	KeyError: handle_keyerror,
+	IndexError: handle_indexerror,
+	ValueError: handle_valueerror,
+}
+>>> 
+>>> 
+>>> try:
+	raise KeyError
+except (KeyError, IndexError, ValueError) as e:
+	dispatch[e.__class__](e)
+
+	
+Handling keyerror
+>>> try:
+	raise IndexError
+except (KeyError, IndexError, ValueError) as e:
+	dispatch[e.__class__](e)
+
+	
+Handling indexerror
+>>> ================================ RESTART ================================
+>>> 
+202238
+202238
+Hello
+I love you
+Won't you tell me your name
+Hello
+I love you
+Won't you tell me your name
+Starting up the example
+Initializing
+Entering
+In the body with 42
+In the middle
+At the end
+Exiting
+The exctype is: None
+Not handling exceptions
+Wrapping-up the example
+-----------------------
+Starting up the example
+Initializing
+Entering
+In the body with 42
+In the middle
+Exiting
+The exctype is: <type 'exceptions.KeyError'>
+Caught a KeyError
+The arguments are ('raymond',)
+Marking as handled
+Wrapping-up the example
+-----------------------
+Starting up the example
+Initializing
+Entering
+In the body with 42
+In the middle
+Exiting
+The exctype is: <type 'exceptions.IndexError'>
+Not handling exceptions
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sg2/with_demo.py", line 105, in <module>
+    raise IndexError(5)
+IndexError: 5
+>>> ================================ RESTART ================================
+>>> 
+202238
+202238
+Hello
+I love you
+Won't you tell me your name
+Hello
+I love you
+Won't you tell me your name
+Starting up the example
+Initializing
+Entering
+In the body with 42
+In the middle
+At the end
+Exiting
+The exctype is: None
+Not handling exceptions
+Wrapping-up the example
+-----------------------
+Starting up the example
+Initializing
+Entering
+In the body with 42
+In the middle
+Exiting
+The exctype is: <type 'exceptions.KeyError'>
+Caught a KeyError
+The arguments are ('raymond',)
+Marking as handled
+Wrapping-up the example
+>>> 
+>>> 
+
+>>> 
+
+
+>>> 
+
+
+
+
+>>> 
+>>> 
+>>> 
+>>> 
+>>> def show_family(fobj, lastname, firstnames):
+	fobj.write(lastname + '\n')
+	for name in firstname:
+		fobj.write(name + '\n')
+
+>>> 
+>>> import sys
+>>> show_family(sys.stdout, 'Hettinger', ['Raymond', 'Rachel', 'Matthew', 'TBD'])
+Hettinger
+
+Traceback (most recent call last):
+  File "<pyshell#354>", line 1, in <module>
+    show_family(sys.stdout, 'Hettinger', ['Raymond', 'Rachel', 'Matthew', 'TBD'])
+  File "<pyshell#351>", line 3, in show_family
+    for name in firstname:
+NameError: global name 'firstname' is not defined
+>>> def show_family(fobj, lastname, firstnames):
+	fobj.write(lastname + '\n')
+	for name in firstnames:
+		fobj.write(name + '\n')
+
+		
+>>> 
+>>> 
+>>> 
+
+>>> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>> def show_family(fobj, lastname, firstnames):
+	fobj.write(lastname + '\n')
+	for name in firstnames:
+		fobj.write(name + '\n')
+
+		
+>>> show_family(sys.stdout, 'Hettinger', ['Raymond', 'Rachel', 'Matthew', 'TBD'])
+Hettinger
+Raymond
+Rachel
+Matthew
+TBD
+>>> show_family(sys.stderr, 'Hettinger', ['Raymond', 'Rachel', 'Matthew', 'TBD'])
+Hettinger
+Raymond
+Rachel
+Matthew
+TBD
+>>> with open('hettingers.txt', 'w') as f:
+	show_family(f, 'Hettinger', ['Raymond', 'Rachel', 'Matthew', 'TBD'])
+
+	
+>>> 
+>>> 
+>>> from StringIO import StringIO
+>>> f = StringIO()
+>>> dir(f)
+['__doc__', '__init__', '__iter__', '__module__', 'buf', 'buflist', 'close', 'closed', 'flush', 'getvalue', 'isatty', 'len', 'next', 'pos', 'read', 'readline', 'readlines', 'seek', 'softspace', 'tell', 'truncate', 'write', 'writelines']
+>>> 
+>>> show_family(f, 'Hettinger', ['Raymond', 'Rachel', 'Matthew', 'TBD'])
+>>> f.getvalue()
+'Hettinger\nRaymond\nRachel\nMatthew\nTBD\n'
+>>> 
+>>> 
+>>> 
+>>> dir(f)
+['__doc__', '__init__', '__iter__', '__module__', 'buf', 'buflist', 'close', 'closed', 'flush', 'getvalue', 'isatty', 'len', 'next', 'pos', 'read', 'readline', 'readlines', 'seek', 'softspace', 'tell', 'truncate', 'write', 'writelines']
+>>> f.close()
+>>> ================================ RESTART ================================
+>>> 
+202238
+202238
+Hello
+I love you
+Won't you tell me your name
+Hello
+I love you
+Won't you tell me your name
+Starting up the example
+Initializing
+Entering
+In the body with 42
+In the middle
+At the end
+Exiting
+The exctype is: None
+Not handling exceptions
+Wrapping-up the example
+-----------------------
+Starting up the example
+Initializing
+Entering
+In the body with 42
+In the middle
+Exiting
+The exctype is: <type 'exceptions.KeyError'>
+Caught a KeyError
+The arguments are ('raymond',)
+Marking as handled
+Wrapping-up the example
+>>> ================================ RESTART ================================
+>>> 
+202238
+202238
+Hello
+I love you
+Won't you tell me your name
+Hello
+I love you
+Won't you tell me your name
+Starting up the example
+Initializing
+Entering
+In the body with 42
+In the middle
+At the end
+Exiting
+The exctype is: None
+Not handling exceptions
+Wrapping-up the example
+-----------------------
+Starting up the example
+Initializing
+Entering
+In the body with 42
+In the middle
+Exiting
+The exctype is: <type 'exceptions.KeyError'>
+Caught a KeyError
+The arguments are ('raymond',)
+Marking as handled
+Wrapping-up the example
+'Tear down the wall\nMother, do you think they will drop the bomb\n'
+>>> ================================ RESTART ================================
+>>> 
+202238
+202238
+Hello
+I love you
+Won't you tell me your name
+Hello
+I love you
+Won't you tell me your name
+Starting up the example
+Initializing
+Entering
+In the body with 42
+In the middle
+At the end
+Exiting
+The exctype is: None
+Not handling exceptions
+Wrapping-up the example
+-----------------------
+Starting up the example
+Initializing
+Entering
+In the body with 42
+In the middle
+Exiting
+The exctype is: <type 'exceptions.KeyError'>
+Caught a KeyError
+The arguments are ('raymond',)
+Marking as handled
+Wrapping-up the example
+'Tear down the wall\nMother, do you think they will drop the bomb\n'
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> print 30 + 40
+70
+>>> ================================ RESTART ================================
+>>> 
+Hettinger
+Raymond
+Rachel
+Matthew
+TBD
+>>> ================================ RESTART ================================
+>>> 
+Hettinger
+Raymond
+Rachel
+Matthew
+TBD
+>>> ================================ RESTART ================================
+>>> 
+Hettinger
+Raymond
+Rachel
+Matthew
+TBD
+>>> print 10
+10
+>>> ================================ RESTART ================================
+>>> 
+Hettinger
+Raymond
+Rachel
+Matthew
+TBD
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sg2/print_redirect.py", line 12, in <module>
+    raise IndexError
+IndexError
+>>> print 3
+3
+>>> ================================ RESTART ================================
+>>> 
+Hettinger
+Raymond
+Rachel
+Matthew
+TBD
+>>> ================================ RESTART ================================
+>>> 
+Hettinger
+Raymond
+Rachel
+Matthew
+TBD
+>>> 
+>>> 
+>>> help(str)
+Help on class str in module __builtin__:
+
+class str(basestring)
+ |  str(object='') -> string
+ |  
+ |  Return a nice string representation of the object.
+ |  If the argument is a string, the return value is the same object.
+ |  
+ |  Method resolution order:
+ |      str
+ |      basestring
+ |      object
+ |  
+ |  Methods defined here:
+ |  
+ |  __add__(...)
+ |      x.__add__(y) <==> x+y
+ |  
+ |  __contains__(...)
+ |      x.__contains__(y) <==> y in x
+ |  
+ |  __eq__(...)
+ |      x.__eq__(y) <==> x==y
+ |  
+ |  __format__(...)
+ |      S.__format__(format_spec) -> string
+ |      
+ |      Return a formatted version of S as described by format_spec.
+ |  
+ |  __ge__(...)
+ |      x.__ge__(y) <==> x>=y
+ |  
+ |  __getattribute__(...)
+ |      x.__getattribute__('name') <==> x.name
+ |  
+ |  __getitem__(...)
+ |      x.__getitem__(y) <==> x[y]
+ |  
+ |  __getnewargs__(...)
+ |  
+ |  __getslice__(...)
+ |      x.__getslice__(i, j) <==> x[i:j]
+ |      
+ |      Use of negative indices is not supported.
+ |  
+ |  __gt__(...)
+ |      x.__gt__(y) <==> x>y
+ |  
+ |  __hash__(...)
+ |      x.__hash__() <==> hash(x)
+ |  
+ |  __le__(...)
+ |      x.__le__(y) <==> x<=y
+ |  
+ |  __len__(...)
+ |      x.__len__() <==> len(x)
+ |  
+ |  __lt__(...)
+ |      x.__lt__(y) <==> x<y
+ |  
+ |  __mod__(...)
+ |      x.__mod__(y) <==> x%y
+ |  
+ |  __mul__(...)
+ |      x.__mul__(n) <==> x*n
+ |  
+ |  __ne__(...)
+ |      x.__ne__(y) <==> x!=y
+ |  
+ |  __repr__(...)
+ |      x.__repr__() <==> repr(x)
+ |  
+ |  __rmod__(...)
+ |      x.__rmod__(y) <==> y%x
+ |  
+ |  __rmul__(...)
+ |      x.__rmul__(n) <==> n*x
+ |  
+ |  __sizeof__(...)
+ |      S.__sizeof__() -> size of S in memory, in bytes
+ |  
+ |  __str__(...)
+ |      x.__str__() <==> str(x)
+ |  
+ |  capitalize(...)
+ |      S.capitalize() -> string
+ |      
+ |      Return a copy of the string S with only its first character
+ |      capitalized.
+ |  
+ |  center(...)
+ |      S.center(width[, fillchar]) -> string
+ |      
+ |      Return S centered in a string of length width. Padding is
+ |      done using the specified fill character (default is a space)
+ |  
+ |  count(...)
+ |      S.count(sub[, start[, end]]) -> int
+ |      
+ |      Return the number of non-overlapping occurrences of substring sub in
+ |      string S[start:end].  Optional arguments start and end are interpreted
+ |      as in slice notation.
+ |  
+ |  decode(...)
+ |      S.decode([encoding[,errors]]) -> object
+ |      
+ |      Decodes S using the codec registered for encoding. encoding defaults
+ |      to the default encoding. errors may be given to set a different error
+ |      handling scheme. Default is 'strict' meaning that encoding errors raise
+ |      a UnicodeDecodeError. Other possible values are 'ignore' and 'replace'
+ |      as well as any other name registered with codecs.register_error that is
+ |      able to handle UnicodeDecodeErrors.
+ |  
+ |  encode(...)
+ |      S.encode([encoding[,errors]]) -> object
+ |      
+ |      Encodes S using the codec registered for encoding. encoding defaults
+ |      to the default encoding. errors may be given to set a different error
+ |      handling scheme. Default is 'strict' meaning that encoding errors raise
+ |      a UnicodeEncodeError. Other possible values are 'ignore', 'replace' and
+ |      'xmlcharrefreplace' as well as any other name registered with
+ |      codecs.register_error that is able to handle UnicodeEncodeErrors.
+ |  
+ |  endswith(...)
+ |      S.endswith(suffix[, start[, end]]) -> bool
+ |      
+ |      Return True if S ends with the specified suffix, False otherwise.
+ |      With optional start, test S beginning at that position.
+ |      With optional end, stop comparing S at that position.
+ |      suffix can also be a tuple of strings to try.
+ |  
+ |  expandtabs(...)
+ |      S.expandtabs([tabsize]) -> string
+ |      
+ |      Return a copy of S where all tab characters are expanded using spaces.
+ |      If tabsize is not given, a tab size of 8 characters is assumed.
+ |  
+ |  find(...)
+ |      S.find(sub [,start [,end]]) -> int
+ |      
+ |      Return the lowest index in S where substring sub is found,
+ |      such that sub is contained within S[start:end].  Optional
+ |      arguments start and end are interpreted as in slice notation.
+ |      
+ |      Return -1 on failure.
+ |  
+ |  format(...)
+ |      S.format(*args, **kwargs) -> string
+ |      
+ |      Return a formatted version of S, using substitutions from args and kwargs.
+ |      The substitutions are identified by braces ('{' and '}').
+ |  
+ |  index(...)
+ |      S.index(sub [,start [,end]]) -> int
+ |      
+ |      Like S.find() but raise ValueError when the substring is not found.
+ |  
+ |  isalnum(...)
+ |      S.isalnum() -> bool
+ |      
+ |      Return True if all characters in S are alphanumeric
+ |      and there is at least one character in S, False otherwise.
+ |  
+ |  isalpha(...)
+ |      S.isalpha() -> bool
+ |      
+ |      Return True if all characters in S are alphabetic
+ |      and there is at least one character in S, False otherwise.
+ |  
+ |  isdigit(...)
+ |      S.isdigit() -> bool
+ |      
+ |      Return True if all characters in S are digits
+ |      and there is at least one character in S, False otherwise.
+ |  
+ |  islower(...)
+ |      S.islower() -> bool
+ |      
+ |      Return True if all cased characters in S are lowercase and there is
+ |      at least one cased character in S, False otherwise.
+ |  
+ |  isspace(...)
+ |      S.isspace() -> bool
+ |      
+ |      Return True if all characters in S are whitespace
+ |      and there is at least one character in S, False otherwise.
+ |  
+ |  istitle(...)
+ |      S.istitle() -> bool
+ |      
+ |      Return True if S is a titlecased string and there is at least one
+ |      character in S, i.e. uppercase characters may only follow uncased
+ |      characters and lowercase characters only cased ones. Return False
+ |      otherwise.
+ |  
+ |  isupper(...)
+ |      S.isupper() -> bool
+ |      
+ |      Return True if all cased characters in S are uppercase and there is
+ |      at least one cased character in S, False otherwise.
+ |  
+ |  join(...)
+ |      S.join(iterable) -> string
+ |      
+ |      Return a string which is the concatenation of the strings in the
+ |      iterable.  The separator between elements is S.
+ |  
+ |  ljust(...)
+ |      S.ljust(width[, fillchar]) -> string
+ |      
+ |      Return S left-justified in a string of length width. Padding is
+ |      done using the specified fill character (default is a space).
+ |  
+ |  lower(...)
+ |      S.lower() -> string
+ |      
+ |      Return a copy of the string S converted to lowercase.
+ |  
+ |  lstrip(...)
+ |      S.lstrip([chars]) -> string or unicode
+ |      
+ |      Return a copy of the string S with leading whitespace removed.
+ |      If chars is given and not None, remove characters in chars instead.
+ |      If chars is unicode, S will be converted to unicode before stripping
+ |  
+ |  partition(...)
+ |      S.partition(sep) -> (head, sep, tail)
+ |      
+ |      Search for the separator sep in S, and return the part before it,
+ |      the separator itself, and the part after it.  If the separator is not
+ |      found, return S and two empty strings.
+ |  
+ |  replace(...)
+ |      S.replace(old, new[, count]) -> string
+ |      
+ |      Return a copy of string S with all occurrences of substring
+ |      old replaced by new.  If the optional argument count is
+ |      given, only the first count occurrences are replaced.
+ |  
+ |  rfind(...)
+ |      S.rfind(sub [,start [,end]]) -> int
+ |      
+ |      Return the highest index in S where substring sub is found,
+ |      such that sub is contained within S[start:end].  Optional
+ |      arguments start and end are interpreted as in slice notation.
+ |      
+ |      Return -1 on failure.
+ |  
+ |  rindex(...)
+ |      S.rindex(sub [,start [,end]]) -> int
+ |      
+ |      Like S.rfind() but raise ValueError when the substring is not found.
+ |  
+ |  rjust(...)
+ |      S.rjust(width[, fillchar]) -> string
+ |      
+ |      Return S right-justified in a string of length width. Padding is
+ |      done using the specified fill character (default is a space)
+ |  
+ |  rpartition(...)
+ |      S.rpartition(sep) -> (head, sep, tail)
+ |      
+ |      Search for the separator sep in S, starting at the end of S, and return
+ |      the part before it, the separator itself, and the part after it.  If the
+ |      separator is not found, return two empty strings and S.
+ |  
+ |  rsplit(...)
+ |      S.rsplit([sep [,maxsplit]]) -> list of strings
+ |      
+ |      Return a list of the words in the string S, using sep as the
+ |      delimiter string, starting at the end of the string and working
+ |      to the front.  If maxsplit is given, at most maxsplit splits are
+ |      done. If sep is not specified or is None, any whitespace string
+ |      is a separator.
+ |  
+ |  rstrip(...)
+ |      S.rstrip([chars]) -> string or unicode
+ |      
+ |      Return a copy of the string S with trailing whitespace removed.
+ |      If chars is given and not None, remove characters in chars instead.
+ |      If chars is unicode, S will be converted to unicode before stripping
+ |  
+ |  split(...)
+ |      S.split([sep [,maxsplit]]) -> list of strings
+ |      
+ |      Return a list of the words in the string S, using sep as the
+ |      delimiter string.  If maxsplit is given, at most maxsplit
+ |      splits are done. If sep is not specified or is None, any
+ |      whitespace string is a separator and empty strings are removed
+ |      from the result.
+ |  
+ |  splitlines(...)
+ |      S.splitlines(keepends=False) -> list of strings
+ |      
+ |      Return a list of the lines in S, breaking at line boundaries.
+ |      Line breaks are not included in the resulting list unless keepends
+ |      is given and true.
+ |  
+ |  startswith(...)
+ |      S.startswith(prefix[, start[, end]]) -> bool
+ |      
+ |      Return True if S starts with the specified prefix, False otherwise.
+ |      With optional start, test S beginning at that position.
+ |      With optional end, stop comparing S at that position.
+ |      prefix can also be a tuple of strings to try.
+ |  
+ |  strip(...)
+ |      S.strip([chars]) -> string or unicode
+ |      
+ |      Return a copy of the string S with leading and trailing
+ |      whitespace removed.
+ |      If chars is given and not None, remove characters in chars instead.
+ |      If chars is unicode, S will be converted to unicode before stripping
+ |  
+ |  swapcase(...)
+ |      S.swapcase() -> string
+ |      
+ |      Return a copy of the string S with uppercase characters
+ |      converted to lowercase and vice versa.
+ |  
+ |  title(...)
+ |      S.title() -> string
+ |      
+ |      Return a titlecased version of S, i.e. words start with uppercase
+ |      characters, all remaining cased characters have lowercase.
+ |  
+ |  translate(...)
+ |      S.translate(table [,deletechars]) -> string
+ |      
+ |      Return a copy of the string S, where all characters occurring
+ |      in the optional argument deletechars are removed, and the
+ |      remaining characters have been mapped through the given
+ |      translation table, which must be a string of length 256 or None.
+ |      If the table argument is None, no translation is applied and
+ |      the operation simply removes the characters in deletechars.
+ |  
+ |  upper(...)
+ |      S.upper() -> string
+ |      
+ |      Return a copy of the string S converted to uppercase.
+ |  
+ |  zfill(...)
+ |      S.zfill(width) -> string
+ |      
+ |      Pad a numeric string S with zeros on the left, to fill a field
+ |      of the specified width.  The string S is never truncated.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |  
+ |  __new__ = <built-in method __new__ of type object>
+ |      T.__new__(S, ...) -> a new object with type S, a subtype of T
+
+>>> ================================ RESTART ================================
+>>> 
+Hettinger
+Raymond
+Rachel
+Matthew
+TBD
+>>> 
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+Hettinger
+Raymond
+Rachel
+Matthew
+TBD
+>>> print  'hello' * 2
+hellohello
+>>> print  'hello' * 10000
+hellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohello
+>>> 
+print 30 + 3
+>>> 0
+>>> 
+Python 2.7.5 (default, Aug 25 2013, 00:04:04) 
+[GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> for i in range(25):
+	print ' ' * i, 'Hello'
+
+	
+ Hello
+  Hello
+   Hello
+    Hello
+     Hello
+      Hello
+       Hello
+        Hello
+         Hello
+          Hello
+           Hello
+            Hello
+             Hello
+              Hello
+               Hello
+                Hello
+                 Hello
+                  Hello
+                   Hello
+                    Hello
+                     Hello
+                      Hello
+                       Hello
+                        Hello
+                         Hello
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> def show_family(lastname, firstnames):
+        print lastname
+        for name in firstnames:
+             print name
+
+             
+>>> from dis import dis
+>>> dis(show_family)
+  2           0 LOAD_FAST                0 (lastname)
+              3 PRINT_ITEM          
+              4 PRINT_NEWLINE       
+
+  3           5 SETUP_LOOP              19 (to 27)
+              8 LOAD_FAST                1 (firstnames)
+             11 GET_ITER            
+        >>   12 FOR_ITER                11 (to 26)
+             15 STORE_FAST               2 (name)
+
+  4          18 LOAD_FAST                2 (name)
+             21 PRINT_ITEM          
+             22 PRINT_NEWLINE       
+             23 JUMP_ABSOLUTE           12
+        >>   26 POP_BLOCK           
+        >>   27 LOAD_CONST               0 (None)
+             30 RETURN_VALUE        
+>>> 
+>>> 
+>>> from print_redirect import print_redirect
+
+Traceback (most recent call last):
+  File "<pyshell#17>", line 1, in <module>
+    from print_redirect import print_redirect
+ImportError: cannot import name print_redirect
+>>> from print_redirect import redirect_stdout
+>>> 
+>>> 
+
+>>> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>> 
+
+
+>>> 
+
+
+
+
+
+
+>>> def show_family(lastname, firstnames):
+        print lastname
+        for name in firstnames:
+             print name
+
+             
+>>> from dis import dis
+>>> from print_redirect import redirect_stdout
+>>> with open('family_disassembly.txt', 'w') as f:
+	with redirect_stdout(f):
+		dis(show_show)
+
+		
+
+Traceback (most recent call last):
+  File "<pyshell#32>", line 3, in <module>
+    dis(show_show)
+NameError: name 'show_show' is not defined
+>>> with open('family_disassembly.txt', 'w') as f:
+	with redirect_stdout(f):
+		dis(show_family)
+
+		
+>>> from StringIO import *
+>>> 
+>>> f = String()
+
+Traceback (most recent call last):
+  File "<pyshell#37>", line 1, in <module>
+    f = String()
+NameError: name 'String' is not defined
+>>> 
+>>> 
+>>> 
+
+
+
+>>> 
+
+
+
+
+
+
+
+>>> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>> 
+
+
+
+
+
+
+
+
+
+
+
+
+>>> from StringIO import *
+>>> from print_redirect import redirect_stdout
+>>> 
+>>> f = StringIO
+>>> f = StringIO()
+>>> with redirect_stdout(f):
+	dis(show_family)
+
+	
+>>> print f.getvalue()
+  2           0 LOAD_FAST                0 (lastname)
+              3 PRINT_ITEM          
+              4 PRINT_NEWLINE       
+
+  3           5 SETUP_LOOP              19 (to 27)
+              8 LOAD_FAST                1 (firstnames)
+             11 GET_ITER            
+        >>   12 FOR_ITER                11 (to 26)
+             15 STORE_FAST               2 (name)
+
+  4          18 LOAD_FAST                2 (name)
+             21 PRINT_ITEM          
+             22 PRINT_NEWLINE       
+             23 JUMP_ABSOLUTE           12
+        >>   26 POP_BLOCK           
+        >>   27 LOAD_CONST               0 (None)
+             30 RETURN_VALUE        
+
+>>> s = f.getvalue()
+>>> s
+'  2           0 LOAD_FAST                0 (lastname)\n              3 PRINT_ITEM          \n              4 PRINT_NEWLINE       \n\n  3           5 SETUP_LOOP              19 (to 27)\n              8 LOAD_FAST                1 (firstnames)\n             11 GET_ITER            \n        >>   12 FOR_ITER                11 (to 26)\n             15 STORE_FAST               2 (name)\n\n  4          18 LOAD_FAST                2 (name)\n             21 PRINT_ITEM          \n             22 PRINT_NEWLINE       \n             23 JUMP_ABSOLUTE           12\n        >>   26 POP_BLOCK           \n        >>   27 LOAD_CONST               0 (None)\n             30 RETURN_VALUE        \n'
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> import os
+>>> os.mkdir('demo')
+>>> os.mkdir('demo')
+
+Traceback (most recent call last):
+  File "<pyshell#63>", line 1, in <module>
+    os.mkdir('demo')
+OSError: [Errno 17] File exists: 'demo'
+>>> 
+>>> try:
+	os.mkdir('demo')
+except OSError:
+	pass
+
+>>> ================================ RESTART ================================
+>>> 
+>>> import os
+>>> 
+>>> with ignore(OSError):
+	os.mkdir('demo')
+
+	
+>>> ================================ RESTART ================================
+>>> 
+>>> with suppress(OSError):
+	os.mkdir('demo')
+
+	
+
+Traceback (most recent call last):
+  File "<pyshell#76>", line 2, in <module>
+    os.mkdir('demo')
+NameError: name 'os' is not defined
+>>> ================================ RESTART ================================
+>>> 
+>>> import os
+>>> 
+>>> 
+>>> with suppress(OSError):
+	os.mkdir('demo')
+	print 'Done'
+
+	
+>>> with suppress(OSError):
+	os.mkdir('demo')
+	print 'Done'
+
+	
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> from decimal import *
+>>> Decimal(1) / 7
+Decimal('0.1428571428571428571428571429')
+>>> getcontext().prec = 500
+>>> Decimal(1) / 7
+Decimal('0.14285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714')
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> with localcontext(Context(prec=5)):
+	print Decimal(1) / 7
+
+	
+0.14286
+>>> Decimal(1) / 7
+Decimal('0.14285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714')
+>>> 

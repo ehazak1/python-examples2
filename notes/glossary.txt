@@ -1,0 +1,13 @@
+YAGNI -- You ain't gonna it.
+MVP -- Minumum viable product.
+Lean Startup -- Agile applied to Businesses and Projects
+Elevator Pitch
+
+* DRY -- Do not repeat yourself
+* There should be a SINGLE source of truth
+* EVERY essential idea, algorithm, or transformation
+  should be expressed EXACTLY ONCE in a program
+
+
+
+

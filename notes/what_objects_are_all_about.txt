@@ -1,0 +1,55 @@
+f1
+f2
+f3
+...
+f500
+
+It is programming with functions that are organized
+
+
+dot(a, b)
+eigen(a)
+inv(a)
+cross(a)
+sum(a)
+size(a)
+size(aa)
+
+a = [10, 20, 30]
+b = [[2, 5], [10, 5]]
+c = [40, 50, 60, 70]
+d = [[1, 7], [30, 5]]
+
+---------- OOP :  link data to the functions
+
+a = ([10, 20, 30], dot, sum, size, cross)            # object = data + functions
+b = ([[2, 5], [10, 5]], eigen, inv, size2)
+c = ([40, 50, 60], dot, sum, size)
+d = ([[1, 7], [30, 5]], eigen, inv, size2)
+
+-------------------------------------
+vecfuncs3 = vecfuncs + cross            # inheritance:  code reuse
+
+matfuncs = eigen, inv, size            # classes
+vecfuncs = dot, sum, size
+
+a = ([10, 20, 30], vecfunc3)            # object = data + functions
+b = ([[2, 5], [10, 5]], matfuncs)
+c = ([40, 50, 60], vecfuncs )
+d = ([[1, 7], [30, 5]], matfuncs)
+
+a.size
+b.size                                  # polymorphism: makes funcs easier to learn
+
+for o in [a, b, c, d]:
+    print o.size
+
+
+for o in [a, b, c, d]:
+    if type(o) is vec:
+        s = vec_size(o)
+    elif type(o) is vec3:
+        s = vec3_size(o)
+    elif type(o) is mat:
+        s = mat_size(o)
+    print s

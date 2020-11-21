@@ -1,0 +1,3398 @@
+Python 2.7.5 (default, Aug 25 2013, 00:04:04) 
+[GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> Python 2.7.5 (default, Aug 25 2013, 00:04:04)
+SyntaxError: invalid syntax
+>>> ================================ RESTART ================================
+>>> 
+>>> p.low
+10.0
+>>> p.high
+18.0
+>>> p.midpoint
+14.0
+>>> 
+>>> p.__class__
+<class '__main__.PriceRange'>
+>>> p.__dict__
+{'high': 18.0, 'midpoint': 14.0, 'low': 10.0}
+>>> 
+>>> 
+>>> p.low = 12.0
+>>> p.low
+12.0
+>>> p.midpoint
+14.0
+>>> p.high
+18.0
+>>> ================================ RESTART ================================
+>>> 
+>>> p.low
+10.0
+>>> p.high
+18.0
+>>> p.midpoint()
+14.0
+>>> 
+>>> p.__dict__
+{'high': 18.0, 'low': 10.0}
+>>> ================================ RESTART ================================
+>>> 
+>>> p.low
+10.0
+>>> p.high
+18.0
+>>> p.midpoint
+14.0
+>>> p.__dict__
+{'high': 18.0, 'low': 10.0}
+>>> 
+>>> p.low = 12.0
+>>> p.midpoint
+15.0
+>>> 
+>>> 
+>>> p.midpoint = 10
+
+Traceback (most recent call last):
+  File "<pyshell#27>", line 1, in <module>
+    p.midpoint = 10
+AttributeError: can't set attribute
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> p.low
+12.0
+>>> p.high
+18.0
+>>> p.midpoint
+15.0
+
+>>> 
+>>> p.low = 14.0
+>>> 
+>>> p.midpoint
+16.0
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> p.xyz
+
+Traceback (most recent call last):
+  File "<pyshell#47>", line 1, in <module>
+    p.xyz
+AttributeError: 'PriceRange' object has no attribute 'xyz'
+>>> 
+>>> # Assume  a.b   the only exception you expect
+>>> # is AttributeError if "b" doesn't exist.
+>>> 
+>>> 
+>>> 
+>>> p.low = 'Hello'
+>>> 
+>>> p.__dict__
+{'high': 18.0, 'low': 'Hello'}
+>>> 
+>>> 
+>>> 
+
+>>> 
+
+
+>>> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>> 
+
+
+>>> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>> 
+
+
+
+>>> 
+
+
+
+
+
+>>> 30 + 40
+70
+>>> p.midpoint
+
+Traceback (most recent call last):
+  File "<pyshell#67>", line 1, in <module>
+    p.midpoint
+  File "/Users/raymondhettinger/dropbox/Public/sg2/property_demo.py", line 11, in get_midpoint
+    class PriceRange(object):
+TypeError: cannot concatenate 'str' and 'float' objects
+>>> 
+>>> 
+>>> 
+>>> # The error occurred very far upstream.
+>>> 
+>>> # The error manifested itself downstream
+>>> # in code that was perfect.
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+>>> p.low
+10.0
+>>> p.high
+18.0
+>>> p.midpoint
+14.0
+>>> 
+>>> p.low = 12.0
+>>> p.low
+12.0
+>>> p.midpoint
+15.0
+>>> 
+>>> p.__dict__
+{'high': 18.0, '_low': 12.0}
+>>> ================================ RESTART ================================
+>>> 
+>>> p.low
+10.0
+>>> p.high
+18.0
+>>> p.midpoint
+14.0
+>>> p.low = 12.0
+>>> p.midpoint
+15.0
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> p.low = 'hello'
+
+Traceback (most recent call last):
+  File "<pyshell#95>", line 1, in <module>
+    p.low = 'hello'
+  File "/Users/raymondhettinger/dropbox/Public/sg2/property_demo.py", line 29, in set_low
+    raise TypeError('Expected an int or float')
+TypeError: Expected an int or float
+>>> ================================ RESTART ================================
+>>> 
+>>> p.high = 'goodbye'
+>>> 
+>>> 
+>>> 
+>>> 
+
+>>> 
+
+
+
+
+
+
+
+
+>>> 
+
+
+
+>>> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>> 
+
+
+
+
+
+
+>>> 
+
+
+
+>>> 
+
+
+
+>>> p.midpoint
+
+Traceback (most recent call last):
+  File "<pyshell#107>", line 1, in <module>
+    p.midpoint
+  File "/Users/raymondhettinger/dropbox/Public/sg2/property_demo.py", line 23, in get_midpoint
+    return (self.low + self.high) / 2.0
+TypeError: unsupported operand type(s) for +: 'float' and 'str'
+>>> ================================ RESTART ================================
+>>> 
+>>> p.__dict__
+{'_high': 18.0, '_low': 10.0}
+>>> 
+>>> p.high = 'goodbye'
+
+Traceback (most recent call last):
+  File "<pyshell#110>", line 1, in <module>
+    p.high = 'goodbye'
+  File "/Users/raymondhettinger/dropbox/Public/sg2/property_demo.py", line 46, in set_high
+    raise TypeError('Expected an int or float')
+TypeError: Expected an int or float
+>>> ================================ RESTART ================================
+>>> 
+>>> p.__dict__
+{'_high': 18.0, '_low': 10.0}
+>>> p.low = 'hello'
+
+Traceback (most recent call last):
+  File "<pyshell#112>", line 1, in <module>
+    p.low = 'hello'
+  File "/Users/raymondhettinger/dropbox/Public/sg2/property_demo.py", line 39, in set_low
+    validate_percentage(low)
+  File "/Users/raymondhettinger/dropbox/Public/sg2/property_demo.py", line 18, in validate_percentage
+    raise TypeError('Expected an int or float')
+TypeError: Expected an int or float
+>>> p.high = 200
+
+Traceback (most recent call last):
+  File "<pyshell#113>", line 1, in <module>
+    p.high = 200
+  File "/Users/raymondhettinger/dropbox/Public/sg2/property_demo.py", line 48, in set_high
+    validate_percentage(high)
+  File "/Users/raymondhettinger/dropbox/Public/sg2/property_demo.py", line 20, in validate_percentage
+    raise ValueError('Expected a value between 0 and 100')
+ValueError: Expected a value between 0 and 100
+>>> p.low = -5.0
+
+Traceback (most recent call last):
+  File "<pyshell#114>", line 1, in <module>
+    p.low = -5.0
+  File "/Users/raymondhettinger/dropbox/Public/sg2/property_demo.py", line 39, in set_low
+    validate_percentage(low)
+  File "/Users/raymondhettinger/dropbox/Public/sg2/property_demo.py", line 20, in validate_percentage
+    raise ValueError('Expected a value between 0 and 100')
+ValueError: Expected a value between 0 and 100
+>>> ================================ RESTART ================================
+>>> 
+>>> p.low = 12.0
+>>> p.midpoint
+15.0
+>>> p.__dict__
+{'_high': 18.0, '_low': 12.0}
+>>> ================================ RESTART ================================
+>>> 
+>>> help(PriceRange)
+Help on class PriceRange in module __main__:
+
+class PriceRange(__builtin__.object)
+ |  Methods defined here:
+ |  
+ |  __init__(self, low, high)
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+ |  
+ |  high
+ |      The high end of the price range
+ |  
+ |  low
+ |      The small end of the price range
+ |  
+ |  midpoint
+
+>>> ================================ RESTART ================================
+>>> 
+>>> help(PriceRange)
+Help on class PriceRange in module __main__:
+
+class PriceRange(__builtin__.object)
+ |  Methods defined here:
+ |  
+ |  __init__(self, low, high)
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+ |  
+ |  high
+ |      The high end of the price range
+ |  
+ |  low
+ |      The small end of the price range
+ |  
+ |  midpoint
+ |      Computed field half-way between low and high
+
+>>> |  __weakref__
+SyntaxError: invalid syntax
+
+
+>>> 
+
+>>> 
+
+
+
+
+
+
+
+
+
+>>> help(property)
+Help on class property in module __builtin__:
+
+class property(object)
+ |  property(fget=None, fset=None, fdel=None, doc=None) -> property attribute
+ |  
+ |  fget is a function to be used for getting an attribute value, and likewise
+ |  fset is a function for setting, and fdel a function for del'ing, an
+ |  attribute.  Typical use is to define a managed attribute x:
+ |  class C(object):
+ |      def getx(self): return self._x
+ |      def setx(self, value): self._x = value
+ |      def delx(self): del self._x
+ |      x = property(getx, setx, delx, "I'm the 'x' property.")
+ |  
+ |  Decorators make defining new properties or modifying existing ones easy:
+ |  class C(object):
+ |      @property
+ |      def x(self): return self._x
+ |      @x.setter
+ |      def x(self, value): self._x = value
+ |      @x.deleter
+ |      def x(self): del self._x
+ |  
+ |  Methods defined here:
+ |  
+ |  __delete__(...)
+ |      descr.__delete__(obj)
+ |  
+ |  __get__(...)
+ |      descr.__get__(obj[, type]) -> value
+ |  
+ |  __getattribute__(...)
+ |      x.__getattribute__('name') <==> x.name
+ |  
+ |  __init__(...)
+ |      x.__init__(...) initializes x; see help(type(x)) for signature
+ |  
+ |  __set__(...)
+ |      descr.__set__(obj, value)
+ |  
+ |  deleter(...)
+ |      Descriptor to change the deleter on a property.
+ |  
+ |  getter(...)
+ |      Descriptor to change the getter on a property.
+ |  
+ |  setter(...)
+ |      Descriptor to change the setter on a property.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  fdel
+ |  
+ |  fget
+ |  
+ |  fset
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |  
+ |  __new__ = <built-in method __new__ of type object>
+ |      T.__new__(S, ...) -> a new object with type S, a subtype of T
+
+>>> bin(42)
+'0b101010'
+>>> def mypow(x, y):
+	return x**y
+
+>>> mypow(2, 10)
+1024
+>>> ================================ RESTART ================================
+>>> 
+>>> d
+{}
+>>> 
+>>> 
+>>> 
+>>> def f(*args):
+	print args
+
+	
+>>> 
+>>> f(10, 20, 30)
+(10, 20, 30)
+>>> 
+>>> 
+>>> def f(*args, **kwds):
+	print args
+	print kwds
+
+	
+>>> f(10, 20, 30, x=1, y=2, z=3)
+(10, 20, 30)
+{'y': 2, 'x': 1, 'z': 3}
+>>> 
+>>> 
+>>> f(raymond='red', rachel='blue')
+()
+{'rachel': 'blue', 'raymond': 'red'}
+>>> 
+>>> 
+>>> def makedict(**kwds):
+	return kwds
+
+>>> d = makedict(raymond='red', rachel='blue')
+>>> d
+{'rachel': 'blue', 'raymond': 'red'}
+>>> 
+>>> 
+>>> def = 10
+SyntaxError: invalid syntax
+>>> d = makedict(def='red', rachel='blue')
+SyntaxError: invalid syntax
+>>> {'def': 'red'}
+{'def': 'red'}
+>>> 
+>>> 
+>>> 
+>>> {10: 'ten', 20: 'twenty'}
+{10: 'ten', 20: 'twenty'}
+>>> 10 = 20
+SyntaxError: can't assign to literal
+>>> hello world = 10
+SyntaxError: invalid syntax
+>>> hello_world = 10
+>>> {'hello world': 10}
+{'hello world': 10}
+>>> ================================ RESTART ================================
+>>> 
+>>> d
+{'matthew': 'yellow', 'rachel': 'blue', 'raymond': 'red'}
+>>> ================================ RESTART ================================
+>>> 
+>>> d
+{'rachel': 'blue', 'raymond': 'red'}
+>>> ================================ RESTART ================================
+>>> 
+>>> names
+['raymond', 'rachel', 'matthew']
+>>> colors
+['red', 'blue', 'yellow']
+>>> zip(names, colors)
+[('raymond', 'red'), ('rachel', 'blue'), ('matthew', 'yellow')]
+>>> ================================ RESTART ================================
+>>> 
+>>> d
+{'matthew': 'yellow', 'rachel': 'blue', 'raymond': 'red'}
+>>> colors.append('pink')
+>>> names
+['raymond', 'rachel', 'matthew']
+>>> colors
+['red', 'blue', 'yellow', 'pink']
+>>> zip(names, colors)
+[('raymond', 'red'), ('rachel', 'blue'), ('matthew', 'yellow')]
+>>> 
+>>> for name, color in zip(names, colors):
+	print '%10s %10s' % (name, color)
+
+	
+   raymond        red
+    rachel       blue
+   matthew     yellow
+>>> for name, color in zip(names, colors):
+	print '%-10s %-10s' % (name, color)
+
+	
+raymond    red       
+rachel     blue      
+matthew    yellow    
+>>> 
+>>> 
+>>> from itertools import *
+>>> for name, color in izip(names, colors):
+	print '%-10s %-10s' % (name, color)
+
+	
+raymond    red       
+rachel     blue      
+matthew    yellow    
+>>> for name, color in izip_longest(names, colors):
+	print '%-10s %-10s' % (name, color)
+
+	
+raymond    red       
+rachel     blue      
+matthew    yellow    
+None       pink      
+>>> help(izip_longest)
+Help on class izip_longest in module itertools:
+
+class izip_longest(__builtin__.object)
+ |  izip_longest(iter1 [,iter2 [...]], [fillvalue=None]) --> izip_longest object
+ |  
+ |  Return an izip_longest object whose .next() method returns a tuple where
+ |  the i-th element comes from the i-th iterable argument.  The .next()
+ |  method continues until the longest iterable in the argument sequence
+ |  is exhausted and then it raises StopIteration.  When the shorter iterables
+ |  are exhausted, the fillvalue is substituted in their place.  The fillvalue
+ |  defaults to None or can be specified by a keyword argument.
+ |  
+ |  Methods defined here:
+ |  
+ |  __getattribute__(...)
+ |      x.__getattribute__('name') <==> x.name
+ |  
+ |  __iter__(...)
+ |      x.__iter__() <==> iter(x)
+ |  
+ |  next(...)
+ |      x.next() -> the next value, or raise StopIteration
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |  
+ |  __new__ = <built-in method __new__ of type object>
+ |      T.__new__(S, ...) -> a new object with type S, a subtype of T
+
+>>> |  __getattribute__(...)
+SyntaxError: invalid syntax
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> for name, color in izip_longest(names, colors, fillvalue=''):
+	print '%-10s %-10s' % (name, color)
+
+	
+raymond    red       
+rachel     blue      
+matthew    yellow    
+           pink      
+>>> for name, color in izip_longest(names, colors, fillvalue=' --- '):
+	print '%-10s %-10s' % (name, color)
+
+	
+raymond    red       
+rachel     blue      
+matthew    yellow    
+ ---       pink      
+>>> for name, color in izip_longest(names, colors, fillvalue=' --- '):
+	print '%-10s %-10s' % (name, color)
+
+	
+raymond    red       
+
+rachel     blue      
+
+matthew    yellow    
+
+ ---       pink      
+>>> 
+>>> 
+>>> 
+>>> 
+>>> names
+['raymond', 'rachel', 'matthew']
+>>> [0] * 3
+[0, 0, 0]
+>>> [0] * len(names)
+[0, 0, 0]
+>>> zip(name, [0] * len(names))
+[(' ', 0), ('-', 0), ('-', 0)]
+>>> zip(names, [0] * len(names))
+[('raymond', 0), ('rachel', 0), ('matthew', 0)]
+>>> dict(zip(names, [0] * len(names)))
+{'matthew': 0, 'rachel': 0, 'raymond': 0}
+>>> 
+>>> dict.fromkeys(names)
+{'matthew': None, 'rachel': None, 'raymond': None}
+>>> dict.fromkeys(names, 0)
+{'matthew': 0, 'rachel': 0, 'raymond': 0}
+>>> dict.fromkeys(names, '')
+{'matthew': '', 'rachel': '', 'raymond': ''}
+>>> dict.fromkeys(names, '<missing>')
+{'matthew': '<missing>', 'rachel': '<missing>', 'raymond': '<missing>'}
+>>> ================================ RESTART ================================
+>>> 
+>>> d
+{'matthew': 0, 'rachel': 0, 'raymond': 0}
+>>> 
+>>> d['matthew'] = 1
+>>> d['rachel'] = -1
+>>> d
+{'matthew': 1, 'rachel': -1, 'raymond': 0}
+>>> d['rachel'] = -1
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sg2/dict_demo.py", line 11, in <module>
+    d = dict.fromkeys(names, 0)
+NameError: name 'names' is not defined
+>>> ================================ RESTART ================================
+>>> 
+>>> d>> d['matthew'] = 1
+>>> d['rachel'] = -1
+>>> d
+{'matthew': 1, 'rachel': -1, 'raymond': 0}
+>>> d['rachel'] = -1
+SyntaxError: can't assign to operator
+>>> 
+>>> 
+>>> 
+>>> 
+>>> d
+{'matthew': 0, 'rachel': 0, 'raymond': 0}
+>>> d['rachel']
+0
+>>> d.__getitem__('rachel')
+0
+>>> 
+>>> 
+>>> d['roger']
+
+Traceback (most recent call last):
+  File "<pyshell#234>", line 1, in <module>
+    d['roger']
+KeyError: 'roger'
+>>> 
+>>> 
+>>> # d[k]  --> d.__getitem__(k)
+>>> #             return v if k is found
+>>> #             or raise KeyError(k) if not found
+>>> 
+>>> 
+>>> # d[k]  --> d.__getitem__(k)
+>>> #             return v if k is found
+>>> #             if not found, it calls d.__missing__(k)
+>>> #                 |--> __missing__(k) raises KeyError
+>>> 
+>>> class D(dict):
+	pass
+
+>>> dir(D)
+['__class__', '__cmp__', '__contains__', '__delattr__', '__delitem__', '__dict__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__init__', '__iter__', '__le__', '__len__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'clear', 'copy', 'fromkeys', 'get', 'has_key', 'items', 'iteritems', 'iterkeys', 'itervalues', 'keys', 'pop', 'popitem', 'setdefault', 'update', 'values', 'viewitems', 'viewkeys', 'viewvalues']
+>>> d = D()
+>>> dir(d)
+['__class__', '__cmp__', '__contains__', '__delattr__', '__delitem__', '__dict__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__init__', '__iter__', '__le__', '__len__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'clear', 'copy', 'fromkeys', 'get', 'has_key', 'items', 'iteritems', 'iterkeys', 'itervalues', 'keys', 'pop', 'popitem', 'setdefault', 'update', 'values', 'viewitems', 'viewkeys', 'viewvalues']
+>>> ================================ RESTART ================================
+>>> 
+>>> d = AngryDict(raymond='red', rachel='blue')
+>>> d['raymond']
+'red'
+>>> d['rachel']
+'blue'
+>>> d
+{'rachel': 'blue', 'raymond': 'red'}
+>>> d['matthew']
+I am so mad!
+'matthew' is missing!
+
+Traceback (most recent call last):
+  File "<pyshell#257>", line 1, in <module>
+    d['matthew']
+  File "/Users/raymondhettinger/dropbox/Public/sg2/dict_demo.py", line 39, in __missing__
+    raise KeyError(key)
+KeyError: 'matthew'
+>>> ================================ RESTART ================================
+>>> 
+>>> colors
+['red', 'green', 'red', 'blue', 'red', 'green']
+>>> d = {}
+>>> for color in colors:
+	d[color] = d[color] + 1
+
+	
+
+Traceback (most recent call last):
+  File "<pyshell#262>", line 2, in <module>
+    d[color] = d[color] + 1
+KeyError: 'red'
+>>> ================================ RESTART ================================
+>>> 
+>>> d
+{'blue': 1, 'green': 2, 'red': 3}
+>>> 
+>>> 
+>>> d = d.fromkeys(colors, 0)
+>>> d
+{'blue': 0, 'green': 0, 'red': 0}
+>>> 
+>>> 
+>>> d = ZeroDict()
+>>> d
+{}
+>>> d['red']
+0
+>>> d['red'] += 1
+>>> d
+{'red': 1}
+>>> d['red'] += 1
+>>> d
+{'red': 2}
+>>> ================================ RESTART ================================
+>>> 
+>>> d = ZeroDict()
+>>> d['red']
+0
+>>> d
+{}
+>>> ================================ RESTART ================================
+>>> 
+>>> d = ZeroDict()
+>>> d['red']
+0
+>>> d
+{'red': 0}
+>>> ================================ RESTART ================================
+>>> 
+>>> names
+['davin', 'raymond', 'rachel', 'matthew', 'randal', 'darron', 'mary', 'susan', 'billy', 'sherry', 'beatrice', 'bill', 'marty', 'betty', 'sheldon']
+>>> name = 'davin'
+>>> name[0]
+'d'
+>>> name[1]
+'a'
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sg2/dict_demo.py", line 61, in <module>
+    d[key].append(name)
+KeyError: 'd'
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sg2/dict_demo.py", line 66, in <module>
+    d[key].append(name)
+KeyError: 'd'
+>>> d = ListDict()
+>>> d
+{}
+>>> d['d']
+[]
+>>> d
+{'d': []}
+>>> ================================ RESTART ================================
+>>> 
+>>> d
+{'s': ['susan', 'sherry', 'sheldon'], 'r': ['raymond', 'rachel', 'randal'], 'm': ['matthew', 'mary', 'marty'], 'd': ['davin', 'darron'], 'b': ['billy', 'beatrice', 'bill', 'betty']}
+>>> ================================ RESTART ================================
+>>> 
+>>> pprint(d)
+{'b': ['billy', 'beatrice', 'bill', 'betty'],
+ 'd': ['davin', 'darron'],
+ 'm': ['matthew', 'mary', 'marty'],
+ 'r': ['raymond', 'rachel', 'randal'],
+ 's': ['susan', 'sherry', 'sheldon']}
+>>> 
+>>> 
+>>> name
+'sheldon'
+>>> name[0]
+'s'
+>>> name[-1]
+'n'
+>>> name[len(name)-1]
+'n'
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+{'b': ['billy', 'beatrice', 'bill', 'betty'],
+ 'd': ['davin', 'darron'],
+ 'm': ['matthew', 'mary', 'marty'],
+ 'r': ['raymond', 'rachel', 'randal'],
+ 's': ['susan', 'sherry', 'sheldon']}
+{'d': ['raymond'],
+ 'e': ['beatrice'],
+ 'l': ['rachel', 'randal', 'bill'],
+ 'n': ['davin', 'darron', 'susan', 'sheldon'],
+ 'w': ['matthew'],
+ 'y': ['mary', 'billy', 'sherry', 'marty', 'betty']}
+>>> 
+>>> 
+>>> name
+'sheldon'
+>>> name[0]
+'s'
+>>> name[-1]
+'n'
+>>> len(name)
+7
+>>> ================================ RESTART ================================
+>>> 
+{'b': ['billy', 'beatrice', 'bill', 'betty'],
+ 'd': ['davin', 'darron'],
+ 'm': ['matthew', 'mary', 'marty'],
+ 'r': ['raymond', 'rachel', 'randal'],
+ 's': ['susan', 'sherry', 'sheldon']}
+{'d': ['raymond'],
+ 'e': ['beatrice'],
+ 'l': ['rachel', 'randal', 'bill'],
+ 'n': ['davin', 'darron', 'susan', 'sheldon'],
+ 'w': ['matthew'],
+ 'y': ['mary', 'billy', 'sherry', 'marty', 'betty']}
+{4: ['mary', 'bill'],
+ 5: ['davin', 'susan', 'billy', 'marty', 'betty'],
+ 6: ['rachel', 'randal', 'darron', 'sherry'],
+ 7: ['raymond', 'matthew', 'sheldon'],
+ 8: ['beatrice']}
+>>> 
+>>> 
+>>> name
+'sheldon'
+>>> 
+>>> 
+>>> 
+>>> s = 'abracadabra'
+>>> s.count('a')
+5
+>>> s.count('b')
+2
+>>> s.count('c')
+1
+>>> ================================ RESTART ================================
+>>> 
+{'b': ['billy', 'beatrice', 'bill', 'betty'],
+ 'd': ['davin', 'darron'],
+ 'm': ['matthew', 'mary', 'marty'],
+ 'r': ['raymond', 'rachel', 'randal'],
+ 's': ['susan', 'sherry', 'sheldon']}
+{'d': ['raymond'],
+ 'e': ['beatrice'],
+ 'l': ['rachel', 'randal', 'bill'],
+ 'n': ['davin', 'darron', 'susan', 'sheldon'],
+ 'w': ['matthew'],
+ 'y': ['mary', 'billy', 'sherry', 'marty', 'betty']}
+{4: ['mary', 'bill'],
+ 5: ['davin', 'susan', 'billy', 'marty', 'betty'],
+ 6: ['rachel', 'randal', 'darron', 'sherry'],
+ 7: ['raymond', 'matthew', 'sheldon'],
+ 8: ['beatrice']}
+{1: ['bill'],
+ 2: ['davin',
+     'rachel',
+     'matthew',
+     'randal',
+     'darron',
+     'mary',
+     'susan',
+     'billy',
+     'sherry',
+     'marty',
+     'betty',
+     'sheldon'],
+ 3: ['raymond'],
+ 4: ['beatrice']}
+>>> ================================ RESTART ================================
+>>> 
+{'b': ['billy', 'beatrice', 'bill', 'betty'],
+ 'd': ['davin', 'darron'],
+ 'm': ['matthew', 'mary', 'marty'],
+ 'r': ['raymond', 'rachel', 'randal'],
+ 's': ['susan', 'sherry', 'sheldon']}
+{'d': ['raymond'],
+ 'e': ['beatrice'],
+ 'l': ['rachel', 'randal', 'bill'],
+ 'n': ['davin', 'darron', 'susan', 'sheldon'],
+ 'w': ['matthew'],
+ 'y': ['mary', 'billy', 'sherry', 'marty', 'betty']}
+{4: ['mary', 'bill'],
+ 5: ['davin', 'susan', 'billy', 'marty', 'betty'],
+ 6: ['rachel', 'randal', 'darron', 'sherry'],
+ 7: ['raymond', 'matthew', 'sheldon'],
+ 8: ['beatrice']}
+{1: ['bill'],
+ 2: ['davin',
+     'rachel',
+     'matthew',
+     'randal',
+     'darron',
+     'mary',
+     'susan',
+     'billy',
+     'sherry',
+     'marty',
+     'betty',
+     'sheldon'],
+ 3: ['raymond'],
+ 4: ['beatrice']}
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> print 'The answer is %d today' % 10
+The answer is 10 today
+>>> print 'The answer is %s today but was %s yesterday' % (10, 20)
+The answer is 10 today but was 20 yesterday
+>>> 
+>>> 
+>>> t = 10, 20
+>>> print 'The answer is %s today but was %s yesterday' % t
+The answer is 10 today but was 20 yesterday
+>>> 
+>>> 
+>>> print 'The answer is %s today but was %s yesterday' % t
+The answer is 10 today but was 20 yesterday
+>>> 
+>>> 
+>>> d = dict(new=10, old=20)
+>>> d
+{'new': 10, 'old': 20}
+>>> 
+>>> 
+>>> print 'The answer is %(new)s today but was %(old)s yesterday' % d
+The answer is 10 today but was 20 yesterday
+>>> 
+>>> 
+>>> 
+>>> from collections import namedtuple
+>>> Answer = namedtuple('Answer', ['new', 'old'])
+>>> 
+>>> a = Answer(10, 20)
+>>> 
+>>> d
+{'new': 10, 'old': 20}
+>>> a
+Answer(new=10, old=20)
+>>> 
+>>> d['new']             # d.__getitem__('new')
+10
+>>> a.new                # d.__getattribute__('new')
+10
+>>> print 'The answer is %(new)s today but was %(old)s yesterday' % a
+
+Traceback (most recent call last):
+  File "<pyshell#351>", line 1, in <module>
+    print 'The answer is %(new)s today but was %(old)s yesterday' % a
+TypeError: format requires a mapping
+>>> print 'The answer is %s today but was %s yesterday' % a
+The answer is 10 today but was 20 yesterday
+>>> a._asdict()
+OrderedDict([('new', 10), ('old', 20)])
+>>> d = dict(new=10, old=20)
+>>> 
+>>> 
+
+>>> 
+
+
+
+>>> 
+
+>>> d = dict(new=10, old=20)
+>>> print 'The answer is %(new)s today but was %(old)s yesterday' % d
+The answer is 10 today but was 20 yesterday
+>>> 
+>>> 
+>>> d = dict(old=20)
+>>> print 'The answer is %(new)s today but was %(old)s yesterday' % d
+
+Traceback (most recent call last):
+  File "<pyshell#364>", line 1, in <module>
+    print 'The answer is %(new)s today but was %(old)s yesterday' % d
+KeyError: 'new'
+>>> d = dict(old=20, new='%(new)s')
+>>> print 'The answer is %(new)s today but was %(old)s yesterday' % d
+The answer is %(new)s today but was 20 yesterday
+>>> 
+>>> 
+>>> print '%%(%s)s' % 'new'
+%(new)s
+>>> ================================ RESTART ================================
+>>> 
+{'b': ['billy', 'beatrice', 'bill', 'betty'],
+ 'd': ['davin', 'darron'],
+ 'm': ['matthew', 'mary', 'marty'],
+ 'r': ['raymond', 'rachel', 'randal'],
+ 's': ['susan', 'sherry', 'sheldon']}
+{'d': ['raymond'],
+ 'e': ['beatrice'],
+ 'l': ['rachel', 'randal', 'bill'],
+ 'n': ['davin', 'darron', 'susan', 'sheldon'],
+ 'w': ['matthew'],
+ 'y': ['mary', 'billy', 'sherry', 'marty', 'betty']}
+{4: ['mary', 'bill'],
+ 5: ['davin', 'susan', 'billy', 'marty', 'betty'],
+ 6: ['rachel', 'randal', 'darron', 'sherry'],
+ 7: ['raymond', 'matthew', 'sheldon'],
+ 8: ['beatrice']}
+{1: ['bill'],
+ 2: ['davin',
+     'rachel',
+     'matthew',
+     'randal',
+     'darron',
+     'mary',
+     'susan',
+     'billy',
+     'sherry',
+     'marty',
+     'betty',
+     'sheldon'],
+ 3: ['raymond'],
+ 4: ['beatrice']}
+>>> 
+
+>>> 
+>>> 
+>>> d = FormatDict()
+>>> d['new']
+'%(new)s'
+>>> ================================ RESTART ================================
+>>> 
+{'b': ['billy', 'beatrice', 'bill', 'betty'],
+ 'd': ['davin', 'darron'],
+ 'm': ['matthew', 'mary', 'marty'],
+ 'r': ['raymond', 'rachel', 'randal'],
+ 's': ['susan', 'sherry', 'sheldon']}
+{'d': ['raymond'],
+ 'e': ['beatrice'],
+ 'l': ['rachel', 'randal', 'bill'],
+ 'n': ['davin', 'darron', 'susan', 'sheldon'],
+ 'w': ['matthew'],
+ 'y': ['mary', 'billy', 'sherry', 'marty', 'betty']}
+{4: ['mary', 'bill'],
+ 5: ['davin', 'susan', 'billy', 'marty', 'betty'],
+ 6: ['rachel', 'randal', 'darron', 'sherry'],
+ 7: ['raymond', 'matthew', 'sheldon'],
+ 8: ['beatrice']}
+{1: ['bill'],
+ 2: ['davin',
+     'rachel',
+     'matthew',
+     'randal',
+     'darron',
+     'mary',
+     'susan',
+     'billy',
+     'sherry',
+     'marty',
+     'betty',
+     'sheldon'],
+ 3: ['raymond'],
+ 4: ['beatrice']}
+The answer is %(new)s today but was 10 yesterday
+>>> ================================ RESTART ================================
+>>> 
+{'b': ['billy', 'beatrice', 'bill', 'betty'],
+ 'd': ['davin', 'darron'],
+ 'm': ['matthew', 'mary', 'marty'],
+ 'r': ['raymond', 'rachel', 'randal'],
+ 's': ['susan', 'sherry', 'sheldon']}
+{'d': ['raymond'],
+ 'e': ['beatrice'],
+ 'l': ['rachel', 'randal', 'bill'],
+ 'n': ['davin', 'darron', 'susan', 'sheldon'],
+ 'w': ['matthew'],
+ 'y': ['mary', 'billy', 'sherry', 'marty', 'betty']}
+{4: ['mary', 'bill'],
+ 5: ['davin', 'susan', 'billy', 'marty', 'betty'],
+ 6: ['rachel', 'randal', 'darron', 'sherry'],
+ 7: ['raymond', 'matthew', 'sheldon'],
+ 8: ['beatrice']}
+{1: ['bill'],
+ 2: ['davin',
+     'rachel',
+     'matthew',
+     'randal',
+     'darron',
+     'mary',
+     'susan',
+     'billy',
+     'sherry',
+     'marty',
+     'betty',
+     'sheldon'],
+ 3: ['raymond'],
+ 4: ['beatrice']}
+The answer is 20 today but was 10 yesterday
+>>> ================================ RESTART ================================
+>>> 
+{'b': ['billy', 'beatrice', 'bill', 'betty'],
+ 'd': ['davin', 'darron'],
+ 'm': ['matthew', 'mary', 'marty'],
+ 'r': ['raymond', 'rachel', 'randal'],
+ 's': ['susan', 'sherry', 'sheldon']}
+{'d': ['raymond'],
+ 'e': ['beatrice'],
+ 'l': ['rachel', 'randal', 'bill'],
+ 'n': ['davin', 'darron', 'susan', 'sheldon'],
+ 'w': ['matthew'],
+ 'y': ['mary', 'billy', 'sherry', 'marty', 'betty']}
+{4: ['mary', 'bill'],
+ 5: ['davin', 'susan', 'billy', 'marty', 'betty'],
+ 6: ['rachel', 'randal', 'darron', 'sherry'],
+ 7: ['raymond', 'matthew', 'sheldon'],
+ 8: ['beatrice']}
+{1: ['bill'],
+ 2: ['davin',
+     'rachel',
+     'matthew',
+     'randal',
+     'darron',
+     'mary',
+     'susan',
+     'billy',
+     'sherry',
+     'marty',
+     'betty',
+     'sheldon'],
+ 3: ['raymond'],
+ 4: ['beatrice']}
+The answer is %(new)s today but was 10 yesterday
+The answer is 20 today but was 10 yesterday
+>>> ================================ RESTART ================================
+>>> 
+{'b': ['billy', 'beatrice', 'bill', 'betty'],
+ 'd': ['davin', 'darron'],
+ 'm': ['matthew', 'mary', 'marty'],
+ 'r': ['raymond', 'rachel', 'randal'],
+ 's': ['susan', 'sherry', 'sheldon']}
+{'d': ['raymond'],
+ 'e': ['beatrice'],
+ 'l': ['rachel', 'randal', 'bill'],
+ 'n': ['davin', 'darron', 'susan', 'sheldon'],
+ 'w': ['matthew'],
+ 'y': ['mary', 'billy', 'sherry', 'marty', 'betty']}
+{4: ['mary', 'bill'],
+ 5: ['davin', 'susan', 'billy', 'marty', 'betty'],
+ 6: ['rachel', 'randal', 'darron', 'sherry'],
+ 7: ['raymond', 'matthew', 'sheldon'],
+ 8: ['beatrice']}
+{1: ['bill'],
+ 2: ['davin',
+     'rachel',
+     'matthew',
+     'randal',
+     'darron',
+     'mary',
+     'susan',
+     'billy',
+     'sherry',
+     'marty',
+     'betty',
+     'sheldon'],
+ 3: ['raymond'],
+ 4: ['beatrice']}
+The answer is %(new)s todaybut was 10 yesterday
+The answer is 20 todaybut was 10 yesterday
+>>> ================================ RESTART ================================
+>>> 
+{'b': ['billy', 'beatrice', 'bill', 'betty'],
+ 'd': ['davin', 'darron'],
+ 'm': ['matthew', 'mary', 'marty'],
+ 'r': ['raymond', 'rachel', 'randal'],
+ 's': ['susan', 'sherry', 'sheldon']}
+{'d': ['raymond'],
+ 'e': ['beatrice'],
+ 'l': ['rachel', 'randal', 'bill'],
+ 'n': ['davin', 'darron', 'susan', 'sheldon'],
+ 'w': ['matthew'],
+ 'y': ['mary', 'billy', 'sherry', 'marty', 'betty']}
+{4: ['mary', 'bill'],
+ 5: ['davin', 'susan', 'billy', 'marty', 'betty'],
+ 6: ['rachel', 'randal', 'darron', 'sherry'],
+ 7: ['raymond', 'matthew', 'sheldon'],
+ 8: ['beatrice']}
+{1: ['bill'],
+ 2: ['davin',
+     'rachel',
+     'matthew',
+     'randal',
+     'darron',
+     'mary',
+     'susan',
+     'billy',
+     'sherry',
+     'marty',
+     'betty',
+     'sheldon'],
+ 3: ['raymond'],
+ 4: ['beatrice']}
+The answer is %(new)s today but was 10 yesterday
+The answer is 20 today but was 10 yesterday
+>>> 
+>>> 
+>>> 
+>>> d = dict(foreground='cyan', background='white', border=2, width=200)
+>>> 
+>>> 
+>>> e = dict(foreground='blue', border=4)
+>>> 
+>>> e['foreground']
+'blue'
+>>> e['width']
+
+Traceback (most recent call last):
+  File "<pyshell#384>", line 1, in <module>
+    e['width']
+KeyError: 'width'
+>>> ================================ RESTART ================================
+>>> 
+{'b': ['billy', 'beatrice', 'bill', 'betty'],
+ 'd': ['davin', 'darron'],
+ 'm': ['matthew', 'mary', 'marty'],
+ 'r': ['raymond', 'rachel', 'randal'],
+ 's': ['susan', 'sherry', 'sheldon']}
+{'d': ['raymond'],
+ 'e': ['beatrice'],
+ 'l': ['rachel', 'randal', 'bill'],
+ 'n': ['davin', 'darron', 'susan', 'sheldon'],
+ 'w': ['matthew'],
+ 'y': ['mary', 'billy', 'sherry', 'marty', 'betty']}
+{4: ['mary', 'bill'],
+ 5: ['davin', 'susan', 'billy', 'marty', 'betty'],
+ 6: ['rachel', 'randal', 'darron', 'sherry'],
+ 7: ['raymond', 'matthew', 'sheldon'],
+ 8: ['beatrice']}
+{1: ['bill'],
+ 2: ['davin',
+     'rachel',
+     'matthew',
+     'randal',
+     'darron',
+     'mary',
+     'susan',
+     'billy',
+     'sherry',
+     'marty',
+     'betty',
+     'sheldon'],
+ 3: ['raymond'],
+ 4: ['beatrice']}
+The answer is %(new)s today but was 10 yesterday
+The answer is 20 today but was 10 yesterday
+>>> KeyError: 'width'
+SyntaxError: invalid syntax
+>>> 
+>>> 
+>>> 
+>>> e
+{'foreground': 'blue', 'border': 4}
+>>> e.fallback
+{'width': 200, 'border': 2, 'background': 'white', 'foreground': 'cyan'}
+>>> ================================ RESTART ================================
+>>> 
+{'b': ['billy', 'beatrice', 'bill', 'betty'],
+ 'd': ['davin', 'darron'],
+ 'm': ['matthew', 'mary', 'marty'],
+ 'r': ['raymond', 'rachel', 'randal'],
+ 's': ['susan', 'sherry', 'sheldon']}
+{'d': ['raymond'],
+ 'e': ['beatrice'],
+ 'l': ['rachel', 'randal', 'bill'],
+ 'n': ['davin', 'darron', 'susan', 'sheldon'],
+ 'w': ['matthew'],
+ 'y': ['mary', 'billy', 'sherry', 'marty', 'betty']}
+{4: ['mary', 'bill'],
+ 5: ['davin', 'susan', 'billy', 'marty', 'betty'],
+ 6: ['rachel', 'randal', 'darron', 'sherry'],
+ 7: ['raymond', 'matthew', 'sheldon'],
+ 8: ['beatrice']}
+{1: ['bill'],
+ 2: ['davin',
+     'rachel',
+     'matthew',
+     'randal',
+     'darron',
+     'mary',
+     'susan',
+     'billy',
+     'sherry',
+     'marty',
+     'betty',
+     'sheldon'],
+ 3: ['raymond'],
+ 4: ['beatrice']}
+The answer is %(new)s today but was 10 yesterday
+The answer is 20 today but was 10 yesterday
+>>> 
+>>> 
+>>> warning_window.items()
+[('foreground', 'blue'), ('border', 4)]
+>>> warning_window.fallback
+{'width': 200, 'border': 2, 'background': 'white', 'foreground': 'cyan'}
+>>> 
+>>> 
+>>> warning_window['foreground']
+'blue'
+>>> warning_window['width']
+200
+>>> ================================ RESTART ================================
+>>> 
+{'b': ['billy', 'beatrice', 'bill', 'betty'],
+ 'd': ['davin', 'darron'],
+ 'm': ['matthew', 'mary', 'marty'],
+ 'r': ['raymond', 'rachel', 'randal'],
+ 's': ['susan', 'sherry', 'sheldon']}
+{'d': ['raymond'],
+ 'e': ['beatrice'],
+ 'l': ['rachel', 'randal', 'bill'],
+ 'n': ['davin', 'darron', 'susan', 'sheldon'],
+ 'w': ['matthew'],
+ 'y': ['mary', 'billy', 'sherry', 'marty', 'betty']}
+{4: ['mary', 'bill'],
+ 5: ['davin', 'susan', 'billy', 'marty', 'betty'],
+ 6: ['rachel', 'randal', 'darron', 'sherry'],
+ 7: ['raymond', 'matthew', 'sheldon'],
+ 8: ['beatrice']}
+{1: ['bill'],
+ 2: ['davin',
+     'rachel',
+     'matthew',
+     'randal',
+     'darron',
+     'mary',
+     'susan',
+     'billy',
+     'sherry',
+     'marty',
+     'betty',
+     'sheldon'],
+ 3: ['raymond'],
+ 4: ['beatrice']}
+The answer is %(new)s today but was 10 yesterday
+The answer is 20 today but was 10 yesterday
+>>> 
+>>> 
+>>> 
+>>> # cmd-line -->  environ vars  -->    defaults
+>>> 
+>>> 
+>>> 
+>>> # locals()   -->   globals()   -->   builtins
+>>> 
+>>> 
+>>> 
+>>> 
+>>> len
+<built-in function len>
+>>> dir()
+['AngryDict', 'ChainDict', 'FormatDict', 'ListDict', 'ZeroDict', '__builtins__', '__doc__', '__name__', '__package__', 'color', 'colors', 'd', 'key', 'lot', 'name', 'names', 'pprint', 's', 'text_window', 'warning_window', 'window_defaults']
+>>> len = 10
+>>> 
+>>> 
+>>> len
+10
+>>> def f(len):
+	print len
+
+	
+>>> f(20)
+20
+>>> len
+10
+>>> __builtins__.len
+<built-in function len>
+>>> 
+>>> 
+>>> import os
+>>> 
+>>> 
+>>> 
+>>> # LET'S    Let us      Start typing
+>>> 
+>>> 
+>>> import os
+>>> os.environ['PATH']
+'/Library/Frameworks/Python.framework/Versions/2.7/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/texbin'
+>>> os.environ['HOME']
+'/Users/raymondhettinger'
+>>> os.environ['USERS']
+
+Traceback (most recent call last):
+  File "<pyshell#435>", line 1, in <module>
+    os.environ['USERS']
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/UserDict.py", line 23, in __getitem__
+    raise KeyError(key)
+KeyError: 'USERS'
+>>> os.environ['USER']
+'raymondhettinger'
+>>> os.environ.keys()
+['CPPFLAGS', 'LESS', 'VERSIONER_PYTHON_PREFER_32_BIT', 'LOGNAME', 'USER', 'HOME', 'PATH', 'PS1', 'DISPLAY', 'TERM_PROGRAM', 'LANG', 'TERM', 'SHELL', 'COLORFGBG', 'VERSIONER_PYTHON_VERSION', 'SHLVL', 'MACOSX_DEPLOYMENT_TARGET', 'HISTSIZE', 'ITERM_SESSION_ID', 'EDITOR', 'LDFLAGS', 'HISTFILESIZE', 'SSH_AUTH_SOCK', 'Apple_PubSub_Socket_Render', 'ITERM_PROFILE', '_', 'AWS_ACCESS_KEY_ID', 'TMPDIR', 'HISTIGNORE', 'GREP_OPTIONS', 'OLDPWD', '__CF_USER_TEXT_ENCODING', 'PWD', 'VCS', 'AWS_SECRET_ACCESS_KEY', '__CHECKFIX1436934']
+>>> 
+>>> 
+>>> d = dict(HOME=8, VISITOR=2)
+>>> d['USER']
+
+Traceback (most recent call last):
+  File "<pyshell#441>", line 1, in <module>
+    d['USER']
+KeyError: 'USER'
+>>> 
+>>> d = ChainDict(os.environ, HOME=8, VISITOR=2)
+>>> d['HOME']
+8
+>>> d['USER']
+'raymondhettinger'
+>>> 
+>>> 
+>>> class MissingDict(dict):
+	def __getitem__(self, key):
+		try:
+			return dict.__getitem__(self, key)
+		except KeyError:
+			return self.__missing__(key)
+	def __missing__(self, key):
+		raise KeyError(key)
+
+	
+>>> class ZeroDict(MissingDict):
+    def __missing__(self, key):
+        return 0
+
+>>> 
+>>> d = ZeroDict()
+>>> d['red']
+0
+>>> ================================ RESTART ================================
+>>> 
+{'b': ['billy', 'beatrice', 'bill', 'betty'],
+ 'd': ['davin', 'darron'],
+ 'm': ['matthew', 'mary', 'marty'],
+ 'r': ['raymond', 'rachel', 'randal'],
+ 's': ['susan', 'sherry', 'sheldon']}
+{'d': ['raymond'],
+ 'e': ['beatrice'],
+ 'l': ['rachel', 'randal', 'bill'],
+ 'n': ['davin', 'darron', 'susan', 'sheldon'],
+ 'w': ['matthew'],
+ 'y': ['mary', 'billy', 'sherry', 'marty', 'betty']}
+{4: ['mary', 'bill'],
+ 5: ['davin', 'susan', 'billy', 'marty', 'betty'],
+ 6: ['rachel', 'randal', 'darron', 'sherry'],
+ 7: ['raymond', 'matthew', 'sheldon'],
+ 8: ['beatrice']}
+{1: ['bill'],
+ 2: ['davin',
+     'rachel',
+     'matthew',
+     'randal',
+     'darron',
+     'mary',
+     'susan',
+     'billy',
+     'sherry',
+     'marty',
+     'betty',
+     'sheldon'],
+ 3: ['raymond'],
+ 4: ['beatrice']}
+The answer is %(new)s today but was 10 yesterday
+The answer is 20 today but was 10 yesterday
+>>> ================================ RESTART ================================
+>>> 
+{'b': ['billy', 'beatrice', 'bill', 'betty'],
+ 'd': ['davin', 'darron'],
+ 'm': ['matthew', 'mary', 'marty'],
+ 'r': ['raymond', 'rachel', 'randal'],
+ 's': ['susan', 'sherry', 'sheldon']}
+{'d': ['raymond'],
+ 'e': ['beatrice'],
+ 'l': ['rachel', 'randal', 'bill'],
+ 'n': ['davin', 'darron', 'susan', 'sheldon'],
+ 'w': ['matthew'],
+ 'y': ['mary', 'billy', 'sherry', 'marty', 'betty']}
+{4: ['mary', 'bill'],
+ 5: ['davin', 'susan', 'billy', 'marty', 'betty'],
+ 6: ['rachel', 'randal', 'darron', 'sherry'],
+ 7: ['raymond', 'matthew', 'sheldon'],
+ 8: ['beatrice']}
+{1: ['bill'],
+ 2: ['davin',
+     'rachel',
+     'matthew',
+     'randal',
+     'darron',
+     'mary',
+     'susan',
+     'billy',
+     'sherry',
+     'marty',
+     'betty',
+     'sheldon'],
+ 3: ['raymond'],
+ 4: ['beatrice']}
+The answer is %(new)s today but was 10 yesterday
+The answer is 20 today but was 10 yesterday
+0
+>>> ================================ RESTART ================================
+>>> 
+{'b': ['billy', 'beatrice', 'bill', 'betty'],
+ 'd': ['davin', 'darron'],
+ 'm': ['matthew', 'mary', 'marty'],
+ 'r': ['raymond', 'rachel', 'randal'],
+ 's': ['susan', 'sherry', 'sheldon']}
+{'d': ['raymond'],
+ 'e': ['beatrice'],
+ 'l': ['rachel', 'randal', 'bill'],
+ 'n': ['davin', 'darron', 'susan', 'sheldon'],
+ 'w': ['matthew'],
+ 'y': ['mary', 'billy', 'sherry', 'marty', 'betty']}
+{4: ['mary', 'bill'],
+ 5: ['davin', 'susan', 'billy', 'marty', 'betty'],
+ 6: ['rachel', 'randal', 'darron', 'sherry'],
+ 7: ['raymond', 'matthew', 'sheldon'],
+ 8: ['beatrice']}
+{1: ['bill'],
+ 2: ['davin',
+     'rachel',
+     'matthew',
+     'randal',
+     'darron',
+     'mary',
+     'susan',
+     'billy',
+     'sherry',
+     'marty',
+     'betty',
+     'sheldon'],
+ 3: ['raymond'],
+ 4: ['beatrice']}
+The answer is %(new)s today but was 10 yesterday
+The answer is 20 today but was 10 yesterday
+0
+>>> 
+>>> 
+>>> 
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+{'b': ['billy', 'beatrice', 'bill', 'betty'],
+ 'd': ['davin', 'darron'],
+ 'm': ['matthew', 'mary', 'marty'],
+ 'r': ['raymond', 'rachel', 'randal'],
+ 's': ['susan', 'sherry', 'sheldon']}
+--------------------
+
+
+{'d': ['raymond'],
+ 'e': ['beatrice'],
+ 'l': ['rachel', 'randal', 'bill'],
+ 'n': ['davin', 'darron', 'susan', 'sheldon'],
+ 'w': ['matthew'],
+ 'y': ['mary', 'billy', 'sherry', 'marty', 'betty']}
+--------------------
+
+
+{4: ['mary', 'bill'],
+ 5: ['davin', 'susan', 'billy', 'marty', 'betty'],
+ 6: ['rachel', 'randal', 'darron', 'sherry'],
+ 7: ['raymond', 'matthew', 'sheldon'],
+ 8: ['beatrice']}
+--------------------
+
+
+{1: ['bill'],
+ 2: ['davin',
+     'rachel',
+     'matthew',
+     'randal',
+     'darron',
+     'mary',
+     'susan',
+     'billy',
+     'sherry',
+     'marty',
+     'betty',
+     'sheldon'],
+ 3: ['raymond'],
+ 4: ['beatrice']}
+--------------------
+
+
+The answer is %(new)s today but was 10 yesterday
+The answer is 20 today but was 10 yesterday
+0
+>>> ================================ RESTART ================================
+>>> 
+{'b': ['billy', 'beatrice', 'bill', 'betty'],
+ 'd': ['davin', 'darron'],
+ 'm': ['matthew', 'mary', 'marty'],
+ 'r': ['raymond', 'rachel', 'randal'],
+ 's': ['susan', 'sherry', 'sheldon']}
+--------------------
+
+
+{'d': ['raymond'],
+ 'e': ['beatrice'],
+ 'l': ['rachel', 'randal', 'bill'],
+ 'n': ['davin', 'darron', 'susan', 'sheldon'],
+ 'w': ['matthew'],
+ 'y': ['mary', 'billy', 'sherry', 'marty', 'betty']}
+--------------------
+
+
+{4: ['mary', 'bill'],
+ 5: ['davin', 'susan', 'billy', 'marty', 'betty'],
+ 6: ['rachel', 'randal', 'darron', 'sherry'],
+ 7: ['raymond', 'matthew', 'sheldon'],
+ 8: ['beatrice']}
+--------------------
+
+
+{1: ['bill'],
+ 2: ['davin',
+     'rachel',
+     'matthew',
+     'randal',
+     'darron',
+     'mary',
+     'susan',
+     'billy',
+     'sherry',
+     'marty',
+     'betty',
+     'sheldon'],
+ 3: ['raymond'],
+ 4: ['beatrice']}
+--------------------
+
+
+The answer is %(new)s today but was 10 yesterday
+The answer is 20 today but was 10 yesterday
+0
+>>> ================================ RESTART ================================
+>>> 
+{'b': ['billy', 'beatrice', 'bill', 'betty'],
+ 'd': ['davin', 'darron'],
+ 'm': ['matthew', 'mary', 'marty'],
+ 'r': ['raymond', 'rachel', 'randal'],
+ 's': ['susan', 'sherry', 'sheldon']}
+--------------------
+
+
+{'d': ['raymond'],
+ 'e': ['beatrice'],
+ 'l': ['rachel', 'randal', 'bill'],
+ 'n': ['davin', 'darron', 'susan', 'sheldon'],
+ 'w': ['matthew'],
+ 'y': ['mary', 'billy', 'sherry', 'marty', 'betty']}
+--------------------
+
+
+{4: ['mary', 'bill'],
+ 5: ['davin', 'susan', 'billy', 'marty', 'betty'],
+ 6: ['rachel', 'randal', 'darron', 'sherry'],
+ 7: ['raymond', 'matthew', 'sheldon'],
+ 8: ['beatrice']}
+--------------------
+
+
+{1: ['bill'],
+ 2: ['davin',
+     'rachel',
+     'matthew',
+     'randal',
+     'darron',
+     'mary',
+     'susan',
+     'billy',
+     'sherry',
+     'marty',
+     'betty',
+     'sheldon'],
+ 3: ['raymond'],
+ 4: ['beatrice']}
+--------------------
+
+
+The answer is %(new)s today but was 10 yesterday
+The answer is 20 today but was 10 yesterday
+{'old': 10}
+--------------------
+
+
+0
+>>> 
+0
+0
+
+>>> # Let's go eat
+>>> ================================ RESTART ================================
+>>> 
+>>> d
+<__main__.DoubleSeq instance at 0x1068f05f0>
+>>> d.seq
+'Hettinger'
+>>> len(d)      # d.__len__()
+
+Traceback (most recent call last):
+  File "<pyshell#470>", line 1, in <module>
+    len(d)      # d.__len__()
+AttributeError: DoubleSeq instance has no attribute '__len__'
+>>> ================================ RESTART ================================
+>>> 
+>>> d.seq
+'Hettinger'
+>>> len(d)
+5
+>>> 'hello'[0]
+'h'
+>>> 'hello'.__getitem__(0)
+'h'
+>>> d[0]
+
+Traceback (most recent call last):
+  File "<pyshell#475>", line 1, in <module>
+    d[0]
+AttributeError: DoubleSeq instance has no attribute '__getitem__'
+>>> ================================ RESTART ================================
+>>> 
+>>> d[0]
+'H'
+>>> d[1]
+'H'
+>>> ================================ RESTART ================================
+>>> 
+>>> d[0]
+'H'
+>>> d[1]
+'t'
+>>> 't'
+'t'
+
+>>> 
+>>> 
+>>> 'hello'[4]
+'o'
+>>> d[1]          # d.__getitem__(1)
+'t'
+
+>>> 
+>>> 'hello'[5]
+
+Traceback (most recent call last):
+  File "<pyshell#486>", line 1, in <module>
+    'hello'[5]
+IndexError: string index out of range
+>>> 
+>>> len(d)
+5
+>>> d[8]
+
+Traceback (most recent call last):
+  File "<pyshell#489>", line 1, in <module>
+    d[8]
+  File "/Users/raymondhettinger/dropbox/Public/sg2/abc_demo.py", line 16, in __getitem__
+    return self.seq[i * 2]
+IndexError: string index out of range
+>>> d[4]
+'r'
+>>> d[5]
+
+Traceback (most recent call last):
+  File "<pyshell#491>", line 1, in <module>
+    d[5]
+  File "/Users/raymondhettinger/dropbox/Public/sg2/abc_demo.py", line 16, in __getitem__
+    return self.seq[i * 2]
+IndexError: string index out of range
+>>> ================================ RESTART ================================
+>>> 
+>>> 
+>>> 
+>>> e = Double('Raymond')
+
+Traceback (most recent call last):
+  File "<pyshell#494>", line 1, in <module>
+    e = Double('Raymond')
+NameError: name 'Double' is not defined
+>>> e = DoubleSeq('Raymond')
+>>> len(e)
+4
+>>> e[1]
+'y'
+>>> e[2]
+'o'
+>>> 
+>>> 
+>>> 
+>>> 
+>>> e[0]
+'R'
+>>> e[1]
+'y'
+>>> e[2]
+'o'
+>>> e[3]
+'d'
+>>> e[34]
+
+Traceback (most recent call last):
+  File "<pyshell#507>", line 1, in <module>
+    e[34]
+  File "/Users/raymondhettinger/dropbox/Public/sg2/abc_demo.py", line 17, in __getitem__
+    raise IndexError('Oops, I did it again')
+IndexError: Oops, I did it again
+>>> 
+>>> 
+>>> # If you have getitem and len that respond to
+>>> # s[0], s[1],  s[len(s)-1] or IndexError
+>>> 
+>>> for c in d:
+	print d
+
+	
+<__main__.DoubleSeq instance at 0x101697170>
+<__main__.DoubleSeq instance at 0x101697170>
+<__main__.DoubleSeq instance at 0x101697170>
+<__main__.DoubleSeq instance at 0x101697170>
+<__main__.DoubleSeq instance at 0x101697170>
+>>> for c in d:
+	print c
+
+	
+H
+t
+i
+g
+r
+>>> s[0]
+
+Traceback (most recent call last):
+  File "<pyshell#518>", line 1, in <module>
+    s[0]
+NameError: name 's' is not defined
+>>> d[0]
+'H'
+>>> d[1]
+'t'
+>>> 
+>>> 
+>>> ''.join(d)
+'Htigr'
+>>> list(d)
+['H', 't', 'i', 'g', 'r']
+>>> set(d)
+set(['i', 'H', 'r', 't', 'g'])
+>>> tuple(d)
+('H', 't', 'i', 'g', 'r')
+>>> sorted(d)
+['H', 'g', 'i', 'r', 't']
+>>> ================================ RESTART ================================
+>>> 
+>>> d.capitalize()
+['H', 'T', 'I', 'G', 'R']
+>>> 
+>>> 
+>>> 
+>>> s = 'abc'
+>>> t = 'def'
+>>> s + t
+'abcdef'
+>>> s
+'abc'
+>>> t
+'def'
+>>> s = s + t
+>>> s
+'abcdef'
+>>> 
+>>> 
+>>> los = ['raymond', 'rachel', 'matthew']
+>>> s = ''
+>>> for name in los:
+	s += name
+
+	
+>>> s
+'raymondrachelmatthew'
+>>> 
+>>> 
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+5
+HTIGR
+>>> ================================ RESTART ================================
+>>> 
+5
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sg2/abc_demo.py", line 25, in <module>
+    print d.capitalize()
+  File "/Users/raymondhettinger/dropbox/Public/sg2/abc_demo.py", line 19, in capitalize
+    return ''.join([c.upper() for c in self])
+TypeError: iteration over non-sequence
+>>> ================================ RESTART ================================
+>>> 
+5
+HTIGR
+>>> ================================ RESTART ================================
+>>> 
+5
+HTIGR
+3
+RMD
+>>> n ''.join([c.upper() for c in self])
+SyntaxError: invalid syntax
+>>> 
+>>> 
+>>> 
+>>> # RMD  HTIGR
+>>> ================================ RESTART ================================
+>>> 
+5
+HTIGR
+3
+RMD
+>>> 
+>>> 
+>>> 
+>>> c = Capper()
+>>> dir(c)
+['__doc__', '__module__', 'capitalize']
+>>> c.capitalize()
+
+Traceback (most recent call last):
+  File "<pyshell#560>", line 1, in <module>
+    c.capitalize()
+  File "/Users/raymondhettinger/dropbox/Public/sg2/abc_demo.py", line 8, in capitalize
+    return ''.join([c.upper() for c in self])
+TypeError: iteration over non-sequence
+>>> 
+>>> # Problem 1:  The Capper class isn't useful by itself
+>>> # but it allows you to instantiate anyway.
+>>> 
+>>> class D(Capper):
+
+	def __init__(self, x):
+		self.x = 10
+
+		
+>>> class D(Capper):
+
+	def __init__(self, x):
+		self.x = x
+
+		
+>>> 
+>>> d = D(10)
+>>> d.x
+10
+>>> dir(d)
+['__doc__', '__init__', '__module__', 'capitalize', 'x']
+>>> d.capitalize()
+
+Traceback (most recent call last):
+  File "<pyshell#576>", line 1, in <module>
+    d.capitalize()
+  File "/Users/raymondhettinger/dropbox/Public/sg2/abc_demo.py", line 8, in capitalize
+    return ''.join([c.upper() for c in self])
+TypeError: iteration over non-sequence
+>>> 
+>>> # Problem #2:  It is not enough to subclass it
+>>> # the subclass must provide the first story
+>>> # of the house.
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+5
+HTIGR
+3
+RMD
+>>> help(Capper)
+Help on class Capper in module __main__:
+
+class Capper
+ |  I am a mixin class.  I will make you a deal.
+ |  
+ |  You provide iterability.
+ |  And, I can provide capitalization.
+ |  
+ |  Methods defined here:
+ |  
+ |  capitalize(self)
+
+>>> ================================ RESTART ================================
+>>> 
+5
+HTIGR
+3
+RMD
+>>> d.uncapitalize()
+'htigr'
+>>> d.capitalize()
+'HTIGR'
+>>> c = Capper()
+>>> dir(c)
+['__doc__', '__module__', 'capitalize']
+>>> c.capitalize()
+
+Traceback (most recent call last):
+  File "<pyshell#587>", line 1, in <module>
+    c.capitalize()
+  File "/Users/raymondhettinger/dropbox/Public/sg2/abc_demo.py", line 14, in capitalize
+    return ''.join([c.upper() for c in self])
+TypeError: iteration over non-sequence
+>>> # OMG WTF?
+>>> 
+>>> 
+>>> dir(c)
+['__doc__', '__module__', 'capitalize']
+>>> class A(Capper):
+	def fun_in_the_sun(self):
+		return 10
+
+	
+>>> a = A()
+>>> a.capitalize()
+
+Traceback (most recent call last):
+  File "<pyshell#597>", line 1, in <module>
+    a.capitalize()
+  File "/Users/raymondhettinger/dropbox/Public/sg2/abc_demo.py", line 14, in capitalize
+    return ''.join([c.upper() for c in self])
+TypeError: iteration over non-sequence
+>>> class A(Capper):
+	def fun_in_the_sun(self):
+		return 10
+	def __iter__(self):
+		yield 10
+		yield 20
+		yield 30
+
+		
+>>> a = A()
+>>> for x in a:
+	print x
+
+	
+10
+20
+30
+>>> a.capitalize()
+
+Traceback (most recent call last):
+  File "<pyshell#608>", line 1, in <module>
+    a.capitalize()
+  File "/Users/raymondhettinger/dropbox/Public/sg2/abc_demo.py", line 14, in capitalize
+    return ''.join([c.upper() for c in self])
+AttributeError: 'int' object has no attribute 'upper'
+>>> class A(Capper):
+	def fun_in_the_sun(self):
+		return 10
+	def __iter__(self):
+		yield 'Fun '
+		yield 'In '
+		yield 'The Sun'
+
+		
+>>> a = A()
+>>> for x in a:
+	print x
+
+	
+Fun 
+In 
+The Sun
+>>> a.capitalize()
+'FUN IN THE SUN'
+>>> ================================ RESTART ================================
+>>> 
+5
+HTIGR
+3
+RMD
+>>> 
+>>> 
+>>> help(Capper)
+Help on class Capper in module __main__:
+
+class Capper(__builtin__.object)
+ |  Methods defined here:
+ |  
+ |  __getitem__(self, index)
+ |  
+ |  __len__(self)
+ |  
+ |  capitalize(self)
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |  
+ |  __abstractmethods__ = frozenset(['__getitem__', '__len__'])
+ |  
+ |  __metaclass__ = <class 'abc.ABCMeta'>
+ |      Metaclass for defining Abstract Base Classes (ABCs).
+ |      
+ |      Use this metaclass to create an ABC.  An ABC can be subclassed
+ |      directly, and then acts as a mix-in class.  You can also register
+ |      unrelated concrete classes (even built-in classes) and unrelated
+ |      ABCs as 'virtual subclasses' -- these and their descendants will
+ |      be considered subclasses of the registering ABC by the built-in
+ |      issubclass() function, but the registering ABC won't show up in
+ |      their MRO (Method Resolution Order) nor will method
+ |      implementations defined by the registering ABC be callable (not
+ |      even via super()).
+
+>>> 
+>>> c = Capper()
+
+Traceback (most recent call last):
+  File "<pyshell#619>", line 1, in <module>
+    c = Capper()
+TypeError: Can't instantiate abstract class Capper with abstract methods __getitem__, __len__
+>>> class A(Capper):
+	def __len__(self):
+		return 42
+
+	
+>>> a = A()
+
+Traceback (most recent call last):
+  File "<pyshell#624>", line 1, in <module>
+    a = A()
+TypeError: Can't instantiate abstract class A with abstract methods __getitem__
+>>> d = DoubleSeq('hettinger')
+>>> d.capitalize()
+'HTIGR'
+>>> A.__abstractmethods__
+frozenset(['__getitem__'])
+>>> Capper.__abstractmethods__
+frozenset(['__getitem__', '__len__'])
+>>> 
+>>> 
+>>> d.uncapitalize()
+'htigr'
+>>> a = Uncapper()
+>>> a.uncapitalize()
+
+Traceback (most recent call last):
+  File "<pyshell#633>", line 1, in <module>
+    a.uncapitalize()
+  File "/Users/raymondhettinger/dropbox/Public/sg2/abc_demo.py", line 27, in uncapitalize
+    return ''.join([c.lower() for c in self])
+TypeError: iteration over non-sequence
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> s = 'hello'
+>>> len(s)
+5
+>>> s[1]
+'e'
+
+>>> # Anything the len and is indexable with __getitem__
+>>> # is called a Sequence
+>>> 
+>>> 
+>>> s.count('l')
+2
+>>> s.index('e')
+1
+>>> s.index('o')
+4
+>>> s[0]
+'h'
+>>> s[1]
+'e'
+>>> 
+>>> 
+>>> s[4]
+'o'
+>>> s[3]
+'l'
+>>> s[2]
+'l'
+>>> s[1]
+'e'
+>>> s[0]
+'h'
+>>> for c in reversed(s):
+	print c
+
+	
+o
+l
+l
+e
+h
+>>> 
+>>> 
+>>> s = [10, 20, 30, 20, 10, 10]
+>>> s[2]
+30
+>>> len(s)
+6
+>>> s.count(10)
+3
+>>> s.count(20)
+2
+>>> 
+>>> s.index(30)
+2
+>>> s.index(10)
+0
+>>> for c in reversed(s):
+	print c
+
+	
+10
+10
+20
+30
+20
+10
+>>> 
+>>> s = (10, 20, 30, 20, 10)
+>>> s[1]
+20
+>>> len(s)
+5
+>>> s.count(20)
+2
+>>> s.index(20)
+1
+>>> for c in reversed(s):
+	print c
+
+	
+10
+20
+30
+20
+10
+>>> ================================ RESTART ================================
+>>> 
+5
+HTIGR
+3
+RMD
+>>> Sequence.__abstractmethods__
+frozenset(['__getitem__', '__len__'])
+>>> dir(Sequence)
+['__abstractmethods__', '__class__', '__contains__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__getitem__', '__hash__', '__init__', '__iter__', '__len__', '__metaclass__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__reversed__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_abc_cache', '_abc_negative_cache', '_abc_negative_cache_version', '_abc_registry', 'count', 'index']
+>>> 
+>>> 
+>>> 
+>>> 
+>>> d.count('e')
+
+Traceback (most recent call last):
+  File "<pyshell#688>", line 1, in <module>
+    d.count('e')
+AttributeError: 'DoubleSeq' object has no attribute 'count'
+>>> ================================ RESTART ================================
+>>> 
+5
+HTIGR
+3
+RMD
+>>> d.count('e')
+0
+>>> d.count('t')
+1
+>>> d.index('g')
+3
+>>> d[3]
+'g'
+>>> len(d)
+5
+>>> for c in reversed(d):
+	print c
+
+	
+r
+g
+i
+t
+H
+>>> # in-operator    __contains__
+>>> 
+>>> 't' in d
+True
+>>> 'z' in d
+False
+>>> 
+>>> list(d)
+['H', 't', 'i', 'g', 'r']
+>>> 'H' in d
+True
+>>> 
+>>> 
+>>> 
+>>> 
+>>> d.index('G')
+
+Traceback (most recent call last):
+  File "<pyshell#709>", line 1, in <module>
+    d.index('G')
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_abcoll.py", line 604, in index
+    raise ValueError
+ValueError
+>>> 
+>>> 
+>>> for name in 'raymond rachel matthew'.split():
+	print name
+
+	
+raymond
+rachel
+matthew
+>>> for name in enumerate('raymond rachel matthew'.split()):
+	print name
+
+	
+(0, 'raymond')
+(1, 'rachel')
+(2, 'matthew')
+>>> for i, name in enumerate('raymond rachel matthew'.split()):
+	print i, '-->', name
+
+	
+0 --> raymond
+1 --> rachel
+2 --> matthew
+>>> ================================ RESTART ================================
+>>> 
+5
+HTIGR
+3
+RMD
+>>> d.index('g')
+3
+>>> d.index('G')
+
+Traceback (most recent call last):
+  File "<pyshell#720>", line 1, in <module>
+    d.index('G')
+  File "/Users/raymondhettinger/dropbox/Public/sg2/abc_demo.py", line 42, in index
+    raise ValueError(value)
+ValueError: G
+>>> 
+>>> dir(dict)
+['__class__', '__cmp__', '__contains__', '__delattr__', '__delitem__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__init__', '__iter__', '__le__', '__len__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', 'clear', 'copy', 'fromkeys', 'get', 'has_key', 'items', 'iteritems', 'iterkeys', 'itervalues', 'keys', 'pop', 'popitem', 'setdefault', 'update', 'values', 'viewitems', 'viewkeys', 'viewvalues']
+>>> import collections
+>>> collections.MutableMapping.__abstractmethods__
+frozenset(['__delitem__', '__setitem__', '__getitem__', '__iter__', '__len__'])
+>>> frozenset(['__delitem__', '__setitem__', '__getitem__', '__iter__', '__len__'])
+frozenset(['__delitem__', '__setitem__', '__len__', '__iter__', '__getitem__'])
+
+
+>>> 
+>>> import os
+>>> os.makedir('tmp')
+
+Traceback (most recent call last):
+  File "<pyshell#728>", line 1, in <module>
+    os.makedir('tmp')
+AttributeError: 'module' object has no attribute 'makedir'
+>>> os.makedir('tmp')
+
+Traceback (most recent call last):
+  File "<pyshell#729>", line 1, in <module>
+    os.makedir('tmp')
+AttributeError: 'module' object has no attribute 'makedir'
+
+
+
+>>> os.mkdir('tmp')
+>>> os.mkdir('tmp')
+
+Traceback (most recent call last):
+  File "<pyshell#731>", line 1, in <module>
+    os.mkdir('tmp')
+OSError: [Errno 17] File exists: 'tmp'
+>>> 
+>>> try:
+	os.mkdir('tmp')
+except OSError:
+	pass
+
+>>> try:
+	os.mkdir('tmp')
+except:
+	pass
+
+>>> try:
+	os.makedir('tmp')
+except:
+	pass
+
+>>> 
+>>> 
+>>> os.getcwd()
+'/Users/raymondhettinger/dropbox/Public/sg2'
+>>> os.listdir('.')
+['#tmp2.py#', '.hg', 'a.txt', 'abc.txt', 'abc_demo.py', 'case_statement.py', 'choosing_methods_vs_attributes.txt', 'class_demo.html', 'class_demo.py', 'class_demo.pyc', 'client_code.py', 'context.py', 'dayfour.log', 'dayone.log', 'daythree.log', 'daytwo.log', 'daytwo_b.log', 'demo', 'dict_demo.py', 'docsearch.help', 'download.py', 'exceptions.py', 'family_disassembly.txt', 'hettingers.txt', 'links.txt', 'list_demo.py', 'literals.txt', 'notes', 'print_redirect.py', 'property_demo.py', 'pub', 'ready', 'showargs.py', 'str_help.txt', 'text', 'tmp', 'tmp.py', 'udp_client.py', 'udp_time_server.py', 'udp_universal_receiver.py', 'udpclient.py', 'udpserver.py', 'with_demo.py']
+>>> os.chdir('notes')
+>>> os.getcwd()
+'/Users/raymondhettinger/dropbox/Public/sg2/notes'
+>>> os.chdir('..')
+>>> os.getcwd()
+'/Users/raymondhettinger/dropbox/Public/sg2'
+>>> 
+>>> try:
+	os.makedir('tmp')
+except:
+	pass
+
+>>> try:
+	os.mkdir('tmp')
+except OSError:
+	pass
+
+>>> 
+>>> 
+>>> import os
+>>> 
+>>> try:
+	os.mkdir('tmp')
+except OSError:
+	pass
+
+>>> from context import suppress
+>>> 
+>>> with suppress('OSError'):
+	os.mkdir('tmp')
+
+	
+
+Traceback (most recent call last):
+  File "<pyshell#765>", line 2, in <module>
+    os.mkdir('tmp')
+OSError: [Errno 17] File exists: 'tmp'
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> dirname = 'tmp'
+>>> filename = 'john'
+>>> filename = 'john.txt'
+>>> 
+>>> dirname + '/' + filename
+'tmp/john.txt'
+>>> 
+>>> dirname + '\\' + filename
+'tmp\\john.txt'
+>>> 
+>>> 
+>>> os.path.join(dirname, filename)
+'tmp/john.txt'
+>>> fullname = os.path.join(dirname, filename)
+>>> 
+>>> 
+>>> 
+>>> 
+
+>>> import os
+>>> dirname = 'tmp'
+>>> filename = 'john.txt'
+>>> fullname = os.path.join(dirname, filename)
+>>> 
+>>> with open(fullname, 'w') as f:
+	f.write('Hello\n')
+	f.write('Goodbye\n')
+
+	
+>>> 
+>>> with open(fullname) as f:
+	print f.read()
+
+	
+Hello
+Goodbye
+
+>>> with open('tmp/xyz.pdq') as f:
+	print f.read()
+
+	
+
+Traceback (most recent call last):
+  File "<pyshell#802>", line 1, in <module>
+    with open('tmp/xyz.pdq') as f:
+IOError: [Errno 2] No such file or directory: 'tmp/xyz.pdq'
+>>> try:
+	with open('tmp/xyz.pdq') as f:
+		print f.read()
+except IOError:
+	print 'File not found'
+
+	
+File not found
+>>> 
+>>> os.listdir(dirname)
+['john.txt']
+>>> with open('tmp/bryn.txt', 'w') as f:
+	f.write('Howdy\n')
+	f.write('Goodbye Mate\n')
+
+	
+>>> os.listdir(dirname)
+['bryn.txt', 'john.txt']
+>>> len(os.listdir(dirname))
+2
+>>> it = iter(os.listdir(dirname))
+>>> it
+<listiterator object at 0x1064cce90>
+>>> next(it)
+'bryn.txt'
+>>> next(it)
+'john.txt'
+>>> next(it)
+
+Traceback (most recent call last):
+  File "<pyshell#819>", line 1, in <module>
+    next(it)
+StopIteration
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> help(dict)
+Help on class dict in module __builtin__:
+
+class dict(object)
+ |  dict() -> new empty dictionary
+ |  dict(mapping) -> new dictionary initialized from a mapping object's
+ |      (key, value) pairs
+ |  dict(iterable) -> new dictionary initialized as if via:
+ |      d = {}
+ |      for k, v in iterable:
+ |          d[k] = v
+ |  dict(**kwargs) -> new dictionary initialized with the name=value pairs
+ |      in the keyword argument list.  For example:  dict(one=1, two=2)
+ |  
+ |  Methods defined here:
+ |  
+ |  __cmp__(...)
+ |      x.__cmp__(y) <==> cmp(x,y)
+ |  
+ |  __contains__(...)
+ |      D.__contains__(k) -> True if D has a key k, else False
+ |  
+ |  __delitem__(...)
+ |      x.__delitem__(y) <==> del x[y]
+ |  
+ |  __eq__(...)
+ |      x.__eq__(y) <==> x==y
+ |  
+ |  __ge__(...)
+ |      x.__ge__(y) <==> x>=y
+ |  
+ |  __getattribute__(...)
+ |      x.__getattribute__('name') <==> x.name
+ |  
+ |  __getitem__(...)
+ |      x.__getitem__(y) <==> x[y]
+ |  
+ |  __gt__(...)
+ |      x.__gt__(y) <==> x>y
+ |  
+ |  __init__(...)
+ |      x.__init__(...) initializes x; see help(type(x)) for signature
+ |  
+ |  __iter__(...)
+ |      x.__iter__() <==> iter(x)
+ |  
+ |  __le__(...)
+ |      x.__le__(y) <==> x<=y
+ |  
+ |  __len__(...)
+ |      x.__len__() <==> len(x)
+ |  
+ |  __lt__(...)
+ |      x.__lt__(y) <==> x<y
+ |  
+ |  __ne__(...)
+ |      x.__ne__(y) <==> x!=y
+ |  
+ |  __repr__(...)
+ |      x.__repr__() <==> repr(x)
+ |  
+ |  __setitem__(...)
+ |      x.__setitem__(i, y) <==> x[i]=y
+ |  
+ |  __sizeof__(...)
+ |      D.__sizeof__() -> size of D in memory, in bytes
+ |  
+ |  clear(...)
+ |      D.clear() -> None.  Remove all items from D.
+ |  
+ |  copy(...)
+ |      D.copy() -> a shallow copy of D
+ |  
+ |  fromkeys(...)
+ |      dict.fromkeys(S[,v]) -> New dict with keys from S and values equal to v.
+ |      v defaults to None.
+ |  
+ |  get(...)
+ |      D.get(k[,d]) -> D[k] if k in D, else d.  d defaults to None.
+ |  
+ |  has_key(...)
+ |      D.has_key(k) -> True if D has a key k, else False
+ |  
+ |  items(...)
+ |      D.items() -> list of D's (key, value) pairs, as 2-tuples
+ |  
+ |  iteritems(...)
+ |      D.iteritems() -> an iterator over the (key, value) items of D
+ |  
+ |  iterkeys(...)
+ |      D.iterkeys() -> an iterator over the keys of D
+ |  
+ |  itervalues(...)
+ |      D.itervalues() -> an iterator over the values of D
+ |  
+ |  keys(...)
+ |      D.keys() -> list of D's keys
+ |  
+ |  pop(...)
+ |      D.pop(k[,d]) -> v, remove specified key and return the corresponding value.
+ |      If key is not found, d is returned if given, otherwise KeyError is raised
+ |  
+ |  popitem(...)
+ |      D.popitem() -> (k, v), remove and return some (key, value) pair as a
+ |      2-tuple; but raise KeyError if D is empty.
+ |  
+ |  setdefault(...)
+ |      D.setdefault(k[,d]) -> D.get(k,d), also set D[k]=d if k not in D
+ |  
+ |  update(...)
+ |      D.update([E, ]**F) -> None.  Update D from dict/iterable E and F.
+ |      If E present and has a .keys() method, does:     for k in E: D[k] = E[k]
+ |      If E present and lacks .keys() method, does:     for (k, v) in E: D[k] = v
+ |      In either case, this is followed by: for k in F: D[k] = F[k]
+ |  
+ |  values(...)
+ |      D.values() -> list of D's values
+ |  
+ |  viewitems(...)
+ |      D.viewitems() -> a set-like object providing a view on D's items
+ |  
+ |  viewkeys(...)
+ |      D.viewkeys() -> a set-like object providing a view on D's keys
+ |  
+ |  viewvalues(...)
+ |      D.viewvalues() -> an object providing a view on D's values
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |  
+ |  __hash__ = None
+ |  
+ |  __new__ = <built-in method __new__ of type object>
+ |      T.__new__(S, ...) -> a new object with type S, a subtype of T
+
+>>> ================================ RESTART ================================
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sg2/dictionary.py", line 16, in <module>
+    d = PersistentDict('hettingers')
+  File "/Users/raymondhettinger/dropbox/Public/sg2/dictionary.py", line 13, in __init__
+    os.mkdir(dirname)
+OSError: [Errno 17] File exists: 'hettingers'
+>>> ================================ RESTART ================================
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sg2/dictionary.py", line 21, in <module>
+    d['raymond'] = 'red'
+AttributeError: PersistentDict instance has no attribute '__setitem__'
+>>> ================================ RESTART ================================
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sg2/dictionary.py", line 29, in <module>
+    print d['raymond']
+AttributeError: PersistentDict instance has no attribute '__getitem__'
+>>> ================================ RESTART ================================
+>>> 
+red
+blue
+yellow
+>>> d['roger']
+
+Traceback (most recent call last):
+  File "<pyshell#829>", line 1, in <module>
+    d['roger']
+  File "/Users/raymondhettinger/dropbox/Public/sg2/dictionary.py", line 25, in __getitem__
+    with open(fullname) as f:
+IOError: [Errno 2] No such file or directory: 'hettingers/roger'
+>>> ================================ RESTART ================================
+>>> 
+red
+blue
+yellow
+>>> d['roger']
+
+Traceback (most recent call last):
+  File "<pyshell#830>", line 1, in <module>
+    d['roger']
+  File "/Users/raymondhettinger/dropbox/Public/sg2/dictionary.py", line 29, in __getitem__
+    raise KeyError(key)
+KeyError: 'roger'
+>>> ================================ RESTART ================================
+>>> 
+red
+blue
+yellow
+>>> del d['roger']
+
+Traceback (most recent call last):
+  File "<pyshell#831>", line 1, in <module>
+    del d['roger']
+  File "/Users/raymondhettinger/dropbox/Public/sg2/dictionary.py", line 33, in __delitem__
+    os.remove(fullname)
+OSError: [Errno 2] No such file or directory: 'hettingers/roger'
+>>> ================================ RESTART ================================
+>>> 
+red
+blue
+yellow
+>>> del d['roger']
+
+Traceback (most recent call last):
+  File "<pyshell#832>", line 1, in <module>
+    del d['roger']
+  File "/Users/raymondhettinger/dropbox/Public/sg2/dictionary.py", line 36, in __delitem__
+    raise KeyError(key)
+KeyError: 'roger'
+>>> try:
+	os.remove('xyz.pdq')
+except OSError as e:
+	pass
+
+>>> e
+OSError(2, 'No such file or directory')
+>>> e.args[0]
+2
+>>> ================================ RESTART ================================
+>>> 
+red
+blue
+yellow
+>>> ================================ RESTART ================================
+>>> 
+red
+blue
+yellow
+>>> len(d)
+2
+>>> ================================ RESTART ================================
+>>> 
+red
+blue
+yellow
+3
+2
+>>> os.listdir('hettingers')
+['rachel', 'raymond']
+>>> len(os.listdir('hettingers'))
+2
+>>> d['roger']
+'black\n'
+>>> len(d)
+3
+>>> del d['roger']
+>>> ================================ RESTART ================================
+>>> 
+red
+blue
+yellow
+3
+2
+rachel
+raymond
+>>> list(d)
+['rachel', 'raymond']
+>>> set(d)
+set(['rachel', 'raymond'])
+>>> sorted(d)
+['rachel', 'raymond']
+>>> min(d)
+'rachel'
+>>> max(d)
+'raymond'
+>>> tuple(d)
+('rachel', 'raymond')
+>>> 
+>>> 
+>>> d['raymond']
+'red'
+>>> d['raymond'] = 'crimson'
+>>> d['raymond']
+'crimson'
+>>> d
+<__main__.PersistentDict instance at 0x1036ea170>
+>>> dict(d)
+
+Traceback (most recent call last):
+  File "<pyshell#858>", line 1, in <module>
+    dict(d)
+ValueError: dictionary update sequence element #0 has length 6; 2 is required
+>>> ================================ RESTART ================================
+>>> 
+red
+blue
+yellow
+3
+2
+rachel
+raymond
+>>> d.keys()
+['rachel', 'raymond']
+>>> d.values()
+['blue', 'red']
+>>> d.items()
+[('rachel', 'blue'), ('raymond', 'red')]
+>>> d.get('roger', 'black')
+'black'
+>>> d.get('raymond', 'black')
+'red'
+>>> d.clear()
+>>> d.items()
+[]
+>>> ================================ RESTART ================================
+>>> 
+red
+blue
+yellow
+3
+2
+rachel
+raymond
+>>> d
+PersistentDict('hettingers', [('matthew', 'yellow'), ('rachel', 'blue'), ('raymond', 'red')])
+>>> 
+>>> 
+>>> dict([('matthew', 'yellow'), ('rachel', 'blue'), ('raymond', 'red')])
+{'matthew': 'yellow', 'rachel': 'blue', 'raymond': 'red'}
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sg2/dictionary.py", line 54, in <module>
+    d = PersistentDict('hettingers')
+TypeError: __init__() takes exactly 3 arguments (2 given)
+>>> ================================ RESTART ================================
+>>> 
+red
+blue
+yellow
+3
+2
+rachel
+raymond
+>>> PersistentDict('hettingers', [('matthew', 'yellow'), ('rachel', 'blue'), ('raymond', 'red')])
+PersistentDict('hettingers', [('matthew', 'yellow'), ('rachel', 'blue'), ('raymond', 'red')])
+>>> 
+>>> dict(raymond='red', rachel='blue')
+{'rachel': 'blue', 'raymond': 'red'}
+>>> ================================ RESTART ================================
+>>> 
+red
+blue
+yellow
+3
+2
+rachel
+raymond
+>>> PersistentDict('hettingers', roger=black)
+
+Traceback (most recent call last):
+  File "<pyshell#873>", line 1, in <module>
+    PersistentDict('hettingers', roger=black)
+NameError: name 'black' is not defined
+>>> PersistentDict('hettingers', roger='black')
+PersistentDict('hettingers', [('rachel', 'blue'), ('raymond', 'red'), ('roger', 'black')])
+>>> 
+>>> 
+>>> # optional args like   items=[]
+>>> # what does **kwds do
+>>> # why the %r
+>>> 
+>>> 
+>>> 
+>>> 
+>>> def f(a, b):
+	return a + b
+
+>>> f(5, 9)
+14
+>>> f(5, 9, 10)
+
+Traceback (most recent call last):
+  File "<pyshell#888>", line 1, in <module>
+    f(5, 9, 10)
+TypeError: f() takes exactly 2 arguments (3 given)
+>>> def f(a, b, c=0):
+	return a + b + c
+
+>>> f(5, 9)
+14
+>>> f(5, 9, 1)
+15
+>>> 
+>>> 
+>>> def f(a, b, c=[]):
+	return a + b + c
+
+>>> f([10, 20], [30, 40], [50, 60])
+[10, 20, 30, 40, 50, 60]
+>>> 
+>>> f([10, 20], [30, 40])
+[10, 20, 30, 40]
+>>> # optional args like   items=[]
+>>> def f(a, b, c=[]):
+	return a + b + c
+
+>>> f([10, 20], [30, 40], 'hello')
+
+Traceback (most recent call last):
+  File "<pyshell#903>", line 1, in <module>
+    f([10, 20], [30, 40], 'hello')
+  File "<pyshell#902>", line 2, in f
+    return a + b + c
+TypeError: can only concatenate list (not "str") to list
+>>> # what does **kwds do
+>>> 
+>>> 
+>>> 
+>>> 
+>>> def f(a, b, *t):
+	print a
+	print b
+	print t
+
+	
+>>> f(10, 20, 30, 40, 50)
+10
+20
+(30, 40, 50)
+>>> def f(a, b, *t, **d):
+	print a
+	print b
+	print t
+	print d
+
+	
+>>> f(10, 20, 30, 40, 50, x=1, y=2, z=3)
+10
+20
+(30, 40, 50)
+{'y': 2, 'x': 1, 'z': 3}
+>>> 
+>>> 
+>>> def init(dirname, items=[], **kwds):
+	print dirname
+	print items
+	print keywords
+
+	
+>>> 
+>>> init('hettingers')
+hettingers
+[]
+
+Traceback (most recent call last):
+  File "<pyshell#927>", line 1, in <module>
+    init('hettingers')
+  File "<pyshell#925>", line 4, in init
+    print keywords
+NameError: global name 'keywords' is not defined
+>>> def init(dirname, items=[], **kwds):
+	print dirname
+	print items
+	print kwds
+
+	
+>>> 
+>>> 
+>>> 
+
+
+>>> 
+
+
+
+
+
+
+
+>>> def init(dirname, items=[], **kwds):
+	print dirname
+	print items
+	print kwds
+
+	
+>>> init('hettingers')
+hettingers
+[]
+{}
+>>> 
+>>> init('hettingers', x=1, y=2, z=3)
+hettingers
+[]
+{'y': 2, 'x': 1, 'z': 3}
+>>> init('hettingers', 'hello', x=1, y=2, z=3)
+hettingers
+hello
+{'y': 2, 'x': 1, 'z': 3}
+>>> init('hettingers', [10, 20, 30], x=1, y=2, z=3)
+hettingers
+[10, 20, 30]
+{'y': 2, 'x': 1, 'z': 3}
+>>> 
+>>> 
+>>> PersistentDict('jones')
+PersistentDict('jones', [])
+>>> 
+>>> PersistentDict('jones', raymond='red', rachel='azure')
+PersistentDict('jones', [('rachel', 'azure'), ('raymond', 'red')])
+>>> 
+>>> 
+>>> p = PersistentDict('jones', [('rachel', 'azure'), ('raymond', 'red')])
+>>> 
+>>> p.keys()
+['rachel', 'raymond']
+>>> p.values
+<bound method PersistentDict.values of PersistentDict('jones', [('rachel', 'azure'), ('raymond', 'red')])>
+>>> p.values()
+['azure', 'red']
+>>> p['rachel']
+'azure'
+>>> ================================ RESTART ================================
+>>> 
+red
+blue
+yellow
+4
+3
+rachel
+raymond
+roger
+>>> d
+PersistentDict('hettingers', [('matthew', 'yellow'), ('rachel', 'blue'), ('raymond', 'red'), ('roger', 'black')])
+>>> 
+>>> d.update(matthew='orange')
+>>> d
+PersistentDict('hettingers', [('matthew', 'orange'), ('rachel', 'blue'), ('raymond', 'red'), ('roger', 'black')])
+>>> d.update([('roger', 'black')])
+>>> d
+PersistentDict('hettingers', [('matthew', 'orange'), ('rachel', 'blue'), ('raymond', 'red'), ('roger', 'black')])
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> # __str__ and __repr__
+>>> # print       interactive prompt
+>>> # external    programmers
+>>> # pretty      informative
+>>> #         ==
+>>> # def ulgy     def ugly
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+red
+blue
+yellow
+4
+3
+rachel
+raymond
+roger
+>>> d
+<__main__.PersistentDict object at 0x10d297450>
+>>> print d
+<__main__.PersistentDict object at 0x10d297450>
+>>> ================================ RESTART ================================
+>>> 
+red
+blue
+yellow
+4
+3
+rachel
+raymond
+roger
+>>> d
+<__main__.PersistentDict object at 0x109944450>
+>>> print d
+pretty
+>>> ================================ RESTART ================================
+>>> 
+red
+blue
+yellow
+4
+3
+rachel
+raymond
+roger
+>>> d
+informative
+>>> print d
+pretty
+>>> print 'The answer is %s today' % d
+The answer is pretty today
+>>> print 'The answer is %r today' % d
+The answer is informative today
+>>> 
+>>> 
+>>> 
+>>> print 30 + 40
+70
+>>> 30 + 40
+70
+>>> 
+>>> print 'hello' + ' world'
+hello world
+>>> 'hello' + ' world'
+'hello world'
+>>> 
+>>> 
+>>> b = 2
+>>> 
+>>> 
+>>> 
+>>> dirname = 'hettingers'
+>>> print dirname
+hettingers
+>>> dirname
+'hettingers'
+>>> 
+>>> 
+>>> PersistentDict('hettingers')
+informative
+>>> 
+>>> PersistentDict(hettingers)
+
+Traceback (most recent call last):
+  File "<pyshell#1003>", line 1, in <module>
+    PersistentDict(hettingers)
+NameError: name 'hettingers' is not defined
+>>> hettingers = 'jones'
+>>> PersistentDict(hettingers)
+informative
+>>> # PersistentDict('hettingers')    PersistentDict(hettingers)
+>>> 
+>>> print 'PersistentDict(%s)' % 'hettingers'
+PersistentDict(hettingers)
+>>> print 'PersistentDict(%r)' % 'hettingers'
+PersistentDict('hettingers')
+>>> ================================ RESTART ================================
+>>> 
+red
+blue
+yellow
+4
+3
+rachel
+raymond
+roger
+>>> d
+PersistentDict('hettingers', [('rachel', 'blue'), ('raymond', 'red'), ('roger', 'black')])
+>>> 
+>>> 
+>>> e = PersistentDict('hettingers', [('rachel', 'blue'), ('raymond', 'red'), ('roger', 'black')])
+>>> 
+>>> 
+>>> len(d)
+3
+>>> d.clear()
+>>> ================================ RESTART ================================
+>>> 
+red
+blue
+yellow
+3
+2
+rachel
+raymond
+>>> e = PersistentDict('hettinger_backup', [('rachel', 'blue'), ('raymond', 'red'), ('roger', 'black')])
+>>> 
+>>> e.items()
+[('rachel', 'blue'), ('raymond', 'red'), ('roger', 'black')]
+>>> e.__class__.__name__
+'PersistentDict'
+>>> e.dirname
+'hettinger_backup'
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sg2/dictionary.py", line 60, in <module>
+    d = PersistentDict('hettingers')
+TypeError: Can't instantiate abstract class PersistentDict with abstract methods __setitem__
+>>> ================================ RESTART ================================
+>>> 
+red
+blue
+yellow
+3
+2
+rachel
+raymond
+>>> ================================ RESTART ================================
+>>> import dictionary
+>>> dictionary.__name__
+'dictionary'
+>>> dictionary.d
+
+Traceback (most recent call last):
+  File "<pyshell#1025>", line 1, in <module>
+    dictionary.d
+AttributeError: 'module' object has no attribute 'd'
+>>> 
+>>> 
+>>> import dictionary
+>>> d = dictionary.PersistentDict('smiths')
+>>> d['patty'] = 'pink'
+>>> d['susie'] = 'blue'
+>>> d.keys()
+['patty', 'susie']
+>>> d.values()
+['pink', 'blue']
+>>> d['susie']
+'blue'
+>>> d['roger']
+
+Traceback (most recent call last):
+  File "<pyshell#1036>", line 1, in <module>
+    d['roger']
+  File "dictionary.py", line 31, in __getitem__
+    raise KeyError(key)
+KeyError: 'roger'
+>>> d
+PersistentDict('smiths', [('patty', 'pink'), ('susie', 'blue')])
+>>> ================================ RESTART ================================
+>>> d
+
+Traceback (most recent call last):
+  File "<pyshell#1038>", line 1, in <module>
+    d
+NameError: name 'd' is not defined
+>>> import dictionary
+>>> d = dictionary.PersistentDict('smiths')
+>>> d
+PersistentDict('smiths', [('patty', 'pink'), ('susie', 'blue')])
+>>> 
+>>> 
+>>> print 'The answer is %r today' % 'raymond'
+The answer is 'raymond' today
+>>> print 'The answer is %s today' % 'raymond'
+The answer is raymond today
+>>> 
+>>> 
+>>> 
+>>> print 'c:\\\\my documents and settings\\raymond\\developers.txt'
+c:\\my documents and settings\raymond\developers.txt
+>>> 
+>>> 
+>>> print r'c:\\my documents and settings\raymond\developers.txt'
+c:\\my documents and settings\raymond\developers.txt
+>>> 
+>>> 
+>>> #     ESC ESC     %s  %%      \  \\
+>>> #    {{raymond}}r
+>>> 
+
+>>> 
+>>> 
+>>> 
+>>> 

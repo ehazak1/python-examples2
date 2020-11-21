@@ -1,0 +1,13 @@
+Spell-out names of works         (prefer "list" to "ls")
+YAGNI / MVP                      (defer non-essential features until after the proof-of-concept)
+
+
+Prefer native objects            (use a list of uris instead of a search result object)
+
+
+Hardwire
+Rebuild everything from scratch
+Any feature that helps the developer is essential
+Native speakers for language nuances
+minimize learning curve by bridging from existing knowledge
+Avoid vague, generic names
