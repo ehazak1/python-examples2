@@ -7,7 +7,7 @@ curl -v -X POST https://10.89.206.89/api/v1/auth/token-services \
 
 
 curl -v -H "Accept:application/json" \
-        -H "X-Auth-Token: Km7S6LosDkNfWYn0vCEB+EQqS6MuZbH5tcQ0i0985Z0=" \
+        -H "X-Auth-Token: [YOUR_TOKEN_HERE]=" \
         -H "content-type: application/json" \
         -X POST https://10.89.206.89/api/v1/nat-svc/pool \
         -d '{"nat-pool-id": "test4-nat-pool", "start-ip-address": "172.16.10.1", "end-ip-address": "172.16.10.63", "prefix-length": 32}' \
